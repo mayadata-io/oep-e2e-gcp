@@ -43,9 +43,9 @@ echo "deploying DOP"
 
 git clone https://$username:$password@github.com/mayadata-io/director-charts-internal.git
 
-git checkout dop-e2e
-
 cd director-charts-internal/e2e
+
+git checkout dop-e2e
 
 kubectl apply -f docker-secret.yaml
 
