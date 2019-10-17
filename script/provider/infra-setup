@@ -47,7 +47,7 @@ cd director-charts-internal
 
 git checkout dop-e2e
 
-cd /e2e
+cd e2e
 
 kubectl apply -f docker-secret.yaml
 
