@@ -2,7 +2,34 @@
 set -ex
 
 ######################
+##   Prerequisites  ##
+######################
+
+URL=https://$(kubectl get node -o wide | awk {'print $6'} | head -n 4 | tail -n 1):30380
+
+echo "This is DOP $URl" 
+
+wget https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
+
+tar -zxvf helm-v2.14.3-linux-amd64.tar.gz
+
+mv linux-amd64/helm /usr/local/bin/helm
+
+helm version
+
+echo $HELM_RBAC > HELM_RBAC.yaml
+
+cat HELM_RBAC.yaml
+
+kubectl apply -f HELM_RBAC.yaml
+
+helm init
+
+helm verson
+
+
+######################
 ##   ENVIRONMENT    ##
 ######################
 
-echo "deploy DOP" 
+echo "deploying DOP" 

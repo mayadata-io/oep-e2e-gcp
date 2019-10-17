@@ -11,7 +11,7 @@ echo "cleanup"
 mkdir ~/logs
 cp $path/.kube/clusters ~/logs
 cp $path/.kube/vpc ~/logs
-git clone https://github.com/openebs/litmus.git
+git clone https://github.com/mayadata-io/litmus.git
 cd litmus/k8s/gcp/k8s-installer/
 echo "cleanup"
 ansible-playbook delete-k8s-cluster.yml
