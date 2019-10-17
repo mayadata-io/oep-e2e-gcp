@@ -30,7 +30,7 @@ echo $HELM_RBAC > HELM_RBAC.yaml
 
 helm init
 
-helm verson
+helm version
 
 
 ######################
