@@ -51,7 +51,9 @@ cd e2e
 
 kubectl apply -f docker-secret.yaml
 
+sed '/url: mayadataurl/s/mayadataurl/'${URL}'/' -i ./values.yaml
 
+cat values.yaml
 
 helm install --name mod .
 
