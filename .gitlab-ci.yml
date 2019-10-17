@@ -31,7 +31,18 @@ Director-deploy:
    - ./script/provider/infra-setup
   artifacts:
     paths:
-      - .kube-dop/
+      - .kube/
+
+E2E-DOP:
+  image: atulabhi/kops:v8
+  stage: PROVIDER-INFRA-SETUP
+  dependencies:
+    - Director-deploy
+  script: 
+   - sleep 5
+  artifacts:
+    paths:
+      - .kube/
 
 cleanup-gcp:
   when: always
