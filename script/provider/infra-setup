@@ -51,7 +51,7 @@ cd e2e
 
 kubectl apply -f docker-secret.yaml
 
-kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=kube-system:default
+kubectl create clusterrolebinding kube-admin --clusterrole cluster-admin --serviceaccount=kube-system:default
 
 #sed '|url: mayadataurl|s|mayadataurl|'${URL}'|' -i ./values.yaml
 sed 's|url: mayadataurl|url: '${URL}'|' -i ./values.yaml
