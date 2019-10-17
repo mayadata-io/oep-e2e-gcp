@@ -4,16 +4,13 @@ set -ex
 ######################
 ##   Prerequisites  ##
 ######################
-ls
 
 mkdir ~/.kube
 cp  .kube/config ~/.kube/config
 
-#cat /openebs/e2e-gcp/.kube/clusters > .kube-openebs/clusters
 
 kubectl get po
 
-kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
 
 URL=https://$(kubectl get node -o wide | awk {'print $6'} | head -n 4 | tail -n 1):30380
 
@@ -24,8 +21,6 @@ wget https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
 tar -zxvf helm-v2.14.3-linux-amd64.tar.gz
 
 mv linux-amd64/helm /usr/local/bin/helm
-
-helm version
 
 echo $HELM_RBAC > HELM_RBAC.yaml
 
