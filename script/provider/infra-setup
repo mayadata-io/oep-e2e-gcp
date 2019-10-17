@@ -24,9 +24,9 @@ mv linux-amd64/helm /usr/local/bin/helm
 
 echo $HELM_RBAC > HELM_RBAC.yaml
 
-cat HELM_RBAC.yaml
+#cat HELM_RBAC.yaml
 
-kubectl apply -f HELM_RBAC.yaml
+#kubectl apply -f HELM_RBAC.yaml
 
 helm init
 
