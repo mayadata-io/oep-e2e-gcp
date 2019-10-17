@@ -30,7 +30,7 @@ echo $HELM_RBAC > HELM_RBAC.yaml
 
 helm init
 
-sleep 10
+sleep 45
 
 helm version
 
