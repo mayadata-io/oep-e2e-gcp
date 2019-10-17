@@ -7,7 +7,7 @@ gcloud auth activate-service-account --key-file=key.json
 gcloud config set project openebs-ci
 export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
 
-git clone https://github.com/maydataio-io/litmus.git
+git clone https://github.com/mayadata-io/litmus.git
 
 cd litmus/k8s/gcp/k8s-installer/
 
