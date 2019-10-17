@@ -1,0 +1,44 @@
+## TODO: Modularize the gitlab yaml to reuse templates
+
+## Define the stages & order of execution
+
+stages:
+  - CLUSTER-SETUP
+  - PROVIDER-INFRA-SETUP
+#  - E2E-TEST
+  - CLUSTER-CLEANUP
+
+## Setup the kubernetes cluster
+
+gcp-cluster:
+  image: atulabhi/kops:v8
+  stage: CLUSTER-SETUP
+  script: 
+    - ./script/gcp
+  artifacts:
+    when: always
+    paths:
+      - .kube/
+
+## Deploy DOP
+
+Director-deploy:
+  image: atulabhi/kops:v8
+  stage: PROVIDER-INFRA-SETUP
+  dependencies:
+    - gcp-cluster
+  script: 
+   - ./script/provider/infra-setup
+  artifacts:
+    paths:
+      - .kube-dop/
+
+cleanup-gcp:
+  when: always
+  image: atulabhi/kops:v8
+  dependencies:
+    - gcp-cluster
+  stage: CLUSTER-CLEANUP
+  script: 
+    - chmod 755 ./script/gcp-cleanup
+    - ./script/gcp-cleanup

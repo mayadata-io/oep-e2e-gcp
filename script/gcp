@@ -1,0 +1,36 @@
+#!/bin/bash
+set -e
+
+path=$(pwd)
+echo $SDK_TOKEN > key.json
+gcloud auth activate-service-account --key-file=key.json
+gcloud config set project openebs-ci
+export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
+
+git clone https://github.com/openebs/litmus.git
+
+cd litmus/k8s/gcp/k8s-installer/
+
+echo "creating vpc"
+
+ansible-playbook create-vpc.yml --extra-vars "project=openebs-ci"
+
+echo "creating cluster"
+
+ansible-playbook create-k8s-cluster.yml -vv --extra-vars "project=openebs-ci nodes=3 k8s_version=1.11.1"
+pwd
+ls
+mkdir $path/.kube
+cat ~/.kube/config > $path/.kube/config
+cat ~/.kube/config > $path/.kube/admin.conf
+cat ~/logs/clusters > $path/.kube/clusters
+cat ~/logs/vpc > $path/.kube/vpc
+
+echo "Checking Cluster availability"
+ansible-playbook check-cluster-availability.yml --extra-vars "nodes=3"
+kubectl get nodes
+wget https://raw.githubusercontent.com/openebs/litmus/master/hack/rbac.yaml
+kubectl apply -f rbac.yaml
+kubectl create configmap kubeconfig --from-file=$path/.kube/admin.conf -n litmus
+
+
