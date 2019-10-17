@@ -31,6 +31,7 @@ ansible-playbook check-cluster-availability.yml --extra-vars "nodes=3"
 kubectl get nodes
 wget https://raw.githubusercontent.com/openebs/litmus/master/hack/rbac.yaml
 kubectl apply -f rbac.yaml
+kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
 kubectl create configmap kubeconfig --from-file=$path/.kube/admin.conf -n litmus
 
 
