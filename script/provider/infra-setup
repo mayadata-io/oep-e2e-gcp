@@ -5,6 +5,8 @@ set -ex
 ##   Prerequisites  ##
 ######################
 
+kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
+
 URL=https://$(kubectl get node -o wide | awk {'print $6'} | head -n 4 | tail -n 1):30380
 
 echo "This is DOP $URl" 
