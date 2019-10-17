@@ -5,7 +5,7 @@
 stages:
   - CLUSTER-SETUP
   - PROVIDER-INFRA-SETUP
-#  - E2E-TEST
+  - E2E-TEST
   - CLUSTER-CLEANUP
 
 ## Setup the kubernetes cluster
@@ -35,7 +35,7 @@ Director-deploy:
 
 E2E-DOP:
   image: atulabhi/kops:v8
-  stage: PROVIDER-INFRA-SETUP
+  stage: E2E-TEST
   dependencies:
     - Director-deploy
   script: 
