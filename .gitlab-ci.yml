@@ -5,16 +5,18 @@
 stages:
   - CLUSTER-SETUP
   - PROVIDER-INFRA-SETUP
-  - E2E-TEST
+  - DIRECTOR-SANITY-CHECK
+  - DIRECTOR-FUNCTIONALITY-CHECK
   - CLUSTER-CLEANUP
 
 ## Setup the kubernetes cluster
 
-gcp-cluster:
+cluster-create:
   image: atulabhi/kops:v8
   stage: CLUSTER-SETUP
   script: 
-    - ./script/gcp
+    - chmod 755 ./stages/1-cluster-setup/gcp
+    - ./stages/1-cluster-setup/gcp
   artifacts:
     when: always
     paths:
@@ -22,34 +24,60 @@ gcp-cluster:
 
 ## Deploy DOP
 
-Director-deploy:
+director-deploy:
   image: atulabhi/kops:v8
   stage: PROVIDER-INFRA-SETUP
   dependencies:
-    - gcp-cluster
+    - cluster-create
   script: 
-   - ./script/provider/infra-setup
+   - chmod 755 ./stages/2-provider-infra-setup/infra-setup
+   - ./stages/2-provider-infra-setup/infra-setup
   artifacts:
     paths:
       - .kube/
 
-E2E-DOP:
+maya-io-server-check:
   image: atulabhi/kops:v8
-  stage: E2E-TEST
+  stage: DIRECTOR-SANITY-CHECK
   dependencies:
-    - Director-deploy
+    - director-deploy
   script: 
-   - sleep 5
+   - chmod 755 ./stages/3-director-sanity-check/maya-io-server-check
+   - ./stages/3-director-sanity-check/maya-io-server-check
   artifacts:
     paths:
       - .kube/
 
-cleanup-gcp:
+maya-ui-check:
+  image: atulabhi/kops:v8
+  stage: DIRECTOR-SANITY-CHECK
+  dependencies:
+    - director-deploy
+  script: 
+    - chmod 755 ./stages/3-director-sanity-check/maya-ui-check
+    - ./stages/3-director-sanity-check/maya-ui-check
+  artifacts:
+    paths:
+      - .kube/
+
+dmaas-check:
+  image: atulabhi/kops:v8
+  stage: DIRECTOR-FUNCTIONALITY-CHECK
+  dependencies:
+    - director-deploy
+  script: 
+   - chmod 755 ./stages/4-director-functionality-check/dmaas-check
+   - ./stages/4-director-functionality-check/dmaas-check
+  artifacts:
+    paths:
+      - .kube/
+
+cluster-cleanup:
   when: always
   image: atulabhi/kops:v8
   dependencies:
-    - gcp-cluster
+    - cluster-create
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./script/gcp-cleanup
-    - ./script/gcp-cleanup
+    - chmod 755 ./stages/5-cluster-cleanup/cluster-cleanup
+    - ./stages/5-cluster-cleanup/cluster-cleanup
