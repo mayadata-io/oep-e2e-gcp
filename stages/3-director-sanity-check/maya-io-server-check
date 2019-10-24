@@ -7,6 +7,31 @@ set -ex
 
 mkdir ~/.kube
 cp  .kube/config ~/.kube/config
-URL=https://$(kubectl get node -o wide | awk {'print $6'} | head -n 4 | tail -n 1):30380
-git clone https://$username:$password@github.com/mayadata-io/oep.git
+URL=https://$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
 echo $URL
+
+# Setup litmus on the cluster
+git clone https://$username:$password@github.com/openebs/litmus.git
+cd litmus
+kubectl apply -f hack/rbac.yaml
+kubectl apply -f hack/crds.yaml  
+cd ..
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep.git
+# Create docker secret 
+cd oep
+kubectl apply -f litmus/docker-secret.yml
+# Run litmus book
+kubectl create -f litmus/director/maya-io-server/run_litmus_test.yml
+litmus_pod=$(kubectl get po -n litmus  -o wide | awk {'print $1'} | tail -n 1)
+echo $litmus_pod
+kubectl logs -f $litmus_pod -n litmus
+#
+test_name=maya-io-server-check
+echo $test_name
+testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
+echo $testResult
+
+if [ "$testResult" != Pass ]; then 
+exit 1; 
+fi
