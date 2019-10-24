@@ -12,7 +12,7 @@ kubectl get po
 
 URL=https://$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
 
-echo "This is DOP $URl" 
+echo "This is DOP $URL" 
 
 wget https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
 
@@ -22,10 +22,6 @@ mv linux-amd64/helm /usr/local/bin/helm
 
 echo $HELM_RBAC > HELM_RBAC.yaml
 
-#cat HELM_RBAC.yaml
-
-#kubectl apply -f HELM_RBAC.yaml
-
 helm init
 
 sleep 45
@@ -34,27 +30,36 @@ helm version
 
 
 ######################
-##    deploy        ##
+##    Deploy DOP    ##
 ######################
 
 echo "deploying DOP" 
 
+# Clone director-charts-internal repository
 git clone https://$username:$password@github.com/mayadata-io/director-charts-internal.git
 
 cd director-charts-internal
 
+# Checkout to dop-e2e branch
 git checkout dop-e2e
 
-cd e2e
+# Get latest directory of helm chart
+REPO=$(cat baseline | awk -F',' 'NR==1{print $3}' | awk -F'=' '{print $2}')
+TAG=$(cat baseline | awk -F',' 'NR==1{print $5}' | awk -F'=' '{print $2}')
 
+cd $REPO-$TAG
+
+# Apply docker secret
 kubectl apply -f docker-secret.yaml
 
+# Create clusterrolebinding
 kubectl create clusterrolebinding kube-admin --clusterrole cluster-admin --serviceaccount=kube-system:default
 
-#sed '|url: mayadataurl|s|mayadataurl|'${URL}'|' -i ./values.yaml
+# Replace mayadataurl with DOP URL
 sed 's|url: mayadataurl|url: '${URL}'|' -i ./values.yaml
 cat values.yaml
 
-helm install --name mod .
+# Apply helm chart
+helm install --name dop .
 
-kubectl get po 
+kubectl get po
