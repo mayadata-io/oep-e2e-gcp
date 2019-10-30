@@ -25,7 +25,9 @@ cat ~/.kube/config > $path/.kube/config
 cat ~/.kube/config > $path/.kube/admin.conf
 cat ~/logs/clusters > $path/.kube/clusters
 cat ~/logs/vpc > $path/.kube/vpc
-
+# export vpc network name
+vpc=`cat $path/.kube/vpc`
+echo $vpc
 echo "Checking Cluster availability"
 ansible-playbook check-cluster-availability.yml --extra-vars "nodes=3"
 kubectl get nodes
@@ -33,5 +35,7 @@ wget https://raw.githubusercontent.com/openebs/litmus/master/hack/rbac.yaml
 kubectl apply -f rbac.yaml
 kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
 kubectl create configmap kubeconfig --from-file=$path/.kube/admin.conf -n litmus
+firewall_vpc="$vpc-firewall"
+gcloud compute firewall-rules create $firewall_vpc --network $vpc --action allow --direction ingress --rules tcp:30380 --source-ranges 0.0.0.0/0  
 
 
