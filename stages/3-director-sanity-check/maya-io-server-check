@@ -20,6 +20,8 @@ kubectl apply -f litmus/prerequisite/docker-secret.yml -n litmus
 ######################
 ##   Running test  ##
 ######################
+kubectx
+kubectl get po
 kubectl create -f litmus/director/maya-io-server/run_litmus_test.yml
 litmus_pod=$(kubectl get po -n litmus  -o wide | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
