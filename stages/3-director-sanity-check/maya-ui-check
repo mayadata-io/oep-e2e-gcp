@@ -4,7 +4,9 @@ set -ex
 ######################
 ##   Prerequisites  ##
 ######################
-
+mkdir ~/.kube
+cp  .kube/config ~/.kube/config
+kubectl get po
 URL=https://$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
 echo $URL
-ls
+
