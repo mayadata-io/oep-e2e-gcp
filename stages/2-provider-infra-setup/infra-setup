@@ -63,3 +63,12 @@ cat values.yaml
 helm install --name dop .
 
 kubectl get po
+
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep.git
+cd oep
+# Setup litmus on the cluster
+kubectl apply -f litmus/prerequisite/rbac.yaml
+kubectl apply -f litmus/prerequisite/crds.yaml 
+# creating docker secret 
+kubectl apply -f litmus/prerequisite/docker-secret.yml -n litmus
