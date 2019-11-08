@@ -4,6 +4,7 @@ set -ex
 ######################
 ##   Prerequisites  ##
 ######################
+kubectl get po
 mkdir ~/.kube
 cp  .kube/config ~/.kube/config
 URL=http://$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
