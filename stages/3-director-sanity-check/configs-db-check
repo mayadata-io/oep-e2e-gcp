@@ -18,13 +18,7 @@ cd oep
 test_name=configs-db-check
 echo $test_name
 kubectl get po
-sed -i -e 's/generateName: app-check/generateName: configs-db-check/g' \
--e 's/app: app-litmus/app: configs-db-check-litmus/g' \
--e 's/value: test-name/value: configs-db-check/g' \
--e 's/value: default /value: default/g' \
--e 's/value: pod-name/value: configs-db/g' litmus/director/common-checks/run_litmus_test.yml
-cat litmus/director/common-checks/run_litmus_test.yml
-kubectl create -f litmus/director/common-checks/run_litmus_test.yml
+kubectl create -f litmus/director/configs-db/run_litmus_test.yml
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
 job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
