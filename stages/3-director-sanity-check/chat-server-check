@@ -9,3 +9,32 @@ cp  .kube/config ~/.kube/config
 kubectl get po
 URL=https://$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
 echo $URL
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep.git
+cd oep
+######################
+##   Running test  ##
+######################
+test_name=chat-server-check
+echo $test_name
+sed -i -e 's/generateName: app-check/generateName: chat-server-check/g' \
+-e 's/app: app-litmus/app: chat-server-check-litmus/g' \
+-e 's/value: test-name/value: chat-server-check/g' \
+-e 's/value: default /value: default/g' \
+-e 's/value: pod-name/value: chat-server/g' litmus/director/common-checks/run_litmus_test.yml
+cat litmus/director/common-checks/run_litmus_test.yml
+kubectl create -f litmus/director/common-checks/run_litmus_test.yml
+litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
+echo $litmus_pod
+job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
+while [[ "$job_status" != "Completed" ]]
+do 
+    job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
+    sleep 6
+done
+kubectl logs -f $litmus_pod -n litmus
+testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
+echo $testResult
+if [ "$testResult" != Pass ]; then 
+exit 1; 
+fi
