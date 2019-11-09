@@ -15,9 +15,9 @@ cd oep
 ######################
 ##   Running test  ##
 ######################
-kubectl config current-context
 kubectl get po
 kubectl create -f litmus/director/maya-io-server/run_litmus_test.yml
+kubectl get po
 test_name=maya-io-server-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)

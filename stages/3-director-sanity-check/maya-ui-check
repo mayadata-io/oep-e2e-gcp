@@ -17,7 +17,9 @@ cd oep
 ######################
 test_name=maya-ui-check
 echo $test_name
+kubectl get po
 kubectl create -f litmus/director/maya-ui/run_litmus_test.yml
+kubectl get po
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
 job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)

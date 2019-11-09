@@ -17,6 +17,7 @@ cd oep
 ######################
 test_name=alertstore-check
 echo $test_name
+kubectl get po
 sed -i -e 's/generateName: app-check/generateName: alertstore-check/g' \
 -e 's/app: app-litmus/app: alertstore-check-litmus/g' \
 -e 's/value: test-name/value: alertstore-check/g' \
@@ -24,6 +25,7 @@ sed -i -e 's/generateName: app-check/generateName: alertstore-check/g' \
 -e 's/value: pod-name/value: alertstore/g' litmus/director/common-checks/run_litmus_test.yml
 cat litmus/director/common-checks/run_litmus_test.yml
 kubectl create -f litmus/director/common-checks/run_litmus_test.yml
+kubectl get po
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
 job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)

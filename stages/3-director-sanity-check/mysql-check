@@ -15,7 +15,9 @@ cd oep
 ######################
 ##   Running test  ##
 ######################
+kubectl get po
 kubectl create -f litmus/director/mysql/run_litmus_test.yml
+kubectl get po
 test_name=mysql-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
