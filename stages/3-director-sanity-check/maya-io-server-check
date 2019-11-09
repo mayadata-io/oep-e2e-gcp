@@ -17,7 +17,6 @@ cd oep
 ######################
 kubectl get po
 kubectl create -f litmus/director/maya-io-server/run_litmus_test.yml
-kubectl get po
 test_name=maya-io-server-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
@@ -29,6 +28,7 @@ do
     sleep 6
 done
 kubectl logs -f $litmus_pod -n litmus
+kubectl get po
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
 if [ "$testResult" != Pass ]; then 

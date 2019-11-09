@@ -17,6 +17,7 @@ cd oep
 ######################
 test_name=od-elasticsearch-logging-check
 echo $test_name
+kubectl get po
 sed -i -e 's/generateName: app-check/generateName: od-elasticsearch-logging-check/g' \
 -e 's/app: app-litmus/app: od-elasticsearch-logging-check-litmus/g' \
 -e 's/value: test-name/value: od-elasticsearch-logging-check/g' \
@@ -33,6 +34,7 @@ do
     sleep 6
 done
 kubectl logs -f $litmus_pod -n litmus
+kubectl get po
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
 if [ "$testResult" != Pass ]; then 
