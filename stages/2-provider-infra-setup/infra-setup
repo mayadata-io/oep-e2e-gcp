@@ -52,6 +52,11 @@ cd $REPO-$TAG
 # Apply docker secret
 kubectl apply -f docker-secret.yaml
 
+# Create secret having maya-init repo access
+echo $DOCKER_USERNAME > username.txt
+echo $DOCKER_PASSWORD > password.txt
+kubectl create secret generic dop-secret --from-file=username.txt --from-file=password.txt
+
 # Create clusterrolebinding
 kubectl create clusterrolebinding kube-admin --clusterrole cluster-admin --serviceaccount=kube-system:default
 
