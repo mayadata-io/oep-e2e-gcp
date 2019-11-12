@@ -78,6 +78,6 @@ kubectl apply -f oep/litmus/prerequisite/docker-secret.yml -n litmus
 git clone https://github.com/kubernetes-sigs/metrics-server.git
 sed -i -e '/args:/ a\          - --kubelet-insecure-tls' metrics-server/deploy/1.8+/metrics-server-deployment.yaml
 kubectl apply -f  metrics-server/deploy/1.8+/
-sleep 120
+sleep 160
 kubectl top nodes
 
