@@ -118,19 +118,7 @@ cloud-agent-check:
   artifacts:
     paths:
       - .kube/
-
-weavescope-check:
-  image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
-  dependencies:
-    - director-deploy
-  script: 
-    - chmod 755 ./stages/3-director-sanity-check/weavescope-check
-    - ./stages/3-director-sanity-check/weavescope-check
-  artifacts:
-    paths:
-      - .kube/
-    
+      
 mysql-check:
   image: atulabhi/kops:v8
   stage: DIRECTOR-SANITY-CHECK
