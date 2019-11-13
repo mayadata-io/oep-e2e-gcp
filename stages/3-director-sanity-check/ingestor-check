@@ -15,14 +15,14 @@ cd oep
 ######################
 ##   Running test  ##
 ######################
-test_name=ingestor-check
+test_name=ingester-check
 echo $test_name
 kubectl get po
-sed -i -e 's/generateName: app-check/generateName: ingestor-check/g' \
--e 's/app: app-litmus/app: ingestor-check-litmus/g' \
--e 's/value: test-name/value: ingestor-check/g' \
+sed -i -e 's/generateName: app-check/generateName: ingester-check/g' \
+-e 's/app: app-litmus/app: ingester-check-litmus/g' \
+-e 's/value: test-name/value: ingester-check/g' \
 -e 's/value: default /value: default/g' \
--e 's/value: pod-name/value: ingestor/g' litmus/director/common-checks/run_litmus_test.yml
+-e 's/value: pod-name/value: ingester/g' litmus/director/common-checks/run_litmus_test.yml
 cat litmus/director/common-checks/run_litmus_test.yml
 kubectl create -f litmus/director/common-checks/run_litmus_test.yml
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
