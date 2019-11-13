@@ -5,7 +5,7 @@
 stages:
   - CLUSTER-SETUP
   - PROVIDER-INFRA-SETUP
-  - DIRECTOR-SANITY-CHECK
+  - DIRECTOR-HEALTH-CHECK
   - DIRECTOR-FUNCTIONALITY-CHECK
   - CLUSTER-CLEANUP
 
@@ -34,10 +34,10 @@ director-deploy:
     paths:
       - .kube/
 
-## director sanity check jobs
+## director health check jobs
 maya-io-server-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR--CHECK
   dependencies:
     - director-deploy
   script: 
@@ -49,7 +49,7 @@ maya-io-server-check:
 
 maya-ui-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -61,7 +61,7 @@ maya-ui-check:
 
 od-elasticsearch-logging-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -73,7 +73,7 @@ od-elasticsearch-logging-check:
 
 od-kibana-logging-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -85,7 +85,7 @@ od-kibana-logging-check:
       
 table-manager-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -97,7 +97,7 @@ table-manager-check:
 
 chat-server-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -109,7 +109,7 @@ chat-server-check:
 
 cloud-agent-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -118,10 +118,10 @@ cloud-agent-check:
   artifacts:
     paths:
       - .kube/
-      
+
 mysql-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -133,7 +133,7 @@ mysql-check:
 
 maya-grafana-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -145,7 +145,7 @@ maya-grafana-check:
 
 memcached-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -158,7 +158,7 @@ memcached-check:
 ## cortex infrastructure components jobs
 alertstore-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -170,7 +170,7 @@ alertstore-check:
 
 alertstore-tablemanager-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -182,7 +182,7 @@ alertstore-tablemanager-check:
 
 alertmanager-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -194,7 +194,7 @@ alertmanager-check:
 
 cassandra-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -206,7 +206,7 @@ cassandra-check:
 
 consul-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -218,7 +218,7 @@ consul-check:
 
 distributor-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -230,7 +230,7 @@ distributor-check:
 
 ingestor-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -242,7 +242,7 @@ ingestor-check:
 
 querier-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -254,7 +254,7 @@ querier-check:
 
 ruler-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -266,7 +266,7 @@ ruler-check:
 
 configs-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
@@ -278,7 +278,7 @@ configs-check:
 
 configs-db-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR-SANITY-CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
