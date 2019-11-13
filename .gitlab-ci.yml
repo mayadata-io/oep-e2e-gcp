@@ -37,7 +37,7 @@ director-deploy:
 ## director health check jobs
 maya-io-server-check:
   image: atulabhi/kops:v8
-  stage: DIRECTOR--CHECK
+  stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
   script: 
