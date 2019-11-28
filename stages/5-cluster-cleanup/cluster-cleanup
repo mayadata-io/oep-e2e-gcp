@@ -32,4 +32,4 @@ ansible-playbook delete-vpc.yml --extra-vars "project=openebs-ci"
 
 # Delete google persistent disks created in the pipeline
 disks=$(gcloud compute disks list | awk '{print $1}'  | grep $cluster_name ) 
-for disk in $disks; do gcloud compute disks delete $disk -q; done
+for disk in $disks; do gcloud compute disks delete $disk --filter="zone:(us-east1-b)" -q; done
