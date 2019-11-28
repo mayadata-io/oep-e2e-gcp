@@ -45,7 +45,7 @@ git checkout dop-e2e
 
 # Get latest directory of helm chart
 REPO=$(cat baseline | awk -F',' 'NR==1{print $3}' | awk -F'=' '{print $2}')
-TAG=$(cat baseline | awk -F',' 'NR==1{print $5}' | awk -F'=' '{print $2}')
+TAG=$(cat baseline | awk -F',' 'NR==1{print $NF}' | awk -F'=' '{print $2}')
 
 cd $REPO-$TAG
 
