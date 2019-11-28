@@ -1,0 +1,58 @@
+#!/bin/bash
+set -ex
+
+######################
+##   Prerequisites  ##
+######################
+mkdir ~/.kube
+cp  .kube/config ~/.kube/config
+# director url
+URL=https://$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
+echo $URL
+# deploy openebs with default sparse pools
+openebs_operator=openebs-operator-1.4.0.yaml 
+wget https://openebs.github.io/charts/$openebs_operator
+# set fields required for sparse pool setup
+default_pool_line=$(cat $openebs_operator | grep -n  OPENEBS_IO_INSTALL_DEFAULT_CSTOR_SPARSE_POOL | tail -n +2 | awk -F':' '{print $1}')
+value_line_pool=$(( default_pool_line + 1 ))
+sed -i "${value_line_pool}s/.*/          value: \"true\"/" $openebs_operator
+sparse_line=$(cat $openebs_operator | grep -n  SPARSE_FILE_COUNT | awk -F':' '{print $1}')
+value_line_count=$(( sparse_line + 1 ))
+sed -i "${value_line_count}s/.*/          value: \"1\"/" $openebs_operator
+# deploy openebs operator 
+kubectl apply -f $openebs_operator
+sleep 100
+kubectl get pods -n openebs
+kubectl get bd -n openebs
+# Deploy application
+app="mongo"
+wget https://raw.githubusercontent.com/mayadata-io/litmus/master/apps/mongodb/deployers/run_litmus_test.yml
+sed -i 's/value: openebs-mongodb/value: openebs-cstor-sparse/g' run_litmus_test.yml
+kubectl create -f run_litmus_test.yml
+sleep 60
+app_ns=$(kubectl get ns | grep $app | awk '{print $1}')
+kubectl get pods -n $app_ns
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep.git
+######################
+##   Prerequisites  ##
+######################
+test_name=cluster-connect-check
+echo $test_name
+kubectl get pods
+#kubectl create -f oep/litmus/director/
+# check litmus test result
+litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
+echo $litmus_pod
+job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
+while [[ "$job_status" != "Completed" ]]
+do 
+    job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
+    sleep 6
+done
+kubectl logs -f $litmus_pod -n litmus
+testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
+echo $testResult
+if [ "$testResult" != Pass ]; then 
+exit 1; 
+fi

@@ -28,7 +28,6 @@ do
     sleep 6
 done
 kubectl logs -f $litmus_pod -n litmus
-kubectl get po
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
 if [ "$testResult" != Pass ]; then 

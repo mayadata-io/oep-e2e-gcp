@@ -34,14 +34,12 @@ do
     sleep 6
 done
 kubectl logs -f $litmus_pod -n litmus
-kubectl get po
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
 if [ "$testResult" != Pass ]; then 
 exit 1; 
 fi
 #####################
-kubectl get po
 kubectl create -f litmus/director/od-elasticsearch/run_litmus_test.yml
 test_name=od-elasticsearch-check
 echo $test_name
@@ -54,7 +52,6 @@ do
     sleep 6
 done
 kubectl logs -f $litmus_pod -n litmus
-kubectl get po
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
 if [ "$testResult" != Pass ]; then 

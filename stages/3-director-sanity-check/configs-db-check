@@ -34,7 +34,6 @@ do
     sleep 6
 done
 kubectl logs -f $litmus_pod -n litmus
-kubectl get po
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
 if [ "$testResult" != Pass ]; then 
@@ -43,7 +42,6 @@ fi
 ######################
 test_name=configs-db-check
 echo $test_name
-kubectl get po
 kubectl create -f litmus/director/configs-db/run_litmus_test.yml
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
@@ -54,7 +52,6 @@ do
     sleep 6
 done
 kubectl logs -f $litmus_pod -n litmus
-kubectl get po
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
 if [ "$testResult" != Pass ]; then 
