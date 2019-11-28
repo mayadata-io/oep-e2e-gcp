@@ -30,6 +30,14 @@ gcloud compute firewall-rules delete $FIREWALL_VPC
 # Delete VPC
 ansible-playbook delete-vpc.yml --extra-vars "project=openebs-ci"
 
+echo $cluster_name
+
 # Delete google persistent disks created in the pipeline
-disks=$(gcloud compute disks list | awk '{print $1}'  | grep $cluster_name ) 
-for disk in $disks; do gcloud compute disks delete $disk --filter="zone:(us-east1-b)" -q; done
+gcloud compute disks list | awk '{print $1}'  | grep $cluster_name > disks_list
+cat disks_list;
+filename='disks_list';
+while read disk_name; do
+    gcloud compute disks delete $disk_name --zone="us-east1-b" -q;
+done < $filename;
+
+rm disks_list;
