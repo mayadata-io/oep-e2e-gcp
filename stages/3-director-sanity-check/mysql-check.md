@@ -1,4 +1,4 @@
-# consul check
+# mysql check
 
 The following checks are performed on mysql:
 
