@@ -10,7 +10,7 @@ cp  .kube/config ~/.kube/config
 
 kubectl get po
 
-URL=http://$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
+URL=$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
 
 echo "This is DOP $URL" 
 
