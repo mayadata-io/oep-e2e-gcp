@@ -2,8 +2,8 @@
 
 The following checks are performed on ingress-nginx:
 
-- Initial common checks:
-    - Check the memory consumption of the nodes. If the memory consumption is greater than 90 percent the check fails.
-    - Check the CPU consumption of the nodes. If the CPU consumption is greater than 90 percent the check fails.
-    - Check if the nginx pods exists and is running or not. If the pod is not running the check fails.
-    - Check the `Ready` status of the nginx pods. If all the pod's containers are not Ready the check fails
+- Namespace specific checks:
+    - Check if ingress-nginx namespace exists. Fails if namespace doesn't exist.
+    - Check state of all pods running in ingress-nginx namespace. Fails if a pod is not in Running state.
+    - Check readiness of all the pods in ingress-nginx namespace.
+    - Check replicasets ready state inside the ingress-nginx namespace.
