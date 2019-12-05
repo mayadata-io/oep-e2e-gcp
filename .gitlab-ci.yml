@@ -288,6 +288,18 @@ configs-db-check:
     paths:
       - .kube/
 
+ingress-nginx-check:
+  image: atulabhi/kops:v8
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script: 
+    - chmod 755 ./stages/3-director-sanity-check/ingress-nginx-check
+    - ./stages/3-director-sanity-check/ingress-nginx-check
+  artifacts:
+    paths:
+      - .kube/
+
 ## director functionality check jobs
 dmaas-check:
   image: atulabhi/kops:v8
