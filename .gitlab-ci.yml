@@ -289,13 +289,13 @@ configs-db-check:
       - .kube/
 
 ## director functionality check jobs
-cluster-connect-check:
+self-connect-check:
   image: atulabhi/kops:v8
   stage: DIRECTOR-FUNCTIONALITY-CHECK
   when: on_success
   script: 
-   - chmod 755 ./stages/4-director-functionality-check/cluster-connect-check
-   - ./stages/4-director-functionality-check/cluster-connect-check
+   - chmod 755 ./stages/4-director-functionality-check/self-connect-check
+   - ./stages/4-director-functionality-check/self-connect-check
   artifacts:
     paths:
       - .kube/
