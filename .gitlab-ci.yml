@@ -204,18 +204,6 @@ cassandra-check:
     paths:
       - .kube/
 
-consul-check:
-  image: atulabhi/kops:v8
-  stage: DIRECTOR-HEALTH-CHECK
-  dependencies:
-    - director-deploy
-  script: 
-    - chmod 755 ./stages/3-director-sanity-check/consul-check
-    - ./stages/3-director-sanity-check/consul-check
-  artifacts:
-    paths:
-      - .kube/
-
 distributor-check:
   image: atulabhi/kops:v8
   stage: DIRECTOR-HEALTH-CHECK
@@ -289,6 +277,19 @@ configs-db-check:
       - .kube/
 
 ## director functionality check jobs
+cluster-connect-check:
+  image: atulabhi/kops:v8
+  stage: DIRECTOR-FUNCTIONALITY-CHECK
+  dependencies:
+    - director-deploy
+  script: 
+   - chmod 755 ./stages/4-director-functionality-check/cluster-connect-check
+   - ./stages/4-director-functionality-check/cluster-connect-check
+  artifacts:
+    when: always
+    paths:
+      - .kube/
+  
 dmaas-check:
   image: atulabhi/kops:v8
   stage: DIRECTOR-FUNCTIONALITY-CHECK
@@ -298,6 +299,7 @@ dmaas-check:
    - chmod 755 ./stages/4-director-functionality-check/dmaas-check
    - ./stages/4-director-functionality-check/dmaas-check
   artifacts:
+    when: always
     paths:
       - .kube/
 

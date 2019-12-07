@@ -13,6 +13,9 @@ kubectl get po
 URL=$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
 
 echo "This is DOP $URL" 
+director_url=$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1)
+touch .kube/url
+echo $director_url > .kube/url
 
 wget https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
 
@@ -78,6 +81,6 @@ kubectl apply -f oep/litmus/prerequisite/docker-secret.yml -n litmus
 git clone https://github.com/kubernetes-sigs/metrics-server.git
 sed -i -e '/args:/ a\          - --kubelet-insecure-tls' metrics-server/deploy/1.8+/metrics-server-deployment.yaml
 kubectl apply -f  metrics-server/deploy/1.8+/
-sleep 160
+sleep 200
 kubectl top nodes
 
