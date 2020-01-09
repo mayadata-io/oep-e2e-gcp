@@ -15,6 +15,7 @@ cd litmus/k8s/gcp/k8s-installer/
 echo "CLEANUP ------------------------------------------------------------------------"
 
 # Fetching cluster name
+cat ~/logs/clusters
 cluster_name=$(cat ~/logs/clusters)
 
 # Delete k8s cluster
