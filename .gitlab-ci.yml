@@ -301,6 +301,7 @@ cluster-connect-check:
     when: always
     paths:
       - .kube/
+      - .gcp/
  
 dmaas-check:
   image: atulabhi/kops:v8
@@ -324,3 +325,14 @@ cluster-cleanup:
   script: 
     - chmod 755 ./stages/5-cluster-cleanup/cluster-cleanup
     - ./stages/5-cluster-cleanup/cluster-cleanup
+
+## user cluster cleanup
+user-cluster-cleanup:
+  when: always
+  image: atulabhi/kops:v8
+  dependencies:
+    - cluster-connect-check
+  stage: CLUSTER-CLEANUP
+  script: 
+    - chmod 755 ./stages/5-cluster-cleanup/user-cluster-cleanup
+    - ./stages/5-cluster-cleanup/user-cluster-cleanup
