@@ -307,7 +307,6 @@ openebs-upgrade-check:
   image: atulabhi/kops:v8
   stage: DIRECTOR-FUNCTIONALITY-CHECK
   dependencies:
-    - director-deploy
     - cluster-connect-check
   when: on_success
   script: 
