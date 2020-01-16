@@ -6,6 +6,12 @@ set -ex
 ##   Prerequisites  ##
 ######################
 
+# Copy kubeconfig
+mkdir ~/.kube
+cp  .kube/config ~/.kube/config
+
+kubectl get po
+
 # Cloning oep repository which contains all the test scripts
 git clone https://$username:$password@github.com/mayadata-io/oep.git
 cd oep
