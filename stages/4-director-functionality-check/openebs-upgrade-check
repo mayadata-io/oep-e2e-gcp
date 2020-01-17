@@ -6,9 +6,10 @@ set -ex
 ##   Prerequisites  ##
 ######################
 
+path=$(pwd)
 # Copy kubeconfig
 mkdir ~/.kube
-cp  .kube/config ~/.kube/config
+cp  $path/.gcp/config ~/.kube/config
 
 kubectl get po
 
