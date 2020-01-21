@@ -11,7 +11,8 @@ path=$(pwd)
 mkdir ~/.kube
 cp  $path/.gcp/config ~/.kube/config
 
-kubectl get po
+kubectl create clusterrolebinding upgrade-admin --clusterrole cluster-admin --serviceaccount=litmus:litmus
+kubectl get po -n openebs
 
 # Cloning oep repository which contains all the test scripts
 git clone https://$username:$password@github.com/mayadata-io/oep.git
