@@ -7,6 +7,7 @@ stages:
   - PROVIDER-INFRA-SETUP
   - DIRECTOR-HEALTH-CHECK
   - DIRECTOR-FUNCTIONALITY-CHECK
+  - OPENEBS-UPGRADE-CHECK
   - CLUSTER-CLEANUP
 
 ## Setup the kubernetes cluster
@@ -314,6 +315,16 @@ dmaas-check:
     when: always
     paths:
       - .kube/
+
+## Openebs Upgrade Check
+openebs-upgrade-check:
+  image: atulabhi/kops:v8
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-connect-check
+  script: 
+    - chmod 755 ./stages/4-director-functionality-check/openebs-upgrade-check
+    - ./stages/4-director-functionality-check/openebs-upgrade-check
 
 ## cluster cleanup
 cluster-cleanup:
