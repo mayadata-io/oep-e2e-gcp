@@ -77,6 +77,9 @@ kubectl apply -f oep/litmus/prerequisite/rbac.yaml
 kubectl apply -f oep/litmus/prerequisite/crds.yaml 
 # creating docker secret 
 kubectl apply -f oep/litmus/prerequisite/docker-secret.yml -n litmus
+## Add label to node
+node_name=$(kubectl get node | awk {'print $1'} | head -n 4 | tail -n 1)
+kubectl label nodes $node_name kubernetes.io/arch="amd64"
 ## Installing heapster components on the cluster for node monitoring
 git clone https://github.com/kubernetes-sigs/metrics-server.git
 sed -i -e '/args:/ a\          - --kubelet-insecure-tls' metrics-server/deploy/1.8+/metrics-server-deployment.yaml
