@@ -84,6 +84,6 @@ kubectl label nodes $node_name kubernetes.io/arch="amd64"
 git clone https://github.com/kubernetes-sigs/metrics-server.git
 sed -i -e '/args:/ a\          - --kubelet-insecure-tls' metrics-server/deploy/1.8+/metrics-server-deployment.yaml
 kubectl apply -f  metrics-server/deploy/1.8+/
-sleep 200
+sleep 300
 kubectl top nodes
 
