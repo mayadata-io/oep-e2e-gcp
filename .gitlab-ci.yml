@@ -10,6 +10,7 @@ stages:
   - USER-CLUSTER-CONNECT
   - METRICS-CHECK
   - TEAMING-CHECK
+  - OPENEBS-UPGRADE-CHECK
   - CLUSTER-CLEANUP
 
 ## Setup the kubernetes cluster
@@ -297,22 +298,22 @@ cluster-setup-check:
   dependencies:
     - director-deploy
   script: 
-   - chmod 755 ./stages/4-director-functionality-check/cluster-setup-check
-   - ./stages/4-director-functionality-check/cluster-setup-check
+   - chmod 755 ./stages/4-cluster-setup/cluster-create-check
+   - ./stages/4-cluster-setup/cluster-create-check
   artifacts:
     when: always
     paths:
       - .kube/
       - .gcp/
-
+ 
 create-apikey-check:
   image: atulabhi/kops:v8
   stage: USER-CLUSTER-CONNECT
   dependencies:
     - cluster-setup-check
   script: 
-   - chmod 755 ./stages/4-director-functionality-check/create-apikey-check
-   - ./stages/4-director-functionality-check/create-apikey-check
+   - chmod 755 ./stages/5-cluster-connect-check/create-apikey-check
+   - ./stages/5-cluster-connect-check/create-apikey-check
   
 cluster-connect-check:
   image: atulabhi/kops:v8
@@ -320,8 +321,8 @@ cluster-connect-check:
   dependencies:
     - cluster-setup-check
   script: 
-   - chmod 755 ./stages/4-director-functionality-check/cluster-connect-check
-   - ./stages/4-director-functionality-check/cluster-connect-check
+   - chmod 755 ./stages/5-cluster-connect-check/cluster-connect-check
+   - ./stages/5-cluster-connect-check/cluster-connect-check
   artifacts:
     when: always
     paths:
@@ -334,44 +335,44 @@ client-components-check:
   dependencies:
     - cluster-setup-check
   script: 
-   - chmod 755 ./stages/4-director-functionality-check/client-components-check
-   - ./stages/4-director-functionality-check/client-components-check
+   - chmod 755 ./stages/5-cluster-connect-check/client-components-check
+   - ./stages/5-cluster-connect-check/client-components-check
 
 metrics-check:
   image: atulabhi/kops:v8
   stage: METRICS-CHECK
   dependencies:
-    - cluster-connect-check
+    - cluster-setup-check
   script: 
-   - chmod 755 ./stages/4-director-functionality-check/metrics-check
-   - ./stages/4-director-functionality-check/metrics-check
+   - chmod 755 ./stages/6-metrics-check/metrics-check
+   - ./stages/6-metrics-check/metrics-check
 
 teaming-invite-check:
   image: atulabhi/kops:v8
   stage: TEAMING-CHECK
   dependencies:
-    - cluster-connect-check
+    - cluster-setup-check
   script: 
-   - chmod 755 ./stages/4-director-functionality-check/teaming-invite-check
-   - ./stages/4-director-functionality-check/teaming-invite-check
+   - chmod 755 ./stages/7-teaming-check/teaming-invite-check
+   - ./stages/7-teaming-check/teaming-invite-check
 
 teaming-change-role-check:
   image: atulabhi/kops:v8
   stage: TEAMING-CHECK
   dependencies:
-    - cluster-connect-check
+    - cluster-setup-check
   script: 
-   - chmod 755 ./stages/4-director-functionality-check/teaming-change-role-check
-   - ./stages/4-director-functionality-check/teaming-change-role-check
+   - chmod 755 ./stages/7-teaming-check/teaming-change-role-check
+   - ./stages/7-teaming-check/teaming-change-role-check
 
 teaming-change-role-negative-check:
   image: atulabhi/kops:v8
   stage: TEAMING-CHECK
   dependencies:
-    - cluster-connect-check
+    - cluster-setup-check
   script: 
-   - chmod 755 ./stages/4-director-functionality-check/teaming-change-role-negative-check
-   - ./stages/4-director-functionality-check/teaming-change-role-negative-check
+   - chmod 755 ./stages/7-teaming-check/teaming-change-role-negative-check
+   - ./stages/7-teaming-check/teaming-change-role-negative-check
 
 # self-connect-check:
 #   image: atulabhi/kops:v8
@@ -385,6 +386,16 @@ teaming-change-role-negative-check:
 #     paths:
 #       - .kube/
 
+## Openebs Upgrade Check
+openebs-upgrade-check:
+  image: atulabhi/kops:v8
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/8-openebs-upgrade-check/openebs-upgrade-check
+    - ./stages/8-openebs-upgrade-check/openebs-upgrade-check
+    
 ## cluster cleanup
 cluster-cleanup:
   when: always
@@ -393,8 +404,8 @@ cluster-cleanup:
     - cluster-create
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./stages/5-cluster-cleanup/cluster-cleanup
-    - ./stages/5-cluster-cleanup/cluster-cleanup
+    - chmod 755 ./stages/9-cluster-cleanup/cluster-cleanup
+    - ./stages/9-cluster-cleanup/cluster-cleanup
 
 ## user cluster cleanup
 user-cluster-cleanup:
@@ -404,5 +415,5 @@ user-cluster-cleanup:
     - cluster-setup-check
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./stages/5-cluster-cleanup/user-cluster-cleanup
-    - ./stages/5-cluster-cleanup/user-cluster-cleanup
+    - chmod 755 ./stages/9-cluster-cleanup/user-cluster-cleanup
+    - ./stages/9-cluster-cleanup/user-cluster-cleanup

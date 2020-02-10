@@ -82,8 +82,8 @@ node_name=$(kubectl get node | awk {'print $1'} | head -n 4 | tail -n 1)
 kubectl label nodes $node_name kubernetes.io/arch="amd64"
 ## Installing heapster components on the cluster for node monitoring
 git clone https://github.com/kubernetes-sigs/metrics-server.git
-sed -i -e '/args:/ a\          - --kubelet-insecure-tls' metrics-server/deploy/1.8+/metrics-server-deployment.yaml
-kubectl apply -f  metrics-server/deploy/1.8+/
+sed -i -e '/args:/ a\          - --kubelet-insecure-tls' metrics-server/deploy/kubernetes/metrics-server-deployment.yaml
+kubectl apply -f  metrics-server/deploy/kubernetes/
 sleep 300
 kubectl top nodes
 

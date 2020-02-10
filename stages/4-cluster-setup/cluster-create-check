@@ -33,15 +33,20 @@ echo $VPC
 echo "Checking Cluster availability"
 ansible-playbook litmus/k8s/gcp/k8s-installer/check-cluster-availability.yml --extra-vars "nodes=3"
 kubectl get nodes
-wget https://raw.githubusercontent.com/openebs/litmus/master/hack/rbac.yaml
-kubectl apply -f rbac.yaml
-wget https://raw.githubusercontent.com/openebs/litmus/master/hack/crds.yaml
-kubectl apply -f crds.yaml
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep.git
+# Setup litmus on the cluster
+kubectl apply -f oep/litmus/prerequisite/rbac.yaml
+kubectl apply -f oep/litmus/prerequisite/crds.yaml 
+# creating docker secret 
+kubectl apply -f oep/litmus/prerequisite/docker-secret.yml -n litmus
+# creating crb
 kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
+# creating configmap
 kubectl create configmap kubeconfig --from-file=$path/.gcp/admin.conf -n litmus
 kubectl create configmap config --from-literal=url=$url -n litmus
 
-# deploy openebs with default sparse pools
+# fetch openebs operator yaml
 openebs_operator=openebs-operator-1.4.0.yaml 
 wget https://openebs.github.io/charts/$openebs_operator
 # set fields required for sparse pool setup
@@ -75,7 +80,3 @@ kubectl logs -f $litmus_pod -n litmus
 app_ns=$(kubectl get ns | grep $app | awk '{print $1}')
 echo $app_ns
 kubectl get pods -n $app_ns
-echo "Create new cluster owner's user account in director onprem -----------------------------"
-git clone https://$username:$password@github.com/mayadata-io/oep.git
-# creating docker secret 
-kubectl apply -f oep/litmus/prerequisite/docker-secret.yml -n litmus
