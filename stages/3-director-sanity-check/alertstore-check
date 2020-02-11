@@ -1,3 +1,4 @@
+#!/bin/bash
 set -ex
 
 job_id=$(echo $CI_JOB_ID)
