@@ -47,7 +47,7 @@ fi
 #####################
 kubectl get po
 kubectl create -f litmus/director/od-elasticsearch/run_litmus_test.yml
-test_name=od-elasticsearch-logging-check
+test_name=od-elasticsearch-check
 echo $test_name
 stage=3-director-sanity-check
 test_desc="Common sanity check for od-elasticsearch-logging"
