@@ -10,6 +10,7 @@ stages:
   - USER-CLUSTER-CONNECT
   - METRICS-CHECK
   - TEAMING-CHECK
+  - TOPOLOGY-CHECK
   - OPENEBS-UPGRADE-CHECK
   - CLUSTER-CLEANUP
 
@@ -374,6 +375,15 @@ teaming-change-role-negative-check:
    - chmod 755 ./stages/7-teaming-check/teaming-change-role-negative-check
    - ./stages/7-teaming-check/teaming-change-role-negative-check
 
+topology-check:
+  image: atulabhi/kops:v8
+  stage: TOPOLOGY-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/8-topology-check/topology-check
+    - ./stages/8-topology-check/topology-check
+
 # self-connect-check:
 #   image: atulabhi/kops:v8
 #   stage: DIRECTOR-FUNCTIONALITY-CHECK
@@ -393,8 +403,8 @@ openebs-upgrade-check:
   dependencies:
     - cluster-setup-check
   script: 
-    - chmod 755 ./stages/8-openebs-upgrade-check/openebs-upgrade-check
-    - ./stages/8-openebs-upgrade-check/openebs-upgrade-check
+    - chmod 755 ./stages/9-openebs-upgrade-check/openebs-upgrade-check
+    - ./stages/9-openebs-upgrade-check/openebs-upgrade-check
     
 ## cluster cleanup
 cluster-cleanup:
@@ -404,8 +414,8 @@ cluster-cleanup:
     - cluster-create
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./stages/9-cluster-cleanup/cluster-cleanup
-    - ./stages/9-cluster-cleanup/cluster-cleanup
+    - chmod 755 ./stages/10-cluster-cleanup/cluster-cleanup
+    - ./stages/10-cluster-cleanup/cluster-cleanup
 
 ## user cluster cleanup
 user-cluster-cleanup:
@@ -415,5 +425,5 @@ user-cluster-cleanup:
     - cluster-setup-check
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./stages/9-cluster-cleanup/user-cluster-cleanup
-    - ./stages/9-cluster-cleanup/user-cluster-cleanup
+    - chmod 755 ./stages/10-cluster-cleanup/user-cluster-cleanup
+    - ./stages/10-cluster-cleanup/user-cluster-cleanup
