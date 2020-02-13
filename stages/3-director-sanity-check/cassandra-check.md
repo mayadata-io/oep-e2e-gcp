@@ -9,4 +9,3 @@ The following checks are performed on cassandra:
 
 - App specific checks:
     - Check cassandra nodes UP and normal status. Fails if node status is not UN
-

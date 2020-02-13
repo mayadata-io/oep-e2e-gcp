@@ -11,6 +11,10 @@ export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
 git clone https://github.com/mayadata-io/litmus.git
 cd litmus/k8s/gcp/k8s-installer/
 
+# set variables
+job_id=$(echo CI_JOB_ID)
+pipeline_id=$(echo CI_PIPELINE_ID)
+commit_sha=$(echo CI_COMMIT_SHA)
 # Create VPC
 echo "CREATING VPC"
 ansible-playbook create-vpc.yml --extra-vars "project=openebs-ci"

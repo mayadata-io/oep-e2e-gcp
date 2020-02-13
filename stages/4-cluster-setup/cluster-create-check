@@ -1,0 +1,82 @@
+#!/bin/bash
+
+set -e
+
+path=$(pwd)
+echo $SDK_TOKEN > key.json
+gcloud auth activate-service-account --key-file=key.json
+gcloud config set project openebs-ci
+export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
+
+# Fetch director url
+url=$(cat .kube/url)
+
+git clone https://github.com/mayadata-io/litmus.git
+
+# Create VPC
+echo "CREATING VPC"
+ansible-playbook litmus/k8s/gcp/k8s-installer/create-vpc.yml --extra-vars "project=openebs-ci"
+# Create k8s cluster
+echo "CREATING CLUSTER"
+ansible-playbook litmus/k8s/gcp/k8s-installer/create-k8s-cluster.yml -vv --extra-vars "project=openebs-ci nodes=3 k8s_version=1.11.1"
+pwd
+ls
+mkdir $path/.gcp
+cat ~/.kube/config > $path/.gcp/config
+cat ~/.kube/config > $path/.gcp/admin.conf
+cat ~/logs/clusters > $path/.gcp/clusters
+cat ~/logs/vpc > $path/.gcp/vpc
+
+# Export VPC network name
+VPC=`cat $path/.gcp/vpc`
+echo $VPC
+echo "Checking Cluster availability"
+ansible-playbook litmus/k8s/gcp/k8s-installer/check-cluster-availability.yml --extra-vars "nodes=3"
+kubectl get nodes
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep.git
+# Setup litmus on the cluster
+kubectl apply -f oep/litmus/prerequisite/rbac.yaml
+kubectl apply -f oep/litmus/prerequisite/crds.yaml 
+# creating docker secret 
+kubectl apply -f oep/litmus/prerequisite/docker-secret.yml -n litmus
+# creating crb
+kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
+# creating configmap
+kubectl create configmap kubeconfig --from-file=$path/.gcp/admin.conf -n litmus
+kubectl create configmap config --from-literal=url=$url -n litmus
+
+# fetch openebs operator yaml
+openebs_operator=openebs-operator-1.4.0.yaml 
+wget https://openebs.github.io/charts/$openebs_operator
+# set fields required for sparse pool setup
+default_pool_line=$(cat $openebs_operator | grep -n  OPENEBS_IO_INSTALL_DEFAULT_CSTOR_SPARSE_POOL | tail -n +2 | awk -F':' '{print $1}')
+value_line_pool=$(( default_pool_line + 1 ))
+sed -i "${value_line_pool}s/.*/          value: \"true\"/" $openebs_operator
+sparse_line=$(cat $openebs_operator | grep -n  SPARSE_FILE_COUNT | awk -F':' '{print $1}')
+value_line_count=$(( sparse_line + 1 ))
+sed -i "${value_line_count}s/.*/          value: \"1\"/" $openebs_operator
+# deploy openebs operator 
+kubectl apply -f $openebs_operator
+sleep 100
+kubectl get pods -n openebs
+# Deploy application
+app="mongo"
+wget https://raw.githubusercontent.com/mayadata-io/litmus/master/apps/mongodb/deployers/run_litmus_test.yml
+sed -i 's/value: openebs-mongodb/value: openebs-cstor-sparse/g' run_litmus_test.yml
+sed -i -e 's/generateName: litmus-mongodb-/generateName: litmus-mongodb-deploy/g' run_litmus_test.yml
+cat run_litmus_test.yml
+kubectl create -f run_litmus_test.yml
+test_name=litmus-mongodb-deploy
+litmus_pod=$(kubectl get po -n litmus | grep $test_name | awk {'print $1'} | tail -n 1)
+echo $litmus_pod
+job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
+while [[ "$job_status" != "Completed" ]]
+do 
+    job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
+    sleep 6
+done
+kubectl logs -f $litmus_pod -n litmus
+app_ns=$(kubectl get ns | grep $app | awk '{print $1}')
+echo $app_ns
+kubectl get pods -n $app_ns
