@@ -20,7 +20,7 @@ git clone https://$username:$password@github.com/mayadata-io/oep.git
 ######################
 test_name=self-connect-check
 echo $test_name
-stage=4-director-functionality-check
+stage=5-cluster-connect-check
 test_desc="Common functional check for cluster-connect "
 kubectl get pods
 kubectl create -f oep/litmus/director/cluster-connect-check/run_litmus_test.yml
