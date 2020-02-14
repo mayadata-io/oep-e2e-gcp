@@ -18,7 +18,7 @@ git clone https://$username:$password@github.com/mayadata-io/oep.git
 ######################
 ##   Running test  ##
 ######################
-test_name=self-connect-check
+test_name=cluster-connect-check
 echo $test_name
 stage=5-cluster-connect-check
 test_desc="Common functional check for cluster-connect "
