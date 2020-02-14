@@ -1,9 +1,9 @@
-kind: test/plan
-schema_version: 0.1
+kind: MasterPlan
+apiVersion: e2e.mayadata.io/v1alpha1
 metadata:
   name: masterTestplan
-tests:
-  testCases:
+spec:
+  tests:
   - tcId: "IIO01"
     name: "Install on a Onprem Cluster"
     description: "Test the components are installed properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
