@@ -1,0 +1,63 @@
+kind: MasterPlan
+apiVersion: e2e.mayadata.io/v1alpha1
+metadata:
+  name: masterTestplan
+spec:
+  tests:
+  - tcId: "IIO01"
+    name: "Install on a Onprem Cluster"
+    description: "Test the components are installed properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
+    labels:
+      test/feature: "Install and Upgrade of OpenEBS"
+      test/subFeature: "Install OpenEBS ControlPlane"
+      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+  - tcId: "II02"
+    name: "Install on a K8S Cluster connected to Onprem Cluster"
+    description: "Optional skipping here"
+    labels:
+      test/feature: "Install and Upgrade of OpenEBS"
+      test/subFeature: "Install OpenEBS ControlPlane"
+      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+  - tcId: "IUC01"
+    name: "Upgrade OpenEBS installed by Director"
+    description: "Test the components are upgraded properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
+    labels:
+      test/feature: "Install and Upgrade of OpenEBS"
+      test/subFeature: "Upgrade OpenEBS ControlPlane Components"
+      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+  - tcId: "IUC02"
+    name: "Upgrade OpenEBS installed using operator.yaml(Not using Director)"
+    description: "Upgrade should fail"
+    labels:
+      test/feature: "Install and Upgrade of OpenEBS"
+      test/subFeature: "Upgrade OpenEBS ControlPlane Components"
+      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+  - tcId: "IUD01"
+    name: "Upgrade OpenEBS installed by Director"
+    description: "Test the components are upgraded properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
+    labels:
+      test/feature: "Install and Upgrade of OpenEBS"
+      test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+  - tcId: "IUD02"
+    name: "Upgrade OpenEBS installed using operator.yaml(Not using Director)"
+    description: "Test the components are upgraded properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
+    labels:
+      test/feature: "Install and Upgrade of OpenEBS"
+      test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+
+  - tcId: "TPA01"
+    name: "Invite a user as Project Admin"
+    description: "Invited users should be able to manage the cluster and add other cluster"
+    labels:
+      test/feature: "Teaming"
+      test/subFeature: "Project Admin"
+      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+  - tcId: "TPR01"
+    name: "Invite a user as Project ReadOnly Admin"
+    description: "Invited users should be able to view the cluster and resources. And user should not be able to edit the cluster or add other cluster"
+    labels:
+      test/feature: "Teaming"
+      test/subFeature: "Project ReadOnly Admin"
+      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
