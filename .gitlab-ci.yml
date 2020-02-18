@@ -356,6 +356,15 @@ teaming-invite-check:
    - chmod 755 ./stages/7-teaming-check/teaming-invite-check
    - ./stages/7-teaming-check/teaming-invite-check
 
+teaming-account-resource-access-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: TEAMING-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+   - chmod 755 ./stages/7-teaming-check/teaming-account-resource-access-check
+   - ./stages/7-teaming-check/teaming-account-resource-access-check
+
 teaming-change-role-check:
   image: harshshekhar15/gitlab-job:v1
   stage: TEAMING-CHECK

@@ -2,28 +2,24 @@
 #!/bin/bash
 
 set -e
-
+echo "Copying user cluster kube-config from artifact directory -------------------------"
 path=$(pwd)
 mkdir ~/.kube
 cp .gcp/config ~/.kube/config
-
+echo "Setting up gcloud credentials ----------------------------------------------------"
 echo $SDK_TOKEN > key.json
 gcloud auth activate-service-account --key-file=key.json
 gcloud config set project openebs-ci
 export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
-
-bash utils/pooling jobname:teaming-account-resource-access-check
-bash utils/e2e-cr jobname:teaming-change-role-check jobphase:Running 
-
+echo "Updating gitlab job status in e2e-cr --------------------------------------------"
+bash utils/pooling jobname:teaming-invite-check
+bash utils/e2e-cr jobname:teaming-account-resource-access-check jobphase:Running 
+echo "Cloning testcase repository -----------------------------------------------------"
 git clone https://$username:$password@github.com/mayadata-io/oep.git
-
-######################
-##   Running test   ##
-######################
-
+echo "Running test --------------------------------------------------------------------"
 echo "Validate teaming role-change process --------------------------------------------"
-kubectl create -f oep/litmus/director/change-role/run_litmus_test.yml
-test_name=change-role-check
+kubectl create -f oep/litmus/director/account-access/run_litmus_test.yml
+test_name=account-resources-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
@@ -36,9 +32,10 @@ done
 kubectl logs -f $litmus_pod -n litmus
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
+echo "Checking test result ------------------------------------------------------------"
 if [ "$testResult" != Pass ]
 then 
     exit 1; 
 else
-    bash utils/e2e-cr jobname:teaming-change-role-check jobphase:Completed
+    bash utils/e2e-cr jobname:teaming-account-resource-access-check jobphase:Completed
 fi
