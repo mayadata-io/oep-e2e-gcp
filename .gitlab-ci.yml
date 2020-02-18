@@ -15,7 +15,7 @@ stages:
 
 ## Setup the kubernetes cluster
 cluster-create:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: CLUSTER-SETUP
   script: 
     - chmod 755 ./stages/1-cluster-setup/gcp
@@ -27,7 +27,7 @@ cluster-create:
 
 ## Deploy director-onprem
 director-deploy:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: PROVIDER-INFRA-SETUP
   dependencies:
     - cluster-create
@@ -40,7 +40,7 @@ director-deploy:
 
 ## director health check jobs
 maya-io-server-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -52,7 +52,7 @@ maya-io-server-check:
       - .kube/
 
 maya-ui-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -64,7 +64,7 @@ maya-ui-check:
       - .kube/
 
 od-elasticsearch-logging-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -76,7 +76,7 @@ od-elasticsearch-logging-check:
       - .kube/
 
 od-kibana-logging-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -88,7 +88,7 @@ od-kibana-logging-check:
       - .kube/
       
 table-manager-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -100,7 +100,7 @@ table-manager-check:
       - .kube/
 
 chat-server-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -112,7 +112,7 @@ chat-server-check:
       - .kube/
 
 cloud-agent-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -124,7 +124,7 @@ cloud-agent-check:
       - .kube/
 
 mysql-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -136,7 +136,7 @@ mysql-check:
       - .kube/
 
 maya-grafana-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -148,7 +148,7 @@ maya-grafana-check:
       - .kube/
 
 memcached-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -161,7 +161,7 @@ memcached-check:
 
 ## cortex infrastructure components jobs
 alertstore-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -173,7 +173,7 @@ alertstore-check:
       - .kube/
 
 alertstore-tablemanager-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -185,7 +185,7 @@ alertstore-tablemanager-check:
       - .kube/
 
 alertmanager-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -197,7 +197,7 @@ alertmanager-check:
       - .kube/
 
 cassandra-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -209,7 +209,7 @@ cassandra-check:
       - .kube/
 
 distributor-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -221,7 +221,7 @@ distributor-check:
       - .kube/
 
 ingestor-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -233,7 +233,7 @@ ingestor-check:
       - .kube/
 
 querier-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -245,7 +245,7 @@ querier-check:
       - .kube/
 
 ruler-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -257,7 +257,7 @@ ruler-check:
       - .kube/
 
 configs-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -269,7 +269,7 @@ configs-check:
       - .kube/
 
 configs-db-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -281,7 +281,7 @@ configs-db-check:
       - .kube/
 
 ingress-nginx-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
@@ -293,7 +293,7 @@ ingress-nginx-check:
       - .kube/
 
 cluster-setup-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: USER-CLUSTER-SETUP
   dependencies:
     - director-deploy
@@ -307,7 +307,7 @@ cluster-setup-check:
       - .gcp/
  
 create-apikey-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: USER-CLUSTER-CONNECT
   dependencies:
     - cluster-setup-check
@@ -316,7 +316,7 @@ create-apikey-check:
    - ./stages/5-cluster-connect-check/create-apikey-check
   
 cluster-connect-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: USER-CLUSTER-CONNECT
   dependencies:
     - cluster-setup-check
@@ -330,7 +330,7 @@ cluster-connect-check:
       - .gcp/
   
 client-components-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: USER-CLUSTER-CONNECT
   dependencies:
     - cluster-setup-check
@@ -339,7 +339,7 @@ client-components-check:
    - ./stages/5-cluster-connect-check/client-components-check
 
 metrics-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: METRICS-CHECK
   dependencies:
     - cluster-setup-check
@@ -348,7 +348,7 @@ metrics-check:
    - ./stages/6-metrics-check/metrics-check
 
 teaming-invite-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: TEAMING-CHECK
   dependencies:
     - cluster-setup-check
@@ -357,7 +357,7 @@ teaming-invite-check:
    - ./stages/7-teaming-check/teaming-invite-check
 
 teaming-change-role-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: TEAMING-CHECK
   dependencies:
     - cluster-setup-check
@@ -366,7 +366,7 @@ teaming-change-role-check:
    - ./stages/7-teaming-check/teaming-change-role-check
 
 teaming-change-role-negative-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: TEAMING-CHECK
   dependencies:
     - cluster-setup-check
@@ -375,7 +375,7 @@ teaming-change-role-negative-check:
    - ./stages/7-teaming-check/teaming-change-role-negative-check
 
 # self-connect-check:
-#   image: atulabhi/kops:v8
+#   image: harshshekhar15/gitlab-job:v1
 #   stage: DIRECTOR-FUNCTIONALITY-CHECK
 #   when: on_success
 #   script: 
@@ -388,7 +388,7 @@ teaming-change-role-negative-check:
 
 ## Openebs Upgrade Check
 openebs-upgrade-check:
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   stage: OPENEBS-UPGRADE-CHECK
   dependencies:
     - cluster-setup-check
@@ -399,7 +399,7 @@ openebs-upgrade-check:
 ## cluster cleanup
 cluster-cleanup:
   when: always
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   dependencies:
     - cluster-create
   stage: CLUSTER-CLEANUP
@@ -410,7 +410,7 @@ cluster-cleanup:
 ## user cluster cleanup
 user-cluster-cleanup:
   when: always
-  image: atulabhi/kops:v8
+  image: harshshekhar15/gitlab-job:v1
   dependencies:
     - cluster-setup-check
   stage: CLUSTER-CLEANUP
