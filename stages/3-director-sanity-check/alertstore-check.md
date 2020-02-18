@@ -9,6 +9,3 @@ The following checks are performed on alertstore:
 
 
 
-| Job ID |   Test Description         | Execution Time |Test Result   |
- |---------|---------------------------| --------------|--------|
- |    <a href= "https://gitlab.mayadata.io/oep/oep-e2e-gcp/-/jobs/37796">37796</a>   |  Common sanity check for alerstore           |  Tue Feb 18 11:19:44 UTC 2020     |Pass  |
