@@ -44,8 +44,8 @@ kubectl get po
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
 
-if [[ $branch_name == "gitlab-ci-file" ]]; then
-   python3 utils/result_update.py --job_id $job_id --stage $stage --test_desc "$test_desc" --test_result $testResult --time_stamp "$current_time" --token $gittoken --test_name $test_name
+if [[ $branch_name == "master" ]]; then
+   python3 utils/result_update.py --job_id $job_id --stage $stage --test_desc $test_desc --test_result $testResult --time_stamp $current_time --token $gittoken --test_name $test_name
 fi
 
 if [ "$testResult" != Pass ]; then 
