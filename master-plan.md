@@ -53,7 +53,7 @@ Example
 | IU -- Install and Upgrade | OI -- OpenEBS Install       |
 |                           | OC -- OpenEBS ControlPlane  |
 |                           | OD -- OpenEBS DataPlane     |
-| TI -- Teaming and Invite Users   | PO -- Project Owner         |
+| TR -- Teaming and RBAC    | PO -- Project Owner         |
 |                           | PA -- Project Admin         |
 |                           | PM -- Project Member        |
 |                           | PR -- Project ReadOnly User |
