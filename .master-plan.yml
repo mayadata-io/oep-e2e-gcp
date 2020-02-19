@@ -506,15 +506,9 @@ spec:
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
 ###### Abbreviations
+#Details of abbreviation in readme file master-plan.md , One of the example as below
 # IU  -- Install and Upgrade of OpenEBS"
 ### IUOIXX IUOCXX IUODXX 
  ## OI -- OpenEBS Install 
  ## OC -- OpenEBS ControlPlane
  ## OD -- OpenEBS DataPlane
-
-# TU -- Teaming and Users
-### TUPRXX TUPAXX
- ## PA -- Project Admin
- ## PR -- Project ReadOnly Admin
- ## PO -- Project Owner
- ## PM -- Project Member
