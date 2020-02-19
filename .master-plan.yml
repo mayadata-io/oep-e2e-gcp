@@ -140,7 +140,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcoId: "IUOC02"
+  - tcid: "IUOC02"
     name: "Upgrade OpenEBS installed using operator.yaml(Not using Director)"
     description: "Upgrade should not proceed"
     labels:
@@ -149,7 +149,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcoId: "IUOC03"
+  - tcid: "IUOC03"
     name: "Upgrade of control plane(1.6) which is lower version of Data plane (1.7)"
     description: "Upgrade should not proceed"
     labels:
@@ -158,7 +158,7 @@ spec:
       test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcoId: "IUOC04"
+  - tcid: "IUOC04"
     name: "Upgrade of control plane(1.7) which is higher version of Data plane(1.6)"
     description: "Upgrade should not proceed"
     labels:
