@@ -5,7 +5,7 @@ metadata:
 spec:
   tests:
   ### Installation of OpenEBS
-  - tcid: "IUOI01"
+  - tcid: IUOI01
     name: "Install OpenEBS on a Onprem Cluster"
     description: "Test the components are installed properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
     labels:
@@ -14,7 +14,7 @@ spec:
       test/priority: "P0"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI02"
+  - tcid: IUOI02
     name: "Install OpenEBS on a K8S Cluster connected to Onprem Cluster"
     description: "Optional skipping here"
     labels:
@@ -23,7 +23,7 @@ spec:
       test/priority: "P0"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI03"
+  - tcid: IUOI03
     name: "Install OpenEBS Controlplane components on specific set of nodes"
     description: "Optional skipping here"
     labels:
@@ -32,7 +32,7 @@ spec:
       test/priority: "P0"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI04"
+  - tcid: IUOI04
     name: "Install OpenEBS Dataplane{NDM DS} components on specific set of nodes"
     description: "Optional skipping here"
     labels:
@@ -41,7 +41,7 @@ spec:
       test/priority: "P0"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI05"
+  - tcid: IUOI05
     name: "Install OpenEBS on a low resource machine"
     description: "Optional skipping here"
     labels:
@@ -50,7 +50,7 @@ spec:
       test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI06"
+  - tcid: IUOI06
     name: "Install OpenEBS on a machine already OpenEBS is installed with same version using operator.yaml"
     description: "Optional skipping here"
     labels:
@@ -59,7 +59,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI07"
+  - tcid: IUOI07
     name: "Install OpenEBS on a machine already OpenEBS is installed with same version using Helm"
     description: "Optional skipping here"
     labels:
@@ -68,7 +68,7 @@ spec:
       test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI08"
+  - tcid: IUOI08
     name: "Install OpenEBS on a machine already OpenEBS is installed with higher version using Helm"
     description: "Optional skipping here"
     labels:
@@ -77,7 +77,7 @@ spec:
       test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI09"
+  - tcid: IUOI09
     name: "Install OpenEBS on a machine already OpenEBS is installed with lower version of OpenEBS using operator.yaml"
     description: "Optional skipping here"
     labels:
@@ -86,7 +86,7 @@ spec:
       test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI10"
+  - tcid: IUOI10
     name: "Uninstall of OpenEBS"
     description: "Optional skipping here"
     labels:
@@ -95,7 +95,7 @@ spec:
       test/priority: "P3"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI11"
+  - tcid: IUOI11
     name: "Install OpenEBS from valid custom docker registry"
     description: "Optional skipping here"
     labels:
@@ -104,7 +104,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI12"
+  - tcid: IUOI12
     name: "Install OpenEBS from invalid custom docker registry"
     description: "Optional skipping here"
     labels:
@@ -113,7 +113,7 @@ spec:
       test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI13"
+  - tcid: IUOI13
     name: "Install using custom input"
     description: " -- NDM Path filters -- NDM Vendor -- OS Disks"
     labels:
@@ -122,7 +122,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOI14"
+  - tcid: IUOI14
     name: "Install using custom resource limits"
     description: "-- Set with CPU and RAM for all control plane"
     labels:
@@ -131,7 +131,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOC01"
+  - tcid: IUOC01
     name: "Upgrade OpenEBS ControlPlane installed by Director"
     description: "Test the components are upgraded properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
     labels:
@@ -140,7 +140,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOC02"
+  - tcid: IUOC02
     name: "Upgrade OpenEBS installed using operator.yaml(Not using Director)"
     description: "Upgrade should not proceed"
     labels:
@@ -149,7 +149,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOC03"
+  - tcid: IUOC03
     name: "Upgrade of control plane(1.6) which is lower version of Data plane (1.7)"
     description: "Upgrade should not proceed"
     labels:
@@ -158,7 +158,7 @@ spec:
       test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOC04"
+  - tcid: IUOC04
     name: "Upgrade of control plane(1.7) which is higher version of Data plane(1.6)"
     description: "Upgrade should not proceed"
     labels:
@@ -167,7 +167,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD01"
+  - tcid: IUOD01
     name: "Upgrade OpenEBS Pool and volume installed by Director"
     description: "Test the components are upgraded properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
     labels:
@@ -177,7 +177,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD02"
+  - tcid: IUOD02
     name: "Upgrade OpenEBS Pool and Volume installed using operator.yaml(Not using Director)"
     description: "Test the components are upgraded properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
     labels:
@@ -187,7 +187,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD03"
+  - tcid: IUOD03
     name: "Upgrade OpenEBS Pool and Volume installed using Helm(Not using Director)"
     description: "Test the components are upgraded properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
     labels:
@@ -197,7 +197,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD04"
+  - tcid: IUOD04
     name: "Upgrade of data plane with higher version of control plane --  Dataplane 1.7 Control plane 1.6"
     description: "For Eg Start with 1.5 for both control and data plane, Control plane will be upgraded to 1.6, Try Data plane will be upgraded to 1.7"
     labels:
@@ -207,7 +207,7 @@ spec:
       test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD05"
+  - tcid: IUOD05
     name: "Upgrade of data plane with lower version of control plan -- Dataplane 1.6 Control plane 1.7"
     description: "For Eg Start with 1.5 for both control and data plane, Control plane will be upgraded to 1.6 then to 1.7, Data plane will be upgraded to 1.6"
     labels:
@@ -217,7 +217,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD06"
+  - tcid: IUOD06
     name: "Upgrade of data plane with same version of control plane -- Dataplane 1.7 Control plane 1.7"
     description: "For Eg Start with 1.5 for both control and data plane, Control plane will be upgraded to 1.7, Data plane will be upgraded to 1.6"
     labels:
@@ -227,7 +227,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD07"
+  - tcid: IUOD07
     name: "Upgrade cStor Pools (CSPC)  select one CSPC"
     description: ""
     labels:
@@ -237,7 +237,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD08"
+  - tcid: IUOD08
     name: "Upgrade cStor Pools (CSPC)  select multiple CSPC"
     description: ""
     labels:
@@ -247,7 +247,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD09"
+  - tcid: IUOD09
     name: "Upgrade a single pool with in a CSPC"
     description: ""
     labels:
@@ -257,7 +257,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD10"
+  - tcid: IUOD10
     name: "Upgrade multiple pools with in a CSPC"
     description: ""
     labels:
@@ -267,7 +267,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD11"
+  - tcid: IUOD11
     name: "Upgrade multiple pools across two CSPC"
     description: ""
     labels:
@@ -277,7 +277,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD12"
+  - tcid: IUOD12
     name: "Upgrade one application consuming cStor volume cStor"
     description: ""
     labels:
@@ -287,7 +287,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD13"
+  - tcid: IUOD13
     name: "Upgrade one application consuming multiple cStor volumes"
     description: ""
     labels:
@@ -297,7 +297,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD14"
+  - tcid: IUOD14
     name: "Upgrade one application consuming multiple storage engines cstor and Jiva"
     description: ""
     labels:
@@ -307,7 +307,7 @@ spec:
       test/storageEgnine: "cStor/Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD15"
+  - tcid: IUOD15
     name: "Upgrade mulitple application from same CSPC"
     description: ""
     labels:
@@ -317,7 +317,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD16"
+  - tcid: IUOD16
     name: "Upgrade multiple applications across CSPC"
     description: ""
     labels:
@@ -327,7 +327,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD17"
+  - tcid: IUOD17
     name: "Upgrade application Volumes to higher version(1.7) than cStor Pool of lower version (1.6)"
     description: ""
     labels:
@@ -337,7 +337,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD18"
+  - tcid: IUOD18
     name: "Select upgrade of same pool while upgrade is in progress"
     description: ""
     labels:
@@ -347,7 +347,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD19"
+  - tcid: IUOD19
     name: "Select upgrade of different pool while upgrade is in progress"
     description: ""
     labels:
@@ -357,7 +357,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD20"
+  - tcid: IUOD20
     name: "Upgrade a pool when the pool pod is in not running"
     description: ""
     labels:
@@ -367,7 +367,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD21"
+  - tcid: IUOD21
     name: "Upgrade a CSPC when one of the pool pod is in not running"
     description: ""
     labels:
@@ -377,7 +377,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD22"
+  - tcid: IUOD22
     name: "Upgrade a CSPC when all the pool pod is in not running"
     description: ""
     labels:
@@ -387,7 +387,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD23"
+  - tcid: IUOD23
     name: "Upgrade the application with 3 replicas when all pool pods are running"
     description: ""
     labels:
@@ -397,7 +397,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD24"
+  - tcid: IUOD24
     name: "Upgrade the application with 3 replicas when one pool pods is not running"
     description: ""
     labels:
@@ -407,7 +407,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD25"
+  - tcid: IUOD25
     name: "Upgrade the application with 3 replicas when two pool pods is not running"
     description: ""
     labels:
@@ -417,7 +417,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD26"
+  - tcid: IUOD26
     name: "Upgrade the application with 3 replicas when three(all) pool pods is not running"
     description: ""
     labels:
@@ -427,7 +427,7 @@ spec:
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD27"
+  - tcid: IUOD27
     name: "Upgrade the application with 3 replicas when all replica pods are running"
     description: ""
     labels:
@@ -437,7 +437,7 @@ spec:
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD28"
+  - tcid: IUOD28
     name: "Upgrade the application with 3 replicas when one replica pods is not running"
     description: ""
     labels:
@@ -447,7 +447,7 @@ spec:
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD29"
+  - tcid: IUOD29
     name: "Upgrade the application with 3 replicas when two replica pods is not running"
     description: ""
     labels:
@@ -457,7 +457,7 @@ spec:
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD30"
+  - tcid: IUOD30
     name: "Upgrade the application with 3 replicas when all replica pods is not running"
     description: ""
     labels:
@@ -467,7 +467,7 @@ spec:
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD31"
+  - tcid: IUOD31
     name: "Upgrade one application consuming multiple jiva volumes"
     description: ""
     labels:
@@ -477,7 +477,7 @@ spec:
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "IUOD32"
+  - tcid: IUOD32
     name: "Upgrade one application having single replica jiva volume"
     description: ""
     labels:
@@ -487,7 +487,7 @@ spec:
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "TRPA01"
+  - tcid: triv01
     name: "Invite a user as Project Admin"
     description: "Invited users should be able to manage the cluster and add other cluster"
     labels:
@@ -496,7 +496,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "TRPR01"
+  - tcid: triv01
     name: "Invite a user as Project ReadOnly Admin"
     description: "Invited users should be able to view the cluster and resources. And user should not be able to edit the cluster or add other cluster"
     labels:
@@ -505,7 +505,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "TRPM02"
+  - tcid: triv01
     name: "Invite a user as Project Member"
     description: "Invite user and user will accept the invitation"
     labels:
@@ -514,7 +514,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
  
-  - tcid: "TRPO01"
+  - tcid: trrc01
     name: "Change role by Project Owner"
     description: "Project Owner can change member role."
     labels:
@@ -523,7 +523,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "TRPM02"
+  - tcid: trrc01
     name: "Change role of Project Member"
     description: "Change role of ProjectMember to Project ReadOnly Admin and ProjectAdmin"
     labels:
@@ -532,7 +532,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "TRPR03"
+  - tcid: trrc01
     name: "Change role of Project ReadOnly Admin"
     description: "Change role of Project ReadOnly Admin to Project Admin and Project Member"
     labels:
@@ -541,7 +541,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
   
-  - tcid: "TRPA04"
+  - tcid: trrc01
     name: "Change role of Project Admin"
     description: "Change role of Project Admin to Project ReadOnly Admin and Project Member"
     labels:
@@ -550,7 +550,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "TRPM05"
+  - tcid: trrc02
     name: "Change role of Project Member to self"
     description: "Role of Project Member cannot be changed to self"
     labels:
@@ -559,7 +559,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "TRPM06"
+  - tcid: trrc02
     name: "Change role of Project Member to Project Owner"
     description: "Role of Project Member cannot be changed to Project Owner"
     labels:
