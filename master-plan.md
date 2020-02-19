@@ -57,6 +57,7 @@ Example
 |                           | PA -- Project Admin         |
 |                           | PM -- Project Member        |
 |                           | PR -- Project ReadOnly User |
+|                           | RC -- Role Change |
 
 ##### `name` --  test case name
 ##### `description` -- Testcase description
