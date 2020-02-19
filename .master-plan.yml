@@ -11,6 +11,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI02"
@@ -19,6 +20,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI03"
@@ -27,6 +29,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI04"
@@ -35,6 +38,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS Controllane"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI05"
@@ -43,6 +47,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI06"
@@ -51,6 +56,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI07"
@@ -59,14 +65,16 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI08"
-    name: "Install OpenEBS on a machine already OpenEBS is installed with same version using Helm"
+    name: "Install OpenEBS on a machine already OpenEBS is installed with higher version using Helm"
     description: "Optional skipping here"
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI09"
@@ -75,6 +83,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI10"
@@ -83,14 +92,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
-
-  - tcId: "IUOI10"
-    name: "Uninstall of OpenEBS"
-    description: "Optional skipping here"
-    labels:
-      test/feature: "Install and Upgrade of OpenEBS"
-      test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P3"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI11"
@@ -99,6 +101,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI12"
@@ -107,6 +110,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI13"
@@ -115,6 +119,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOI14"
@@ -123,6 +128,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOC01"
@@ -131,6 +137,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS ControlPlane Components"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcoId: "IUOC02"
@@ -139,6 +146,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS ControlPlane Components"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcoId: "IUOC03"
@@ -147,6 +155,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS ControlPlane Components"
+      test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcoId: "IUOC04"
@@ -155,6 +164,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS ControlPlane Components"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOD01"
@@ -163,6 +173,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -172,6 +183,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -181,6 +193,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P2"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -191,6 +204,7 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/storageEgnine: "cStor"
+      test/priority: "P2"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "IUOD05"
@@ -199,6 +213,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P2"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -208,6 +223,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P2"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -217,6 +233,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -226,6 +243,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -235,6 +253,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -244,6 +263,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -253,6 +273,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -262,6 +283,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -271,6 +293,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -280,6 +303,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor/Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -289,6 +313,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -298,6 +323,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -307,6 +333,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P2"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -316,6 +343,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P2"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -325,6 +353,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -334,6 +363,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -343,6 +373,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -352,6 +383,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P2"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -361,6 +393,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -370,6 +403,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -379,6 +413,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P2"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -388,6 +423,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P2"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -397,6 +433,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -406,6 +443,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -415,6 +453,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P2"
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -424,6 +463,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -433,6 +473,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -442,6 +483,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
+      test/priority: "P1"
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -451,6 +493,7 @@ spec:
     labels:
       test/feature: "Teaming"
       test/subFeature: "Project Admin"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcId: "TPR01"
@@ -459,4 +502,5 @@ spec:
     labels:
       test/feature: "Teaming"
       test/subFeature: "Project ReadOnly Admin"
+      test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
