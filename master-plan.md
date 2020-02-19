@@ -57,7 +57,7 @@ Feature
 | IU -- Install and Upgrade | OI -- OpenEBS Install       |
 |                           | OC -- OpenEBS ControlPlane  |
 |                           | OD -- OpenEBS DataPlane     |
-| TU -- Teaming and Users   | PO -- Project Owner         |
+| TI -- Teaming and Users   | PO -- Project Owner         |
 |                           | PA -- Project Admin         |
 |                           | PM -- Project Member        |
 |                           | PR -- Project ReadOnly User |
