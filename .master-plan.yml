@@ -11,7 +11,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
-      test/priority: "P1"
+      test/priority: "P0"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcid: "IUOI02"
@@ -20,7 +20,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
-      test/priority: "P1"
+      test/priority: "P0"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcid: "IUOI03"
@@ -29,7 +29,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
-      test/priority: "P1"
+      test/priority: "P0"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcid: "IUOI04"
@@ -38,7 +38,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS Controllane"
-      test/priority: "P1"
+      test/priority: "P0"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
   - tcid: "IUOI05"
@@ -173,7 +173,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
-      test/priority: "P1"
+      test/priority: "P0"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -233,7 +233,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
-      test/priority: "P1"
+      test/priority: "P0"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -263,7 +263,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
-      test/priority: "P1"
+      test/priority: "P0"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -283,7 +283,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
-      test/priority: "P1"
+      test/priority: "P0"
       test/storageEgnine: "cStor"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -433,7 +433,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
-      test/priority: "P1"
+      test/priority: "P0"
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -473,7 +473,7 @@ spec:
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
-      test/priority: "P1"
+      test/priority: "P0"
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
@@ -487,7 +487,7 @@ spec:
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "TPA01"
+  - tcid: "TUPA01"
     name: "Invite a user as Project Admin"
     description: "Invited users should be able to manage the cluster and add other cluster"
     labels:
@@ -496,7 +496,7 @@ spec:
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: "TPR01"
+  - tcid: "TUPR01"
     name: "Invite a user as Project ReadOnly Admin"
     description: "Invited users should be able to view the cluster and resources. And user should not be able to edit the cluster or add other cluster"
     labels:
@@ -504,3 +504,17 @@ spec:
       test/subFeature: "Project ReadOnly Admin"
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+
+###### Abbreviations
+# IU  -- Install and Upgrade of OpenEBS"
+### IUOIXX IUOCXX IUODXX 
+ ## OI -- OpenEBS Install 
+ ## OC -- OpenEBS ControlPlane
+ ## OD -- OpenEBS DataPlane
+
+# TU -- Teaming and Users
+### TUPRXX TUPAXX
+ ## PA -- Project Admin
+ ## PR -- Project ReadOnly Admin
+ ## PO -- Project Owner
+ ## PM -- Project Member
