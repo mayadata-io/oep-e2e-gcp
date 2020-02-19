@@ -34,7 +34,7 @@ spec:
 
 ## Schema format
 
-#### `tcid` -- referers to a unique id for the testcase. 
+##### `tcid` -- referers to a unique id for the testcase. 
 
 Each test case would be called as job in gitlab pipeline using  gitlab-ci.yaml. Actual test case would be having this unique id prefixed . Each test case would have a seperate readme.
 
@@ -58,8 +58,8 @@ Example
 |                           | PM -- Project Member        |
 |                           | PR -- Project ReadOnly User |
 
-####  `name` --  test case name
-#### `description` -- Testcase description
+##### `name` --  test case name
+##### `description` -- Testcase description
 ##### `test/subFeature` -- Testcase belong which sub component/feature
-#### `test/priority` -- Testcase priority to decide how early it has to be automated
-####  `git/location` -- Location where testcase has been place (link with readme)
+##### `test/priority` -- Testcase priority to decide how early it has to be automated
+##### `git/location` -- Location where testcase has been place (link with readme)
