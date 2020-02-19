@@ -1,7 +1,6 @@
-## File .master-plan.yaml
+# File .master-plan.yaml
 
-This file would contain all the desired/known test cases for OEP platform. The schema of this file
-
+The `.master-plan.yaml` file would contain all the desired/known test cases for OEP platform.  From this file detailed testcases would be derived. Testcases will be kept in the repo and would have a unique id `tcid` prefixed.  The excerpt of the file shown below, format has been kept similar to K8S CR.
 
 
 ```kind: MasterPlan
@@ -33,33 +32,34 @@ spec:
 
 
 
+## Schema format
 
-where 
+#### `tcid` -- referers to a unique id for the testcase. 
 
-tcid -- referers to a unique id for the testcase. 
+Each test case would be called as job in gitlab pipeline using  gitlab-ci.yaml. Actual test case would be having this unique id prefixed . Each test case would have a seperate readme.
 
-The test case would be called as job in gitlabl pipeline and would be called in gitlab-ci.yaml. Actual test case would be having this unique id prefixed i
+`tcid` is constructed following, each tcid would be unique and will have 6-7 chars
 
-Abbreviations of tcid
+first two letter indicates the feature.
 
-first two letter indicates the feature
+third and fourth letter indicates the sub feature.
 
-third and fourth letter indicates the sub feature
-
-last two digits give the count of test cases
+last two chars would be digits in incrementatal way.
 
 Example 
-
-Feature
 
 | Feature                   | SubFeature                  |
 | ------------------------- | --------------------------- |
 | IU -- Install and Upgrade | OI -- OpenEBS Install       |
 |                           | OC -- OpenEBS ControlPlane  |
 |                           | OD -- OpenEBS DataPlane     |
-| TI -- Teaming and Users   | PO -- Project Owner         |
+| TI -- Teaming and Invite Users   | PO -- Project Owner         |
 |                           | PA -- Project Admin         |
 |                           | PM -- Project Member        |
 |                           | PR -- Project ReadOnly User |
 
-
+####  `name` --  test case name
+#### `description` -- Testcase description
+##### `test/subFeature` -- Testcase belong which sub component/feature
+#### `test/priority` -- Testcase priority to decide how early it has to be automated
+####  `git/location` -- Location where testcase has been place (link with readme)
