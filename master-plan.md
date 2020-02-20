@@ -36,7 +36,7 @@ spec:
 
 ##### `tcid` -- referers to a unique id for the testcase. 
 
-Each test case would be called as job in gitlab pipeline using  gitlab-ci.yaml. Actual test case would be having this unique id prefixed . Each test case would have a seperate readme.
+Each test case would be called as job in gitlab pipeline using  gitlab-ci.yaml. Actual test case would be having this unique id prefixed . Each test case would have a seperate readme. The tcid will be in lower case.
 
 `tcid` is constructed following, each tcid would be unique and will have 6-7 chars
 
@@ -50,14 +50,14 @@ Example
 
 | Feature                   | SubFeature                  |
 | ------------------------- | --------------------------- |
-| IU -- Install and Upgrade | OI -- OpenEBS Install       |
-|                           | OC -- OpenEBS ControlPlane  |
-|                           | OD -- OpenEBS DataPlane     |
-| TR -- Teaming and RBAC    | PO -- Project Owner         |
-|                           | PA -- Project Admin         |
-|                           | PM -- Project Member        |
-|                           | PR -- Project ReadOnly User |
-|                           | RC -- Role Change |
+| iu -- Install and Upgrade | oi -- OpenEBS Install       |
+|                           | oc -- OpenEBS ControlPlane  |
+|                           | od -- OpenEBS DataPlane     |
+| tr -- Teaming and RBAC    | po -- Project Owner         |
+|                           | pa -- Project Admin         |
+|                           | pm -- Project Member        |
+|                           | pr -- Project ReadOnly User |
+|                           | rc -- Role Change |
 
 ##### `name` --  test case name
 ##### `description` -- Testcase description
