@@ -58,6 +58,7 @@ Example
 |                           | pm -- Project Member        |
 |                           | pr -- Project ReadOnly User |
 |                           | rc -- Role Change |
+|                           | iv -- Invite |
 
 ##### `name` --  test case name
 ##### `description` -- Testcase description

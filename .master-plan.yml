@@ -487,29 +487,29 @@ spec:
       test/storageEgnine: "Jiva"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: trpa01
+  - tcid: triv01
     name: "Invite a user as Project Admin"
     description: "Invited users should be able to manage the cluster and add other cluster"
     labels:
-      test/feature: "Teaming"
+      test/feature: "Teaming and RBAC"
       test/subFeature: "Invite"
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: trpr01
+  - tcid: triv02
     name: "Invite a user as Project ReadOnly Admin"
     description: "Invited users should be able to view the cluster and resources. And user should not be able to edit the cluster or add other cluster"
     labels:
-      test/feature: "Teaming"
+      test/feature: "Teaming and RBAC"
       test/subFeature: "Invite"
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
 
-  - tcid: trpm01
+  - tcid: triv03
     name: "Invite a user as Project Member"
     description: "Invite user and user will accept the invitation"
     labels:
-      test/feature: "Teaming"
+      test/feature: "Teaming and RBAC"
       test/subFeature: "Invite"
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
@@ -518,7 +518,7 @@ spec:
     name: "Change role by Project Owner"
     description: "Project Owner can change member role."
     labels:
-      test/feature: "Teaming"
+      test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
@@ -527,7 +527,7 @@ spec:
     name: "Change role of Project Member"
     description: "Change role of ProjectMember to Project ReadOnly Admin and ProjectAdmin"
     labels:
-      test/feature: "Teaming"
+      test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
@@ -536,7 +536,7 @@ spec:
     name: "Change role of Project ReadOnly Admin"
     description: "Change role of Project ReadOnly Admin to Project Admin and Project Member"
     labels:
-      test/feature: "Teaming"
+      test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
@@ -545,7 +545,7 @@ spec:
     name: "Change role of Project Admin"
     description: "Change role of Project Admin to Project ReadOnly Admin and Project Member"
     labels:
-      test/feature: "Teaming"
+      test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
@@ -554,7 +554,7 @@ spec:
     name: "Change role of Project Member to self"
     description: "Role of Project Member cannot be changed to self"
     labels:
-      test/feature: "Teaming"
+      test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
@@ -563,7 +563,7 @@ spec:
     name: "Change role of Project Member to Project Owner"
     description: "Role of Project Member cannot be changed to Project Owner"
     labels:
-      test/feature: "Teaming"
+      test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
       git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
