@@ -5,6 +5,7 @@
 stages:
   - CLUSTER-SETUP
   - PROVIDER-INFRA-SETUP
+  - E2E-METRICS
   - DIRECTOR-HEALTH-CHECK
   - USER-CLUSTER-SETUP
   - USER-CLUSTER-CONNECT
@@ -38,6 +39,18 @@ director-deploy:
     paths:
       - .kube/
 
+e2e-metrics:
+  image: harshshekhar15/gitlab-job:v1
+  stage: E2E-METRICS
+  dependencies:
+    - cluster-create
+  script: 
+   - chmod 755 ./stages/e2e-metrics/e2e-metrics
+   - ./stages/e2e-metrics/e2e-metrics
+  artifacts:
+    paths:
+      - .kube/
+   
 ## director health check jobs
 maya-io-server-check:
   image: harshshekhar15/gitlab-job:v1
