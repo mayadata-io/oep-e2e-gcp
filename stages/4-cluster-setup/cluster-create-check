@@ -47,7 +47,7 @@ kubectl create configmap kubeconfig --from-file=$path/.gcp/admin.conf -n litmus
 kubectl create configmap config --from-literal=url=$url -n litmus
 
 # fetch openebs operator yaml
-openebs_operator=openebs-operator-1.6.0.yaml 
+openebs_operator=openebs-operator-1.4.0.yaml 
 wget https://openebs.github.io/charts/$openebs_operator
 # set fields required for sparse pool setup
 default_pool_line=$(cat $openebs_operator | grep -n  OPENEBS_IO_INSTALL_DEFAULT_CSTOR_SPARSE_POOL | tail -n +2 | awk -F':' '{print $1}')
