@@ -18,6 +18,10 @@ stages:
 cluster-create:
   image: harshshekhar15/gitlab-job:v1
   stage: CLUSTER-SETUP
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/1-cluster-setup/gcp
     - ./stages/1-cluster-setup/gcp
@@ -32,6 +36,10 @@ director-deploy:
   stage: PROVIDER-INFRA-SETUP
   dependencies:
     - cluster-create
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/2-provider-infra-setup/infra-setup
    - ./stages/2-provider-infra-setup/infra-setup
@@ -44,6 +52,10 @@ e2e-metrics:
   stage: E2E-METRICS
   dependencies:
     - cluster-create
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/e2e-metrics/e2e-metrics
    - ./stages/e2e-metrics/e2e-metrics
@@ -57,6 +69,10 @@ maya-io-server-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/3-director-sanity-check/maya-io-server-check
    - ./stages/3-director-sanity-check/maya-io-server-check
@@ -69,6 +85,10 @@ maya-ui-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/maya-ui-check
     - ./stages/3-director-sanity-check/maya-ui-check
@@ -81,6 +101,10 @@ od-elasticsearch-logging-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/od-elasticsearch-logging-check
     - ./stages/3-director-sanity-check/od-elasticsearch-logging-check
@@ -93,6 +117,10 @@ od-kibana-logging-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/od-kibana-logging-check
     - ./stages/3-director-sanity-check/od-kibana-logging-check
@@ -105,6 +133,10 @@ table-manager-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/table-manager-check
     - ./stages/3-director-sanity-check/table-manager-check
@@ -117,6 +149,10 @@ chat-server-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/chat-server-check
     - ./stages/3-director-sanity-check/chat-server-check
@@ -129,6 +165,10 @@ cloud-agent-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/cloud-agent-check
     - ./stages/3-director-sanity-check/cloud-agent-check
@@ -141,6 +181,10 @@ mysql-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/mysql-check
     - ./stages/3-director-sanity-check/mysql-check
@@ -153,6 +197,10 @@ maya-grafana-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/maya-grafana-check
     - ./stages/3-director-sanity-check/maya-grafana-check
@@ -165,6 +213,10 @@ memcached-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/memcached-check
     - ./stages/3-director-sanity-check/memcached-check
@@ -178,6 +230,10 @@ alertstore-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/alertstore-check
     - ./stages/3-director-sanity-check/alertstore-check
@@ -190,6 +246,10 @@ alertstore-tablemanager-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/alertstore-tablemanager-check
     - ./stages/3-director-sanity-check/alertstore-tablemanager-check
@@ -202,6 +262,10 @@ alertmanager-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/alertmanager-check
     - ./stages/3-director-sanity-check/alertmanager-check
@@ -214,6 +278,10 @@ cassandra-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/cassandra-check
     - ./stages/3-director-sanity-check/cassandra-check
@@ -226,6 +294,10 @@ distributor-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/distributor-check
     - ./stages/3-director-sanity-check/distributor-check
@@ -238,6 +310,10 @@ ingestor-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/ingestor-check
     - ./stages/3-director-sanity-check/ingestor-check
@@ -250,6 +326,10 @@ querier-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/querier-check
     - ./stages/3-director-sanity-check/querier-check
@@ -262,6 +342,10 @@ ruler-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/ruler-check
     - ./stages/3-director-sanity-check/ruler-check
@@ -274,6 +358,10 @@ configs-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/configs-check
     - ./stages/3-director-sanity-check/configs-check
@@ -286,6 +374,10 @@ configs-db-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/configs-db-check
     - ./stages/3-director-sanity-check/configs-db-check
@@ -298,6 +390,10 @@ ingress-nginx-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/3-director-sanity-check/ingress-nginx-check
     - ./stages/3-director-sanity-check/ingress-nginx-check
@@ -310,6 +406,10 @@ cluster-setup-check:
   stage: USER-CLUSTER-SETUP
   dependencies:
     - director-deploy
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/4-cluster-setup/cluster-create-check
    - ./stages/4-cluster-setup/cluster-create-check
@@ -324,6 +424,10 @@ create-apikey-check:
   stage: USER-CLUSTER-CONNECT
   dependencies:
     - cluster-setup-check
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/5-cluster-connect-check/create-apikey-check
    - ./stages/5-cluster-connect-check/create-apikey-check
@@ -333,6 +437,10 @@ cluster-connect-check:
   stage: USER-CLUSTER-CONNECT
   dependencies:
     - cluster-setup-check
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/5-cluster-connect-check/cluster-connect-check
    - ./stages/5-cluster-connect-check/cluster-connect-check
@@ -347,6 +455,10 @@ client-components-check:
   stage: USER-CLUSTER-CONNECT
   dependencies:
     - cluster-setup-check
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/5-cluster-connect-check/client-components-check
    - ./stages/5-cluster-connect-check/client-components-check
@@ -356,6 +468,10 @@ metrics-check:
   stage: METRICS-CHECK
   dependencies:
     - cluster-setup-check
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/6-metrics-check/metrics-check
    - ./stages/6-metrics-check/metrics-check
@@ -365,6 +481,10 @@ teaming-invite-check:
   stage: TEAMING-CHECK
   dependencies:
     - cluster-setup-check
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/7-teaming-check/teaming-invite-check
    - ./stages/7-teaming-check/teaming-invite-check
@@ -374,6 +494,10 @@ teaming-change-role-check:
   stage: TEAMING-CHECK
   dependencies:
     - cluster-setup-check
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/7-teaming-check/teaming-change-role-check
    - ./stages/7-teaming-check/teaming-change-role-check
@@ -383,21 +507,13 @@ teaming-change-role-negative-check:
   stage: TEAMING-CHECK
   dependencies:
     - cluster-setup-check
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
    - chmod 755 ./stages/7-teaming-check/teaming-change-role-negative-check
    - ./stages/7-teaming-check/teaming-change-role-negative-check
-
-# self-connect-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-FUNCTIONALITY-CHECK
-#   when: on_success
-#   script: 
-#    - chmod 755 ./stages/4-director-functionality-check/self-connect-check
-#    - ./stages/4-director-functionality-check/self-connect-check
-#   artifacts:
-#     when: always
-#     paths:
-#       - .kube/
 
 ## Openebs Upgrade Check
 openebs-upgrade-check:
@@ -405,6 +521,10 @@ openebs-upgrade-check:
   stage: OPENEBS-UPGRADE-CHECK
   dependencies:
     - cluster-setup-check
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/8-openebs-upgrade-check/openebs-upgrade-check
     - ./stages/8-openebs-upgrade-check/openebs-upgrade-check
@@ -416,6 +536,10 @@ cluster-cleanup:
   dependencies:
     - cluster-create
   stage: CLUSTER-CLEANUP
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/9-cluster-cleanup/cluster-cleanup
     - ./stages/9-cluster-cleanup/cluster-cleanup
@@ -427,6 +551,10 @@ user-cluster-cleanup:
   dependencies:
     - cluster-setup-check
   stage: CLUSTER-CLEANUP
+  except:
+    changes:
+      - "*.md"
+      - .master-plan.yml
   script: 
     - chmod 755 ./stages/9-cluster-cleanup/user-cluster-cleanup
     - ./stages/9-cluster-cleanup/user-cluster-cleanup
