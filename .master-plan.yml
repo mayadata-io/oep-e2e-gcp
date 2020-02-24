@@ -6,22 +6,24 @@ spec:
   tests:
   ### Installation of OpenEBS
   - tcid: iuoi01
-    name: "Install OpenEBS on a Onprem Cluster"
-    description: "Test the components are installed properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
+    name: "Install OpenEBS on a Director Onprem Cluster"
+l    description: "Test the components are installed properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P0"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi02
-    name: "Install OpenEBS on a K8S Cluster connected to Onprem Cluster"
+    name: "Install OpenEBS on a K8S Cluster connected to Director Onprem Cluster"
     description: "Optional skipping here"
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P0"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi03
     name: "Install OpenEBS Controlplane components on specific set of nodes"
@@ -30,7 +32,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P0"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi04
     name: "Install OpenEBS Dataplane{NDM DS} components on specific set of nodes"
@@ -39,7 +42,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS Controllane"
       test/priority: "P0"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi05
     name: "Install OpenEBS on a low resource machine"
@@ -48,7 +52,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P2"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi06
     name: "Install OpenEBS on a machine already OpenEBS is installed with same version using operator.yaml"
@@ -57,7 +62,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi07
     name: "Install OpenEBS on a machine already OpenEBS is installed with same version using Helm"
@@ -66,7 +72,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P2"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi08
     name: "Install OpenEBS on a machine already OpenEBS is installed with higher version using Helm"
@@ -75,7 +82,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P2"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi09
     name: "Install OpenEBS on a machine already OpenEBS is installed with lower version of OpenEBS using operator.yaml"
@@ -84,7 +92,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P2"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi10
     name: "Uninstall of OpenEBS"
@@ -93,7 +102,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P3"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi11
     name: "Install OpenEBS from valid custom docker registry"
@@ -102,7 +112,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi12
     name: "Install OpenEBS from invalid custom docker registry"
@@ -111,7 +122,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P2"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi13
     name: "Install using custom input"
@@ -120,7 +132,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoi14
     name: "Install using custom resource limits"
@@ -129,7 +142,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoc01
     name: "Upgrade OpenEBS ControlPlane installed by Director"
@@ -138,7 +152,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS ControlPlane Components"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoc02
     name: "Upgrade OpenEBS installed using operator.yaml(Not using Director)"
@@ -147,7 +162,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS ControlPlane Components"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoc03
     name: "Upgrade of control plane(1.6) which is lower version of Data plane (1.7)"
@@ -156,7 +172,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS ControlPlane Components"
       test/priority: "P2"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuoc04
     name: "Upgrade of control plane(1.7) which is higher version of Data plane(1.6)"
@@ -165,7 +182,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS ControlPlane Components"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod01
     name: "Upgrade OpenEBS Pool and volume installed by Director"
@@ -175,7 +193,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P0"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod02
     name: "Upgrade OpenEBS Pool and Volume installed using operator.yaml(Not using Director)"
@@ -185,7 +204,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod03
     name: "Upgrade OpenEBS Pool and Volume installed using Helm(Not using Director)"
@@ -195,7 +215,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P2"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod04
     name: "Upgrade of data plane with higher version of control plane --  Dataplane 1.7 Control plane 1.6"
@@ -205,7 +226,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/storageEgnine: "cStor"
       test/priority: "P2"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod05
     name: "Upgrade of data plane with lower version of control plan -- Dataplane 1.6 Control plane 1.7"
@@ -215,7 +237,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P2"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod06
     name: "Upgrade of data plane with same version of control plane -- Dataplane 1.7 Control plane 1.7"
@@ -225,7 +248,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P2"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod07
     name: "Upgrade cStor Pools (CSPC)  select one CSPC"
@@ -235,7 +259,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P0"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod08
     name: "Upgrade cStor Pools (CSPC)  select multiple CSPC"
@@ -245,7 +270,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod09
     name: "Upgrade a single pool with in a CSPC"
@@ -255,7 +281,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod10
     name: "Upgrade multiple pools with in a CSPC"
@@ -265,7 +292,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P0"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod11
     name: "Upgrade multiple pools across two CSPC"
@@ -275,7 +303,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod12
     name: "Upgrade one application consuming cStor volume cStor"
@@ -285,7 +314,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P0"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod13
     name: "Upgrade one application consuming multiple cStor volumes"
@@ -295,7 +325,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod14
     name: "Upgrade one application consuming multiple storage engines cstor and Jiva"
@@ -305,7 +336,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor/Jiva"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod15
     name: "Upgrade mulitple application from same CSPC"
@@ -315,7 +347,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod16
     name: "Upgrade multiple applications across CSPC"
@@ -325,7 +358,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod17
     name: "Upgrade application Volumes to higher version(1.7) than cStor Pool of lower version (1.6)"
@@ -335,7 +369,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P2"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod18
     name: "Select upgrade of same pool while upgrade is in progress"
@@ -345,7 +380,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P2"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod19
     name: "Select upgrade of different pool while upgrade is in progress"
@@ -355,7 +391,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod20
     name: "Upgrade a pool when the pool pod is in not running"
@@ -365,7 +402,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod21
     name: "Upgrade a CSPC when one of the pool pod is in not running"
@@ -375,7 +413,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod22
     name: "Upgrade a CSPC when all the pool pod is in not running"
@@ -385,7 +424,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P2"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod23
     name: "Upgrade the application with 3 replicas when all pool pods are running"
@@ -395,7 +435,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod24
     name: "Upgrade the application with 3 replicas when one pool pods is not running"
@@ -405,7 +446,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod25
     name: "Upgrade the application with 3 replicas when two pool pods is not running"
@@ -415,7 +457,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P2"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod26
     name: "Upgrade the application with 3 replicas when three(all) pool pods is not running"
@@ -425,7 +468,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P2"
       test/storageEgnine: "cStor"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod27
     name: "Upgrade the application with 3 replicas when all replica pods are running"
@@ -435,7 +479,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P0"
       test/storageEgnine: "Jiva"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod28
     name: "Upgrade the application with 3 replicas when one replica pods is not running"
@@ -445,7 +490,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "Jiva"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod29
     name: "Upgrade the application with 3 replicas when two replica pods is not running"
@@ -455,7 +501,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P2"
       test/storageEgnine: "Jiva"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod30
     name: "Upgrade the application with 3 replicas when all replica pods is not running"
@@ -465,7 +512,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "Jiva"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod31
     name: "Upgrade one application consuming multiple jiva volumes"
@@ -475,7 +523,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P0"
       test/storageEgnine: "Jiva"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: iuod32
     name: "Upgrade one application having single replica jiva volume"
@@ -485,7 +534,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "Jiva"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: triv01
     name: "Invite a user as Project Admin"
@@ -494,7 +544,8 @@ spec:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Invite"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: triv02
     name: "Invite a user as Project ReadOnly Admin"
@@ -503,7 +554,8 @@ spec:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Invite"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: triv03
     name: "Invite a user as Project Member"
@@ -512,7 +564,8 @@ spec:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Invite"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
  
   - tcid: trrc01
     name: "Change role by Project Owner"
@@ -521,7 +574,8 @@ spec:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: trrc02
     name: "Change role of Project Member"
@@ -530,7 +584,8 @@ spec:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: trrc03
     name: "Change role of Project ReadOnly Admin"
@@ -539,7 +594,8 @@ spec:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
   
   - tcid: trrc04
     name: "Change role of Project Admin"
@@ -548,7 +604,8 @@ spec:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: trrc05
     name: "Change role of Project Member to self"
@@ -557,7 +614,8 @@ spec:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
   - tcid: trrc06
     name: "Change role of Project Member to Project Owner"
@@ -566,7 +624,8 @@ spec:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
 
 ###### Abbreviations
 #Details of abbreviation in readme file master-plan.md , One of the example as below
