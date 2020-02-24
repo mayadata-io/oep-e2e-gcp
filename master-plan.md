@@ -11,25 +11,27 @@ spec:
   tests:
   ### Installation of OpenEBS
   - tcid: "IUOI01"
-    name: "Install OpenEBS on a Onprem Cluster"
+    name: "Install OpenEBS on a Director Onprem Cluster"
     description: "Test the components are installed properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P0"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: Add the actual link to TC readme"
+      test/status: "Not Automated"
+
 
   - tcid: "IUOI02"
-    name: "Install OpenEBS on a K8S Cluster connected to Onprem Cluster"
+    name: "Install OpenEBS on a K8S Cluster connected to Director Onprem Cluster"
     description: "Optional skipping here"
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P0"
-      git/location: "https://github.com/mayadata-io/oep-e2e-gcp"
+      git/location: "Add the actual link to TC readme"
+      test/status: "Not Automated"
+
 ```
-
-
 
 
 ## Schema format
@@ -63,5 +65,7 @@ Example
 ##### `name` --  test case name
 ##### `description` -- Testcase description
 ##### `test/subFeature` -- Testcase belong which sub component/feature
-##### `test/priority` -- Testcase priority to decide how early it has to be automated
+##### `test/priority` -- Testcase priority to decide how early it has to be automated. It can have values 0 to 3 where 0 is highest and 3 being lowest.
 ##### `git/location` -- Location where testcase has been place (link with readme)
+##### `test/status` -- Status of TC whether automated or not automated
+
