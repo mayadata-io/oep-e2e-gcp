@@ -7,7 +7,7 @@ spec:
   ### Installation of OpenEBS
   - tcid: iuoi01
     name: "Install OpenEBS on a Director Onprem Cluster"
-l    description: "Test the components are installed properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
+    description: "Test the components are installed properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
