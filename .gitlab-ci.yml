@@ -13,14 +13,14 @@ stages:
   - TOPOLOGY-CHECK
   - OPENEBS-INSTALL-CHECK
   - OPENEBS-UPGRADE-CHECK
-  - E2E-METRICS                ## This stage is fixed and should not be changed
+  - E2E-METRICS ## This stage is fixed and should not be changed
   - CLUSTER-CLEANUP
 
 ## Setup the kubernetes cluster
 cluster-create:
   image: harshshekhar15/gitlab-job:v1
   stage: CLUSTER-SETUP
-  script: 
+  script:
     - chmod 755 ./stages/1-cluster-setup/gcp
     - ./stages/1-cluster-setup/gcp
   artifacts:
@@ -34,22 +34,22 @@ director-deploy:
   stage: PROVIDER-INFRA-SETUP
   dependencies:
     - cluster-create
-  script: 
-   - chmod 755 ./stages/2-provider-infra-setup/infra-setup
-   - ./stages/2-provider-infra-setup/infra-setup
+  script:
+    - chmod 755 ./stages/2-provider-infra-setup/infra-setup
+    - ./stages/2-provider-infra-setup/infra-setup
   artifacts:
     paths:
       - .kube/
-   
+
 ## director health check jobs
 maya-io-server-check:
   image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
-   - chmod 755 ./stages/3-director-sanity-check/maya-io-server-check
-   - ./stages/3-director-sanity-check/maya-io-server-check
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/maya-io-server-check
+    - ./stages/3-director-sanity-check/maya-io-server-check
   artifacts:
     paths:
       - .kube/
@@ -59,7 +59,7 @@ maya-ui-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/maya-ui-check
     - ./stages/3-director-sanity-check/maya-ui-check
   artifacts:
@@ -71,7 +71,7 @@ od-elasticsearch-logging-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/od-elasticsearch-logging-check
     - ./stages/3-director-sanity-check/od-elasticsearch-logging-check
   artifacts:
@@ -83,19 +83,19 @@ od-kibana-logging-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/od-kibana-logging-check
     - ./stages/3-director-sanity-check/od-kibana-logging-check
   artifacts:
     paths:
       - .kube/
-      
+
 table-manager-check:
   image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/table-manager-check
     - ./stages/3-director-sanity-check/table-manager-check
   artifacts:
@@ -107,7 +107,7 @@ chat-server-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/chat-server-check
     - ./stages/3-director-sanity-check/chat-server-check
   artifacts:
@@ -119,7 +119,7 @@ cloud-agent-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/cloud-agent-check
     - ./stages/3-director-sanity-check/cloud-agent-check
   artifacts:
@@ -131,7 +131,7 @@ mysql-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/mysql-check
     - ./stages/3-director-sanity-check/mysql-check
   artifacts:
@@ -143,7 +143,7 @@ maya-grafana-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/maya-grafana-check
     - ./stages/3-director-sanity-check/maya-grafana-check
   artifacts:
@@ -155,7 +155,7 @@ memcached-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/memcached-check
     - ./stages/3-director-sanity-check/memcached-check
   artifacts:
@@ -168,7 +168,7 @@ alertstore-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/alertstore-check
     - ./stages/3-director-sanity-check/alertstore-check
   artifacts:
@@ -180,7 +180,7 @@ alertstore-tablemanager-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/alertstore-tablemanager-check
     - ./stages/3-director-sanity-check/alertstore-tablemanager-check
   artifacts:
@@ -192,7 +192,7 @@ alertmanager-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/alertmanager-check
     - ./stages/3-director-sanity-check/alertmanager-check
   artifacts:
@@ -204,7 +204,7 @@ cassandra-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/cassandra-check
     - ./stages/3-director-sanity-check/cassandra-check
   artifacts:
@@ -216,7 +216,7 @@ distributor-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/distributor-check
     - ./stages/3-director-sanity-check/distributor-check
   artifacts:
@@ -228,7 +228,7 @@ ingestor-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/ingestor-check
     - ./stages/3-director-sanity-check/ingestor-check
   artifacts:
@@ -240,7 +240,7 @@ querier-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/querier-check
     - ./stages/3-director-sanity-check/querier-check
   artifacts:
@@ -252,7 +252,7 @@ ruler-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/ruler-check
     - ./stages/3-director-sanity-check/ruler-check
   artifacts:
@@ -264,7 +264,7 @@ configs-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/configs-check
     - ./stages/3-director-sanity-check/configs-check
   artifacts:
@@ -276,7 +276,7 @@ configs-db-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/configs-db-check
     - ./stages/3-director-sanity-check/configs-db-check
   artifacts:
@@ -288,7 +288,7 @@ ingress-nginx-check:
   stage: DIRECTOR-HEALTH-CHECK
   dependencies:
     - director-deploy
-  script: 
+  script:
     - chmod 755 ./stages/3-director-sanity-check/ingress-nginx-check
     - ./stages/3-director-sanity-check/ingress-nginx-check
   artifacts:
@@ -300,89 +300,89 @@ cluster-setup-check:
   stage: USER-CLUSTER-SETUP
   dependencies:
     - director-deploy
-  script: 
-   - chmod 755 ./stages/4-user-cluster-setup/cluster-create-check
-   - ./stages/4-user-cluster-setup/cluster-create-check
+  script:
+    - chmod 755 ./stages/4-user-cluster-setup/cluster-create-check
+    - ./stages/4-user-cluster-setup/cluster-create-check
   artifacts:
     when: always
     paths:
       - .kube/
       - .gcp/
- 
+
 create-apikey-check:
   image: harshshekhar15/gitlab-job:v1
   stage: USER-CLUSTER-CONNECT
   dependencies:
     - cluster-setup-check
-  script: 
-   - chmod 755 ./stages/5-cluster-connect-check/create-apikey-check
-   - ./stages/5-cluster-connect-check/create-apikey-check
-  
+  script:
+    - chmod 755 ./stages/5-cluster-connect-check/create-apikey-check
+    - ./stages/5-cluster-connect-check/create-apikey-check
+
 cluster-connect-check:
   image: harshshekhar15/gitlab-job:v1
   stage: USER-CLUSTER-CONNECT
   dependencies:
     - cluster-setup-check
-  script: 
-   - chmod 755 ./stages/5-cluster-connect-check/cluster-connect-check
-   - ./stages/5-cluster-connect-check/cluster-connect-check
+  script:
+    - chmod 755 ./stages/5-cluster-connect-check/cluster-connect-check
+    - ./stages/5-cluster-connect-check/cluster-connect-check
   artifacts:
     when: always
     paths:
       - .kube/
       - .gcp/
-  
+
 client-components-check:
   image: harshshekhar15/gitlab-job:v1
   stage: USER-CLUSTER-CONNECT
   dependencies:
     - cluster-setup-check
-  script: 
-   - chmod 755 ./stages/5-cluster-connect-check/client-components-check
-   - ./stages/5-cluster-connect-check/client-components-check
+  script:
+    - chmod 755 ./stages/5-cluster-connect-check/client-components-check
+    - ./stages/5-cluster-connect-check/client-components-check
 
 metrics-check:
   image: harshshekhar15/gitlab-job:v1
   stage: METRICS-CHECK
   dependencies:
     - cluster-setup-check
-  script: 
-   - chmod 755 ./stages/6-metrics-check/metrics-check
-   - ./stages/6-metrics-check/metrics-check
+  script:
+    - chmod 755 ./stages/6-metrics-check/metrics-check
+    - ./stages/6-metrics-check/metrics-check
 
 teaming-invite-check:
   image: harshshekhar15/gitlab-job:v1
   stage: TEAMING-CHECK
   dependencies:
     - cluster-setup-check
-  script: 
-   - chmod 755 ./stages/7-teaming-check/teaming-invite-check
-   - ./stages/7-teaming-check/teaming-invite-check
+  script:
+    - chmod 755 ./stages/7-teaming-check/teaming-invite-check
+    - ./stages/7-teaming-check/teaming-invite-check
 
 teaming-change-role-check:
   image: harshshekhar15/gitlab-job:v1
   stage: TEAMING-CHECK
   dependencies:
     - cluster-setup-check
-  script: 
-   - chmod 755 ./stages/7-teaming-check/teaming-change-role-check
-   - ./stages/7-teaming-check/teaming-change-role-check
+  script:
+    - chmod 755 ./stages/7-teaming-check/teaming-change-role-check
+    - ./stages/7-teaming-check/teaming-change-role-check
 
 teaming-change-role-negative-check:
   image: harshshekhar15/gitlab-job:v1
   stage: TEAMING-CHECK
   dependencies:
     - cluster-setup-check
-  script: 
-   - chmod 755 ./stages/7-teaming-check/teaming-change-role-negative-check
-   - ./stages/7-teaming-check/teaming-change-role-negative-check
+  script:
+    - chmod 755 ./stages/7-teaming-check/teaming-change-role-negative-check
+    - ./stages/7-teaming-check/teaming-change-role-negative-check
 
 topology-check:
   image: atulabhi/kops:v8
   stage: TOPOLOGY-CHECK
   dependencies:
     - cluster-setup-check
-  script: 
+  script:
     - chmod 755 ./stages/8-topology-check/topology-check
     - ./stages/8-topology-check/topology-check
 
@@ -392,33 +392,42 @@ tcid-iuoi02-openebs-install-check:
   stage: OPENEBS-INSTALL-CHECK
   dependencies:
     - cluster-setup-check
-  script: 
+  script:
     - chmod 755 ./stages/9-openebs-install-check/openebs-install-check
     - ./stages/9-openebs-install-check/openebs-install-check
 
-## Openebs Upgrade Check
-openebs-upgrade-check:
+## Pool Upgrade Check
+pool-upgrade-check:
   image: harshshekhar15/gitlab-job:v1
-  stage: OPENEBS-UPGRADE-CHECK
+  stage: POOL-UPGRADE-CHECK
   dependencies:
     - cluster-setup-check
-  script: 
-    - chmod 755 ./stages/10-openebs-upgrade-check/openebs-upgrade-check
-    - ./stages/10-openebs-upgrade-check/openebs-upgrade-check
+  script:
+    - chmod 755 ./stages/8-openebs-upgrade-check/pool-upgrade-check
+    - ./stages/8-openebs-upgrade-check/pool-upgrade-check
 
+## Volume Upgrade Check
+volume-upgrade-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: VOLUME-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/8-openebs-upgrade-check/volume-upgrade-check
+    - ./stages/8-openebs-upgrade-check/volume-upgrade-check
 
 e2e-metrics:
   image: harshshekhar15/gitlab-job:v1
   stage: E2E-METRICS
   dependencies:
     - cluster-create
-  script: 
+  script:
     - chmod 755 ./stages/11-e2e-metrics/e2e-metrics
     - ./stages/11-e2e-metrics/e2e-metrics
   artifacts:
     paths:
       - .kube/
-    
+
 ## cluster cleanup
 cluster-cleanup:
   when: always
@@ -426,7 +435,7 @@ cluster-cleanup:
   dependencies:
     - cluster-create
   stage: CLUSTER-CLEANUP
-  script: 
+  script:
     - chmod 755 ./stages/12-cluster-cleanup/cluster-cleanup
     - ./stages/12-cluster-cleanup/cluster-cleanup
 
@@ -437,6 +446,6 @@ user-cluster-cleanup:
   dependencies:
     - cluster-setup-check
   stage: CLUSTER-CLEANUP
-  script: 
+  script:
     - chmod 755 ./stages/12-cluster-cleanup/user-cluster-cleanup
     - ./stages/12-cluster-cleanup/user-cluster-cleanup
