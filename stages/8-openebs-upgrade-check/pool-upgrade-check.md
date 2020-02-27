@@ -1,6 +1,6 @@
 # pool-upgrade check
 
-The following checks are performed on pool-upgrade:
+The following steps are performed on pool-upgrade:
 
 - Check whether all the pool pods are in `Running` state before starting upgrade
 - Upgrade OpenEBS control plane

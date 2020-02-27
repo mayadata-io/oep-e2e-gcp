@@ -399,7 +399,7 @@ tcid-iuoi02-openebs-install-check:
 ## Pool Upgrade Check
 pool-upgrade-check:
   image: harshshekhar15/gitlab-job:v1
-  stage: POOL-UPGRADE-CHECK
+  stage: OPENEBS-UPGRADE-CHECK
   dependencies:
     - cluster-setup-check
   script:
@@ -409,7 +409,7 @@ pool-upgrade-check:
 ## Volume Upgrade Check
 volume-upgrade-check:
   image: harshshekhar15/gitlab-job:v1
-  stage: VOLUME-UPGRADE-CHECK
+  stage: OPENEBS-UPGRADE-CHECK
   dependencies:
     - cluster-setup-check
   script:
