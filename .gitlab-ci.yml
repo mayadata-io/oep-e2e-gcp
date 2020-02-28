@@ -11,6 +11,7 @@ stages:
   - USER-CLUSTER-CONNECT
   - METRICS-CHECK
   - TEAMING-CHECK
+  - OPENEBS-INSTALL-CHECK
   - OPENEBS-UPGRADE-CHECK
   - CLUSTER-CLEANUP
 
@@ -399,6 +400,18 @@ teaming-change-role-negative-check:
 #     paths:
 #       - .kube/
 
+
+## Openebs install check
+openebs-install-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/8-openebs-install-check/openebs-install-check
+    - ./stages/8-openebs-install-check/openebs-install-check
+   
+
 ## Openebs Upgrade Check
 openebs-upgrade-check:
   image: harshshekhar15/gitlab-job:v1
@@ -406,8 +419,8 @@ openebs-upgrade-check:
   dependencies:
     - cluster-setup-check
   script: 
-    - chmod 755 ./stages/8-openebs-upgrade-check/openebs-upgrade-check
-    - ./stages/8-openebs-upgrade-check/openebs-upgrade-check
+    - chmod 755 ./stages/9-openebs-upgrade-check/openebs-upgrade-check
+    - ./stages/9-openebs-upgrade-check/openebs-upgrade-check
     
 ## cluster cleanup
 cluster-cleanup:
@@ -417,8 +430,8 @@ cluster-cleanup:
     - cluster-create
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./stages/9-cluster-cleanup/cluster-cleanup
-    - ./stages/9-cluster-cleanup/cluster-cleanup
+    - chmod 755 ./stages/10-cluster-cleanup/cluster-cleanup
+    - ./stages/10-cluster-cleanup/cluster-cleanup
 
 ## user cluster cleanup
 user-cluster-cleanup:
@@ -428,5 +441,5 @@ user-cluster-cleanup:
     - cluster-setup-check
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./stages/9-cluster-cleanup/user-cluster-cleanup
-    - ./stages/9-cluster-cleanup/user-cluster-cleanup
+    - chmod 755 ./stages/10-cluster-cleanup/user-cluster-cleanup
+    - ./stages/10-cluster-cleanup/user-cluster-cleanup
