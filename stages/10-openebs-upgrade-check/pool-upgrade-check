@@ -17,25 +17,37 @@ kubectl get po -n openebs
 git clone https://$username:$password@github.com/mayadata-io/oep.git
 cd oep
 
-######################
-##   Running test   ##
-######################
+#####################################
+##   Sqeuencing and Running test   ##
+#####################################
 
-kubectl create -f litmus/director/openebs-upgrade/run_litmus_test.yml
+bash utils/e2e-cr jobname:pool-upgrade-check jobphase:Waiting
+bash utils/e2e-cr jobname:pool-upgrade-check jobphase:Running
+bash utils/e2e-cr jobname:volume-upgrade-check jobphase:Waiting
+
+kubectl create -f litmus/director/pool-upgrade/run_litmus_test.yml
 kubectl get pods -n litmus
-test_name=openebs-upgrade-check
+
+test_name=pool-upgrade-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
+
 job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
+
 while [[ "$job_status" != "Completed" ]]
 do 
     job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
     sleep 6
 done
+
 kubectl logs -f $litmus_pod -n litmus
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
-if [ "$testResult" != Pass ]; then 
-exit 1; 
+
+if [ "$testResult" != Pass ]
+then 
+    exit 1;
+else
+    bash utils/e2e-cr jobname:pool-upgrade-check jobphase:Completed
 fi

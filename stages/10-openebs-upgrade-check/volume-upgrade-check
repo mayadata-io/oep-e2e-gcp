@@ -1,0 +1,52 @@
+#!/bin/bash
+
+set -ex
+
+######################
+##   Prerequisites  ##
+######################
+
+path=$(pwd)
+# Copy kubeconfig
+mkdir ~/.kube
+cp  $path/.gcp/config ~/.kube/config
+
+kubectl get po -n openebs
+
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep.git
+cd oep
+
+####################################
+##  Sequencing and Running test   ##
+####################################
+
+bash utils/pooling jobname:pool-upgrade-check
+bash utils/e2e-cr jobname:volume-upgrade-check jobphase:Running
+
+kubectl create -f litmus/director/volume-upgrade/run_litmus_test.yml
+kubectl get pods -n litmus
+
+test_name=volume-upgrade-check
+echo $test_name
+litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
+echo $litmus_pod
+
+job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
+
+while [[ "$job_status" != "Completed" ]]
+do 
+    job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
+    sleep 6
+done
+
+kubectl logs -f $litmus_pod -n litmus
+testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
+echo $testResult
+
+if [ "$testResult" != Pass ]
+then 
+    exit 1;
+else
+    bash utils/e2e-cr jobname:volume-upgrade-check jobphase:Completed
+fi
