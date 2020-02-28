@@ -9,8 +9,7 @@ set -ex
 path=$(pwd)
 # Copy kubeconfig
 mkdir ~/.kube
-cp  $path/.gcp/config ~/.kube/config
-
+cp $path/.kube/config ~/.kube/config
 kubectl get po -n openebs
 
 # Cloning oep repository which contains all the test scripts
@@ -21,9 +20,9 @@ cd oep
 ##   Running test   ##
 ######################
 
-kubectl create -f litmus/director/openebs-data-plane-test/run_litmus_test.yml
+kubectl create -f litmus/director/openebs-self-install/run_litmus_test.yml
 kubectl get pods -n litmus
-test_name=openebs-data-plane-test
+test_name=openebs-self-install
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
