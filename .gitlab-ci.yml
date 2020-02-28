@@ -13,7 +13,7 @@ stages:
   - TOPOLOGY-CHECK
   - OPENEBS-INSTALL-CHECK
   - OPENEBS-UPGRADE-CHECK
-  - E2E-METRICS
+  - E2E-METRICS                ## This stage is fixed and should not be changed
   - CLUSTER-CLEANUP
 
 ## Setup the kubernetes cluster
