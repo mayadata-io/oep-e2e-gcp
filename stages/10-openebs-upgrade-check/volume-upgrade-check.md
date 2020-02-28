@@ -8,7 +8,7 @@ Test-setup Details:
 - OpenEBS target version : 1.5.0
 - Storage Engine: cStor
 - Pools Count: 3
-- Application Deployed: 1
+- Application Available: 1
 - Volumes Count: 1
 - Volume replicas: 3
 - DOP used: Yes

@@ -403,8 +403,8 @@ pool-upgrade-check:
   dependencies:
     - cluster-setup-check
   script:
-    - chmod 755 ./stages/8-openebs-upgrade-check/pool-upgrade-check
-    - ./stages/8-openebs-upgrade-check/pool-upgrade-check
+    - chmod 755 ./stages/10-openebs-upgrade-check/pool-upgrade-check
+    - ./stages/10-openebs-upgrade-check/pool-upgrade-check
 
 ## Volume Upgrade Check
 volume-upgrade-check:
@@ -413,8 +413,8 @@ volume-upgrade-check:
   dependencies:
     - cluster-setup-check
   script:
-    - chmod 755 ./stages/8-openebs-upgrade-check/volume-upgrade-check
-    - ./stages/8-openebs-upgrade-check/volume-upgrade-check
+    - chmod 755 ./stages/10-openebs-upgrade-check/volume-upgrade-check
+    - ./stages/10-openebs-upgrade-check/volume-upgrade-check
 
 e2e-metrics:
   image: harshshekhar15/gitlab-job:v1
