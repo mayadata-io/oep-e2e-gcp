@@ -12,6 +12,7 @@ stages:
   - METRICS-CHECK
   - TEAMING-CHECK
   - OPENEBS-UPGRADE-CHECK
+  - OPENEBS-INSTALLATION-CHECK
   - CLUSTER-CLEANUP
 
 ## Setup the kubernetes cluster
@@ -408,6 +409,36 @@ openebs-upgrade-check:
   script: 
     - chmod 755 ./stages/8-openebs-upgrade-check/openebs-upgrade-check
     - ./stages/8-openebs-upgrade-check/openebs-upgrade-check
+
+## Openebs control plane installation Check
+openebs-control-plane-test:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALLATION-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-installation-check/openebs-control-plane-test
+    - ./stages/9-openebs-installation-check/openebs-control-plane-test
+
+## Openebs data plane installation Check
+openebs-data-plane-test:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALLATION-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-installation-check/openebs-data-plane-test
+    - ./stages/9-openebs-installation-check/openebs-data-plane-test
+
+## Openebs installation on DOP cluster
+openebs-self-install:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALLATION-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-installation-check/openebs-self-installation-check
+    - ./stages/9-openebs-installation-check/openebs-self-installation-check
     
 ## cluster cleanup
 cluster-cleanup:
@@ -417,8 +448,8 @@ cluster-cleanup:
     - cluster-create
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./stages/9-cluster-cleanup/cluster-cleanup
-    - ./stages/9-cluster-cleanup/cluster-cleanup
+    - chmod 755 ./stages/10-cluster-cleanup/cluster-cleanup
+    - ./stages/10-cluster-cleanup/cluster-cleanup
 
 ## user cluster cleanup
 user-cluster-cleanup:
@@ -428,5 +459,5 @@ user-cluster-cleanup:
     - cluster-setup-check
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./stages/9-cluster-cleanup/user-cluster-cleanup
-    - ./stages/9-cluster-cleanup/user-cluster-cleanup
+    - chmod 755 ./stages/10-cluster-cleanup/user-cluster-cleanup
+    - ./stages/10-cluster-cleanup/user-cluster-cleanup
