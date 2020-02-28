@@ -5,14 +5,15 @@
 stages:
   - CLUSTER-SETUP
   - PROVIDER-INFRA-SETUP
-  - E2E-METRICS
   - DIRECTOR-HEALTH-CHECK
   - USER-CLUSTER-SETUP
   - USER-CLUSTER-CONNECT
   - METRICS-CHECK
   - TEAMING-CHECK
   - TOPOLOGY-CHECK
+  - OPENEBS-INSTALL-CHECK
   - OPENEBS-UPGRADE-CHECK
+  - E2E-METRICS
   - CLUSTER-CLEANUP
 
 ## Setup the kubernetes cluster
@@ -36,18 +37,6 @@ director-deploy:
   script: 
    - chmod 755 ./stages/2-provider-infra-setup/infra-setup
    - ./stages/2-provider-infra-setup/infra-setup
-  artifacts:
-    paths:
-      - .kube/
-
-e2e-metrics:
-  image: harshshekhar15/gitlab-job:v1
-  stage: E2E-METRICS
-  dependencies:
-    - cluster-create
-  script: 
-   - chmod 755 ./stages/e2e-metrics/e2e-metrics
-   - ./stages/e2e-metrics/e2e-metrics
   artifacts:
     paths:
       - .kube/
@@ -312,8 +301,8 @@ cluster-setup-check:
   dependencies:
     - director-deploy
   script: 
-   - chmod 755 ./stages/4-cluster-setup/cluster-create-check
-   - ./stages/4-cluster-setup/cluster-create-check
+   - chmod 755 ./stages/4-user-cluster-setup/cluster-create-check
+   - ./stages/4-user-cluster-setup/cluster-create-check
   artifacts:
     when: always
     paths:
@@ -397,17 +386,15 @@ topology-check:
     - chmod 755 ./stages/8-topology-check/topology-check
     - ./stages/8-topology-check/topology-check
 
-# self-connect-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-FUNCTIONALITY-CHECK
-#   when: on_success
-#   script: 
-#    - chmod 755 ./stages/4-director-functionality-check/self-connect-check
-#    - ./stages/4-director-functionality-check/self-connect-check
-#   artifacts:
-#     when: always
-#     paths:
-#       - .kube/
+## Openebs install check
+tcid-iuoi02-openebs-install-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-install-check
+    - ./stages/9-openebs-install-check/openebs-install-check
 
 ## Openebs Upgrade Check
 openebs-upgrade-check:
@@ -416,8 +403,21 @@ openebs-upgrade-check:
   dependencies:
     - cluster-setup-check
   script: 
-    - chmod 755 ./stages/9-openebs-upgrade-check/openebs-upgrade-check
-    - ./stages/9-openebs-upgrade-check/openebs-upgrade-check
+    - chmod 755 ./stages/10-openebs-upgrade-check/openebs-upgrade-check
+    - ./stages/10-openebs-upgrade-check/openebs-upgrade-check
+
+
+e2e-metrics:
+  image: harshshekhar15/gitlab-job:v1
+  stage: E2E-METRICS
+  dependencies:
+    - cluster-create
+  script: 
+    - chmod 755 ./stages/11-e2e-metrics/e2e-metrics
+    - ./stages/11-e2e-metrics/e2e-metrics
+  artifacts:
+    paths:
+      - .kube/
     
 ## cluster cleanup
 cluster-cleanup:
@@ -427,8 +427,8 @@ cluster-cleanup:
     - cluster-create
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./stages/10-cluster-cleanup/cluster-cleanup
-    - ./stages/10-cluster-cleanup/cluster-cleanup
+    - chmod 755 ./stages/12-cluster-cleanup/cluster-cleanup
+    - ./stages/12-cluster-cleanup/cluster-cleanup
 
 ## user cluster cleanup
 user-cluster-cleanup:
@@ -438,5 +438,5 @@ user-cluster-cleanup:
     - cluster-setup-check
   stage: CLUSTER-CLEANUP
   script: 
-    - chmod 755 ./stages/10-cluster-cleanup/user-cluster-cleanup
-    - ./stages/10-cluster-cleanup/user-cluster-cleanup
+    - chmod 755 ./stages/12-cluster-cleanup/user-cluster-cleanup
+    - ./stages/12-cluster-cleanup/user-cluster-cleanup
