@@ -396,6 +396,16 @@ tcid-iuoi02-openebs-install-check:
     - chmod 755 ./stages/9-openebs-install-check/openebs-install-check
     - ./stages/9-openebs-install-check/openebs-install-check
 
+## Openebs control plane installation Check
+tcid-iuoi03-openebs-control-plane-test:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-control-plane-test
+    - ./stages/9-openebs-install-check/openebs-control-plane-test
+
 ## Pool Upgrade Check
 tcid-iuod08-pool-upgrade-check:
   image: harshshekhar15/gitlab-job:v1
