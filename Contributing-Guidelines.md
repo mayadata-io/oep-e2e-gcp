@@ -17,9 +17,9 @@ Once contributor picks the TCs, would be performing the following tasks
 1. Issue would be created with [tcid] mentioned [.master-plan.yaml](.master-plan.yaml)
 2. Issue would be added with label e2e-wip and e2e-test-pX, where X can have the value 0 to 3 i.e TC priority. 
 3. TC automation would be termed e2e-dev-complete post the following tasks would be done
+   - Readme update
    - Automation code
    - Gitlab yaml update which would be used to call TC in the pipeline
-   - Readme update
 4. Review would be done by peer and merged. A label e2e-complete will be added to the issue
 5. Once the TC runs successfully in the pipeline, TC status would be changed to Automated.
 
