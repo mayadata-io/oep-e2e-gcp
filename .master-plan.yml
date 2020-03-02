@@ -306,17 +306,6 @@ spec:
       git/location: "Add the actual link to TC readme"
       test/status: "Not Automated"
 
-  - tcid: iuod12
-    name: "Upgrade one application consuming cStor volume cStor"
-    description: ""
-    labels:
-      test/feature: "Install and Upgrade of OpenEBS"
-      test/subFeature: "Upgrade OpenEBS DataPlane Components"
-      test/priority: "P0"
-      test/storageEgnine: "cStor"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
-
   - tcid: iuod13
     name: "Upgrade one application consuming multiple cStor volumes"
     description: ""
