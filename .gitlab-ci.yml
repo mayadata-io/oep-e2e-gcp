@@ -12,6 +12,7 @@ stages:
   - TEAMING-CHECK
   - TOPOLOGY-CHECK
   - OPENEBS-INSTALL-CHECK
+  - OPENEBS-INSTALL-CHECK
   - OPENEBS-UPGRADE-CHECK
   - E2E-METRICS ## This stage is fixed and should not be changed
   - CLUSTER-CLEANUP
@@ -395,6 +396,17 @@ tcid-iuoi02-openebs-install-check:
   script:
     - chmod 755 ./stages/9-openebs-install-check/openebs-install-check
     - ./stages/9-openebs-install-check/openebs-install-check
+
+## Openebs data plane installation Check
+tcid-iuoi04-openebs-data-plane-test:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-data-plane-test
+    - ./stages/9-openebs-install-check/openebs-data-plane-test
+
 
 ## Pool Upgrade Check
 tcid-iuod08-pool-upgrade-check:
