@@ -29,7 +29,25 @@
 ## Details
 - In this test case we have to upgrade only the `Control Plane` components using operator yml
 
-- `Data Plane` components are not Upgraded 
+- `Data Plane` components are not Upgraded .
+
+- After upgrading the control plane components check whether all the pods are in running state or not.
+
+- All the control plane components should be upgraded. 
+
+## Steps Performed in the test
+
+- Check whether OpenEBS is installed in the cluster or not.
+
+- Also check the status of all the `Data-Plane` and `Control-Plane` components they should be in `running` state.
+
+- Version of OpenEBS should be less then 1.7.0 .
+
+- Now upgrade `Control-Plane` components using operator yml.
+
+- After upgrading `Control-Plane` components check whether all the pods are in `running` state or not.
+
+- If all the `Control Plane` components are in `running` state then test should `pass` otherwise test should `fail`
 
 
 ## Integrations
