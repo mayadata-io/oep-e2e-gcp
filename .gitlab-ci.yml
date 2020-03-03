@@ -417,7 +417,7 @@ tcid-iuod12-volume-upgrade-check:
     - ./stages/10-openebs-upgrade-check/volume-upgrade-check
 
 ## Volume upgrade Jiva Check
-tcid-iuod27-volume-upgrade-jiva-check:
+tcid-iuod27-volume-upgrade-jiva:
   image: harshshekhar15/gitlab-job:v1
   stage: OPENEBS-UPGRADE-CHECK
   dependencies:
