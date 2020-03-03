@@ -25,7 +25,7 @@ bash utils/e2e-cr jobname:pool-upgrade-check jobphase:Waiting
 bash utils/e2e-cr jobname:pool-upgrade-check jobphase:Running
 bash utils/e2e-cr jobname:volume-upgrade-check jobphase:Waiting
 
-kubectl create -f litmus/director/pool-upgrade/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuod08-pool-upgrade/run_litmus_test.yml
 kubectl get pods -n litmus
 
 test_name=pool-upgrade-check
