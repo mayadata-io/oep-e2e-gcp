@@ -386,6 +386,16 @@ topology-check:
     - chmod 755 ./stages/8-topology-check/topology-check
     - ./stages/8-topology-check/topology-check
 
+## Openebs installation on DOP cluster
+tcid-iuoi01-openebs-self-install:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-self-installation-check
+    - ./stages/9-openebs-install-check/openebs-self-installation-check
+    
 ## Openebs install check
 tcid-iuoi02-openebs-install-check:
   image: harshshekhar15/gitlab-job:v1
