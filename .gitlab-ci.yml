@@ -416,6 +416,16 @@ tcid-iuod12-volume-upgrade-check:
     - chmod 755 ./stages/10-openebs-upgrade-check/volume-upgrade-check
     - ./stages/10-openebs-upgrade-check/volume-upgrade-check
 
+## Volume upgrade Jiva Check
+tcid-iuod27-volume-upgrade-jiva:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/10-openebs-upgrade-check/volume-upgrade-jiva-check
+    - ./stages/10-openebs-upgrade-check/volume-upgrade-jiva-check
+
 e2e-metrics:
   when: always
   image: harshshekhar15/gitlab-job:v1
