@@ -5,15 +5,16 @@
 stages:
   - CLUSTER-SETUP
   - PROVIDER-INFRA-SETUP
-  - DIRECTOR-HEALTH-CHECK
-  - USER-CLUSTER-SETUP
-  - USER-CLUSTER-CONNECT
-  - METRICS-CHECK
-  - TEAMING-CHECK
-  - TOPOLOGY-CHECK
-  - OPENEBS-INSTALL-CHECK
-  - OPENEBS-UPGRADE-CHECK
-  - E2E-METRICS ## This stage is fixed and should not be changed
+  # - DIRECTOR-HEALTH-CHECK
+  - DIRECTOR-GUI
+  # - USER-CLUSTER-SETUP
+  # - USER-CLUSTER-CONNECT
+  # - METRICS-CHECK
+  # - TEAMING-CHECK
+  # - TOPOLOGY-CHECK
+  # - OPENEBS-INSTALL-CHECK
+  # - OPENEBS-UPGRADE-CHECK
+  # - E2E-METRICS ## This stage is fixed and should not be changed
   - CLUSTER-CLEANUP
 
 ## Setup the kubernetes cluster
@@ -294,6 +295,18 @@ ingress-nginx-check:
   artifacts:
     paths:
       - .kube/
+
+  gui-check:
+    image: harshshekhar15/gitlab-job:v1
+    stage: DIRECTOR-GUI
+    dependencies:
+      - director-deploy
+    script:
+      - chmod 755 ./stages/director-gui-check/gui-automation-check
+      - ./stages/director-gui-check/gui-automation-check
+    artifacts:
+      paths:
+        - .kube/
 
 cluster-setup-check:
   image: harshshekhar15/gitlab-job:v1
