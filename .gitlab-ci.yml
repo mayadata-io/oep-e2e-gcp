@@ -397,7 +397,7 @@ tcid-iuoi02-openebs-install-check:
     - ./stages/9-openebs-install-check/openebs-install-check
 
 ## Pool Upgrade Check
-tcid-iuod08-pool-upgrade-check:
+tcid-iuod08-pool-upgrade:
   image: harshshekhar15/gitlab-job:v1
   stage: OPENEBS-UPGRADE-CHECK
   dependencies:
