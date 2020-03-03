@@ -17,18 +17,14 @@ kubectl get po -n openebs
 git clone https://$username:$password@github.com/mayadata-io/oep.git
 cd oep
 
-#####################################
-##   Sqeuencing and Running test   ##
-#####################################
+####################################
+##  Sequencing and Running test   ##
+####################################
 
-bash utils/e2e-cr jobname:pool-upgrade-check jobphase:Waiting
-bash utils/e2e-cr jobname:pool-upgrade-check jobphase:Running
-bash utils/e2e-cr jobname:volume-upgrade-check jobphase:Waiting
-
-kubectl create -f litmus/director/tcid-iuod08-pool-upgrade/run_litmus_test.yml
+kubectl create -f litmus/director/openebs-upgrade-jiva/run_litmus_test.yml
 kubectl get pods -n litmus
 
-test_name=pool-upgrade-check
+test_name=volume-upgrade-jiva-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
@@ -48,6 +44,4 @@ echo $testResult
 if [ "$testResult" != Pass ]
 then 
     exit 1;
-else
-    bash utils/e2e-cr jobname:pool-upgrade-check jobphase:Completed
 fi

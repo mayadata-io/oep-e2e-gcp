@@ -12,7 +12,6 @@ stages:
   - TEAMING-CHECK
   - TOPOLOGY-CHECK
   - OPENEBS-INSTALL-CHECK
-  - OPENEBS-INSTALL-CHECK
   - OPENEBS-UPGRADE-CHECK
   - E2E-METRICS ## This stage is fixed and should not be changed
   - CLUSTER-CLEANUP
@@ -387,6 +386,16 @@ topology-check:
     - chmod 755 ./stages/8-topology-check/topology-check
     - ./stages/8-topology-check/topology-check
 
+## Openebs installation on DOP cluster
+tcid-iuoi01-openebs-self-install:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-self-installation-check
+    - ./stages/9-openebs-install-check/openebs-self-installation-check
+    
 ## Openebs install check
 tcid-iuoi02-openebs-install-check:
   image: harshshekhar15/gitlab-job:v1
@@ -407,9 +416,8 @@ tcid-iuoi04-openebs-data-plane-test:
     - chmod 755 ./stages/9-openebs-install-check/openebs-data-plane-test
     - ./stages/9-openebs-install-check/openebs-data-plane-test
 
-
 ## Pool Upgrade Check
-tcid-iuod08-pool-upgrade-check:
+tcid-iuod08-pool-upgrade:
   image: harshshekhar15/gitlab-job:v1
   stage: OPENEBS-UPGRADE-CHECK
   dependencies:
@@ -427,6 +435,16 @@ tcid-iuod12-volume-upgrade-check:
   script:
     - chmod 755 ./stages/10-openebs-upgrade-check/volume-upgrade-check
     - ./stages/10-openebs-upgrade-check/volume-upgrade-check
+
+## Volume upgrade Jiva Check
+tcid-iuod27-volume-upgrade-jiva:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/10-openebs-upgrade-check/volume-upgrade-jiva-check
+    - ./stages/10-openebs-upgrade-check/volume-upgrade-jiva-check
 
 e2e-metrics:
   when: always
