@@ -23,7 +23,7 @@
 
 - Along with k8s, Litmus should be installed in the cluster.
 - Every component of DOP cluster should be healthy and running.
-- Ensure that the `openebs dataplane and control plane components` are available in the cluster.
+- Ensure that the `openebs data plane and control plane components` are available in the cluster.
 
 
 ## Details
