@@ -296,17 +296,17 @@ ingress-nginx-check:
     paths:
       - .kube/
 
-  gui-check:
-    image: harshshekhar15/gitlab-job:v1
-    stage: DIRECTOR-GUI
-    dependencies:
-      - director-deploy
-    script:
-      - chmod 755 ./stages/director-gui-check/gui-automation-check
-      - ./stages/director-gui-check/gui-automation-check
-    artifacts:
-      paths:
-        - .kube/
+gui-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-GUI
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/director-gui-check/gui-automation-check
+    - ./stages/director-gui-check/gui-automation-check
+  artifacts:
+    paths:
+      - .kube/
 
 cluster-setup-check:
   image: harshshekhar15/gitlab-job:v1
