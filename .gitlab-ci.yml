@@ -302,8 +302,8 @@ gui-check:
   dependencies:
     - director-deploy
   script:
-    - chmod 755 ./stages/director-gui-check/gui-automation-check
-    - ./stages/director-gui-check/gui-automation-check
+    - chmod 755 ./stages/13-director-gui-check/gui-automation-check
+    - ./stages/13-director-gui-check/gui-automation-check
   artifacts:
     paths:
       - .kube/
