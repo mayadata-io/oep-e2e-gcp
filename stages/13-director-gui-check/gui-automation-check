@@ -12,12 +12,8 @@ echo $URL
 # Cloning oep repository which contains all the test scripts
 git clone https://$username:$password@github.com/mayadata-io/gui-automation.git
 cd gui-automation
-ls
 ######################
 ##   Running test  ##
 ######################
-python --version
-which python
-which python3
 pip3 install -r requirements.txt
 pytest -m smoke
