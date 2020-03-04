@@ -16,5 +16,8 @@ ls
 ######################
 ##   Running test  ##
 ######################
-pip install -r requirements.txt
+python --version
+which python
+which python3
+pip3 install -r requirements.txt
 pytest -m smoke
