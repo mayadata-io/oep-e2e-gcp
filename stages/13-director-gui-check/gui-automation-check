@@ -16,4 +16,5 @@ cd gui-automation
 ##   Running test  ##
 ######################
 pip3 install -r requirements.txt
+#Running tests with smoke marker
 pytest -m smoke
