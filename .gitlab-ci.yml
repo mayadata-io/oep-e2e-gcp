@@ -5,16 +5,16 @@
 stages:
   - CLUSTER-SETUP
   - PROVIDER-INFRA-SETUP
-  # - DIRECTOR-HEALTH-CHECK
+  - DIRECTOR-HEALTH-CHECK
   - DIRECTOR-GUI
-  # - USER-CLUSTER-SETUP
-  # - USER-CLUSTER-CONNECT
-  # - METRICS-CHECK
-  # - TEAMING-CHECK
-  # - TOPOLOGY-CHECK
-  # - OPENEBS-INSTALL-CHECK
-  # - OPENEBS-UPGRADE-CHECK
-  # - E2E-METRICS ## This stage is fixed and should not be changed
+  - USER-CLUSTER-SETUP
+  - USER-CLUSTER-CONNECT
+  - METRICS-CHECK
+  - TEAMING-CHECK
+  - TOPOLOGY-CHECK
+  - OPENEBS-INSTALL-CHECK
+  - OPENEBS-UPGRADE-CHECK
+  - E2E-METRICS ## This stage is fixed and should not be changed
   - CLUSTER-CLEANUP
 
 ## Setup the kubernetes cluster
@@ -42,259 +42,259 @@ director-deploy:
     paths:
       - .kube/
 
-## director health check jobs
-# maya-io-server-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/maya-io-server-check
-#     - ./stages/3-director-sanity-check/maya-io-server-check
-#   artifacts:
-#     paths:
-#       - .kube/
+# director health check jobs
+maya-io-server-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/maya-io-server-check
+    - ./stages/3-director-sanity-check/maya-io-server-check
+  artifacts:
+    paths:
+      - .kube/
 
-# maya-ui-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/maya-ui-check
-#     - ./stages/3-director-sanity-check/maya-ui-check
-#   artifacts:
-#     paths:
-#       - .kube/
+maya-ui-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/maya-ui-check
+    - ./stages/3-director-sanity-check/maya-ui-check
+  artifacts:
+    paths:
+      - .kube/
 
-# od-elasticsearch-logging-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/od-elasticsearch-logging-check
-#     - ./stages/3-director-sanity-check/od-elasticsearch-logging-check
-#   artifacts:
-#     paths:
-#       - .kube/
+od-elasticsearch-logging-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/od-elasticsearch-logging-check
+    - ./stages/3-director-sanity-check/od-elasticsearch-logging-check
+  artifacts:
+    paths:
+      - .kube/
 
-# od-kibana-logging-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/od-kibana-logging-check
-#     - ./stages/3-director-sanity-check/od-kibana-logging-check
-#   artifacts:
-#     paths:
-#       - .kube/
+od-kibana-logging-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/od-kibana-logging-check
+    - ./stages/3-director-sanity-check/od-kibana-logging-check
+  artifacts:
+    paths:
+      - .kube/
 
-# table-manager-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/table-manager-check
-#     - ./stages/3-director-sanity-check/table-manager-check
-#   artifacts:
-#     paths:
-#       - .kube/
+table-manager-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/table-manager-check
+    - ./stages/3-director-sanity-check/table-manager-check
+  artifacts:
+    paths:
+      - .kube/
 
-# chat-server-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/chat-server-check
-#     - ./stages/3-director-sanity-check/chat-server-check
-#   artifacts:
-#     paths:
-#       - .kube/
+chat-server-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/chat-server-check
+    - ./stages/3-director-sanity-check/chat-server-check
+  artifacts:
+    paths:
+      - .kube/
 
-# cloud-agent-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/cloud-agent-check
-#     - ./stages/3-director-sanity-check/cloud-agent-check
-#   artifacts:
-#     paths:
-#       - .kube/
+cloud-agent-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/cloud-agent-check
+    - ./stages/3-director-sanity-check/cloud-agent-check
+  artifacts:
+    paths:
+      - .kube/
 
-# mysql-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/mysql-check
-#     - ./stages/3-director-sanity-check/mysql-check
-#   artifacts:
-#     paths:
-#       - .kube/
+mysql-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/mysql-check
+    - ./stages/3-director-sanity-check/mysql-check
+  artifacts:
+    paths:
+      - .kube/
 
-# maya-grafana-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/maya-grafana-check
-#     - ./stages/3-director-sanity-check/maya-grafana-check
-#   artifacts:
-#     paths:
-#       - .kube/
+maya-grafana-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/maya-grafana-check
+    - ./stages/3-director-sanity-check/maya-grafana-check
+  artifacts:
+    paths:
+      - .kube/
 
-# memcached-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/memcached-check
-#     - ./stages/3-director-sanity-check/memcached-check
-#   artifacts:
-#     paths:
-#       - .kube/
+memcached-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/memcached-check
+    - ./stages/3-director-sanity-check/memcached-check
+  artifacts:
+    paths:
+      - .kube/
 
-# ## cortex infrastructure components jobs
-# alertstore-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/alertstore-check
-#     - ./stages/3-director-sanity-check/alertstore-check
-#   artifacts:
-#     paths:
-#       - .kube/
+## cortex infrastructure components jobs
+alertstore-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/alertstore-check
+    - ./stages/3-director-sanity-check/alertstore-check
+  artifacts:
+    paths:
+      - .kube/
 
-# alertstore-tablemanager-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/alertstore-tablemanager-check
-#     - ./stages/3-director-sanity-check/alertstore-tablemanager-check
-#   artifacts:
-#     paths:
-#       - .kube/
+alertstore-tablemanager-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/alertstore-tablemanager-check
+    - ./stages/3-director-sanity-check/alertstore-tablemanager-check
+  artifacts:
+    paths:
+      - .kube/
 
-# alertmanager-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/alertmanager-check
-#     - ./stages/3-director-sanity-check/alertmanager-check
-#   artifacts:
-#     paths:
-#       - .kube/
+alertmanager-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/alertmanager-check
+    - ./stages/3-director-sanity-check/alertmanager-check
+  artifacts:
+    paths:
+      - .kube/
 
-# cassandra-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/cassandra-check
-#     - ./stages/3-director-sanity-check/cassandra-check
-#   artifacts:
-#     paths:
-#       - .kube/
+cassandra-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/cassandra-check
+    - ./stages/3-director-sanity-check/cassandra-check
+  artifacts:
+    paths:
+      - .kube/
 
-# distributor-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/distributor-check
-#     - ./stages/3-director-sanity-check/distributor-check
-#   artifacts:
-#     paths:
-#       - .kube/
+distributor-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/distributor-check
+    - ./stages/3-director-sanity-check/distributor-check
+  artifacts:
+    paths:
+      - .kube/
 
-# ingestor-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/ingestor-check
-#     - ./stages/3-director-sanity-check/ingestor-check
-#   artifacts:
-#     paths:
-#       - .kube/
+ingestor-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/ingestor-check
+    - ./stages/3-director-sanity-check/ingestor-check
+  artifacts:
+    paths:
+      - .kube/
 
-# querier-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/querier-check
-#     - ./stages/3-director-sanity-check/querier-check
-#   artifacts:
-#     paths:
-#       - .kube/
+querier-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/querier-check
+    - ./stages/3-director-sanity-check/querier-check
+  artifacts:
+    paths:
+      - .kube/
 
-# ruler-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/ruler-check
-#     - ./stages/3-director-sanity-check/ruler-check
-#   artifacts:
-#     paths:
-#       - .kube/
+ruler-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/ruler-check
+    - ./stages/3-director-sanity-check/ruler-check
+  artifacts:
+    paths:
+      - .kube/
 
-# configs-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/configs-check
-#     - ./stages/3-director-sanity-check/configs-check
-#   artifacts:
-#     paths:
-#       - .kube/
+configs-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/configs-check
+    - ./stages/3-director-sanity-check/configs-check
+  artifacts:
+    paths:
+      - .kube/
 
-# configs-db-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/configs-db-check
-#     - ./stages/3-director-sanity-check/configs-db-check
-#   artifacts:
-#     paths:
-#       - .kube/
+configs-db-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/configs-db-check
+    - ./stages/3-director-sanity-check/configs-db-check
+  artifacts:
+    paths:
+      - .kube/
 
-# ingress-nginx-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: DIRECTOR-HEALTH-CHECK
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/3-director-sanity-check/ingress-nginx-check
-#     - ./stages/3-director-sanity-check/ingress-nginx-check
-#   artifacts:
-#     paths:
-#       - .kube/
+ingress-nginx-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-HEALTH-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/3-director-sanity-check/ingress-nginx-check
+    - ./stages/3-director-sanity-check/ingress-nginx-check
+  artifacts:
+    paths:
+      - .kube/
 
 gui-check:
   image: harshshekhar15/gitlab-job:v1
@@ -308,179 +308,179 @@ gui-check:
     paths:
       - .kube/
 
-# cluster-setup-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: USER-CLUSTER-SETUP
-#   dependencies:
-#     - director-deploy
-#   script:
-#     - chmod 755 ./stages/4-user-cluster-setup/cluster-create-check
-#     - ./stages/4-user-cluster-setup/cluster-create-check
-#   artifacts:
-#     when: always
-#     paths:
-#       - .kube/
-#       - .gcp/
+cluster-setup-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: USER-CLUSTER-SETUP
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/4-user-cluster-setup/cluster-create-check
+    - ./stages/4-user-cluster-setup/cluster-create-check
+  artifacts:
+    when: always
+    paths:
+      - .kube/
+      - .gcp/
 
-# create-apikey-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: USER-CLUSTER-CONNECT
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/5-cluster-connect-check/create-apikey-check
-#     - ./stages/5-cluster-connect-check/create-apikey-check
+create-apikey-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: USER-CLUSTER-CONNECT
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/5-cluster-connect-check/create-apikey-check
+    - ./stages/5-cluster-connect-check/create-apikey-check
 
-# cluster-connect-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: USER-CLUSTER-CONNECT
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/5-cluster-connect-check/cluster-connect-check
-#     - ./stages/5-cluster-connect-check/cluster-connect-check
-#   artifacts:
-#     when: always
-#     paths:
-#       - .kube/
-#       - .gcp/
+cluster-connect-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: USER-CLUSTER-CONNECT
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/5-cluster-connect-check/cluster-connect-check
+    - ./stages/5-cluster-connect-check/cluster-connect-check
+  artifacts:
+    when: always
+    paths:
+      - .kube/
+      - .gcp/
 
-# client-components-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: USER-CLUSTER-CONNECT
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/5-cluster-connect-check/client-components-check
-#     - ./stages/5-cluster-connect-check/client-components-check
+client-components-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: USER-CLUSTER-CONNECT
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/5-cluster-connect-check/client-components-check
+    - ./stages/5-cluster-connect-check/client-components-check
 
-# metrics-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: METRICS-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/6-metrics-check/metrics-check
-#     - ./stages/6-metrics-check/metrics-check
+metrics-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: METRICS-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/6-metrics-check/metrics-check
+    - ./stages/6-metrics-check/metrics-check
 
-# teaming-invite-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: TEAMING-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/7-teaming-check/teaming-invite-check
-#     - ./stages/7-teaming-check/teaming-invite-check
+teaming-invite-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: TEAMING-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/7-teaming-check/teaming-invite-check
+    - ./stages/7-teaming-check/teaming-invite-check
 
-# teaming-change-role-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: TEAMING-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/7-teaming-check/teaming-change-role-check
-#     - ./stages/7-teaming-check/teaming-change-role-check
+teaming-change-role-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: TEAMING-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/7-teaming-check/teaming-change-role-check
+    - ./stages/7-teaming-check/teaming-change-role-check
 
-# teaming-change-role-negative-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: TEAMING-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/7-teaming-check/teaming-change-role-negative-check
-#     - ./stages/7-teaming-check/teaming-change-role-negative-check
+teaming-change-role-negative-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: TEAMING-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/7-teaming-check/teaming-change-role-negative-check
+    - ./stages/7-teaming-check/teaming-change-role-negative-check
 
-# topology-check:
-#   image: atulabhi/kops:v8
-#   stage: TOPOLOGY-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/8-topology-check/topology-check
-#     - ./stages/8-topology-check/topology-check
+topology-check:
+  image: atulabhi/kops:v8
+  stage: TOPOLOGY-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/8-topology-check/topology-check
+    - ./stages/8-topology-check/topology-check
 
-# ## Openebs installation on DOP cluster
-# tcid-iuoi01-openebs-self-install:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: OPENEBS-INSTALL-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script: 
-#     - chmod 755 ./stages/9-openebs-install-check/openebs-self-installation-check
-#     - ./stages/9-openebs-install-check/openebs-self-installation-check
+## Openebs installation on DOP cluster
+tcid-iuoi01-openebs-self-install:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-self-installation-check
+    - ./stages/9-openebs-install-check/openebs-self-installation-check
     
-# ## Openebs install check
-# tcid-iuoi02-openebs-install-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: OPENEBS-INSTALL-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/9-openebs-install-check/openebs-install-check
-#     - ./stages/9-openebs-install-check/openebs-install-check
+## Openebs install check
+tcid-iuoi02-openebs-install-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/9-openebs-install-check/openebs-install-check
+    - ./stages/9-openebs-install-check/openebs-install-check
 
-# ## Openebs control plane installation Check
-# tcid-iuoi03-openebs-control-plane-test:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: OPENEBS-INSTALL-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script: 
-#     - chmod 755 ./stages/9-openebs-install-check/openebs-control-plane-test
-#     - ./stages/9-openebs-install-check/openebs-control-plane-test
+## Openebs control plane installation Check
+tcid-iuoi03-openebs-control-plane-test:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-control-plane-test
+    - ./stages/9-openebs-install-check/openebs-control-plane-test
 
-# ## Openebs data plane installation Check
-# tcid-iuoi04-openebs-data-plane-test:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: OPENEBS-INSTALL-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script: 
-#     - chmod 755 ./stages/9-openebs-install-check/openebs-data-plane-test
-#     - ./stages/9-openebs-install-check/openebs-data-plane-test
+## Openebs data plane installation Check
+tcid-iuoi04-openebs-data-plane-test:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-data-plane-test
+    - ./stages/9-openebs-install-check/openebs-data-plane-test
 
-# ## Pool Upgrade Check
-# tcid-iuod08-pool-upgrade:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: OPENEBS-UPGRADE-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/10-openebs-upgrade-check/pool-upgrade-check
-#     - ./stages/10-openebs-upgrade-check/pool-upgrade-check
+## Pool Upgrade Check
+tcid-iuod08-pool-upgrade:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/10-openebs-upgrade-check/pool-upgrade-check
+    - ./stages/10-openebs-upgrade-check/pool-upgrade-check
 
-# ## Volume Upgrade Check
-# tcid-iuod12-volume-upgrade-check:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: OPENEBS-UPGRADE-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/10-openebs-upgrade-check/volume-upgrade-check
-#     - ./stages/10-openebs-upgrade-check/volume-upgrade-check
+## Volume Upgrade Check
+tcid-iuod12-volume-upgrade-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/10-openebs-upgrade-check/volume-upgrade-check
+    - ./stages/10-openebs-upgrade-check/volume-upgrade-check
 
-# ## Volume upgrade Jiva Check
-# tcid-iuod27-volume-upgrade-jiva:
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: OPENEBS-UPGRADE-CHECK
-#   dependencies:
-#     - cluster-setup-check
-#   script:
-#     - chmod 755 ./stages/10-openebs-upgrade-check/volume-upgrade-jiva-check
-#     - ./stages/10-openebs-upgrade-check/volume-upgrade-jiva-check
+## Volume upgrade Jiva Check
+tcid-iuod27-volume-upgrade-jiva:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/10-openebs-upgrade-check/volume-upgrade-jiva-check
+    - ./stages/10-openebs-upgrade-check/volume-upgrade-jiva-check
 
-# e2e-metrics:
-#   when: always
-#   image: harshshekhar15/gitlab-job:v1
-#   stage: E2E-METRICS
-#   dependencies:
-#     - cluster-create
-#   script:
-#     - chmod 755 ./stages/11-e2e-metrics/e2e-metrics
-#     - ./stages/11-e2e-metrics/e2e-metrics
-#   artifacts:
-#     paths:
-#       - .kube/
+e2e-metrics:
+  when: always
+  image: harshshekhar15/gitlab-job:v1
+  stage: E2E-METRICS
+  dependencies:
+    - cluster-create
+  script:
+    - chmod 755 ./stages/11-e2e-metrics/e2e-metrics
+    - ./stages/11-e2e-metrics/e2e-metrics
+  artifacts:
+    paths:
+      - .kube/
 
 ## cluster cleanup
 cluster-cleanup:
@@ -493,13 +493,13 @@ cluster-cleanup:
     - chmod 755 ./stages/12-cluster-cleanup/cluster-cleanup
     - ./stages/12-cluster-cleanup/cluster-cleanup
 
-## user cluster cleanup
-# user-cluster-cleanup:
-#   when: always
-#   image: harshshekhar15/gitlab-job:v1
-#   dependencies:
-#     - cluster-setup-check
-#   stage: CLUSTER-CLEANUP
-#   script:
-#     - chmod 755 ./stages/12-cluster-cleanup/user-cluster-cleanup
-#     - ./stages/12-cluster-cleanup/user-cluster-cleanup
+# user cluster cleanup
+user-cluster-cleanup:
+  when: always
+  image: harshshekhar15/gitlab-job:v1
+  dependencies:
+    - cluster-setup-check
+  stage: CLUSTER-CLEANUP
+  script:
+    - chmod 755 ./stages/12-cluster-cleanup/user-cluster-cleanup
+    - ./stages/12-cluster-cleanup/user-cluster-cleanup
