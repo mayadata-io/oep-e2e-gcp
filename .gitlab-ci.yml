@@ -317,6 +317,10 @@ create-apikey-check:
   script:
     - chmod 755 ./stages/5-cluster-connect-check/create-apikey-check
     - ./stages/5-cluster-connect-check/create-apikey-check
+  artifacts:
+    when: always
+    paths:
+      - .kube/
 
 cluster-connect-check:
   image: harshshekhar15/gitlab-job:v1

@@ -40,5 +40,13 @@ if [ "$testResult" != Pass ]
 then 
     exit 1; 
 else
+    kubectl get secret director-user-pass -n litmus -oyaml >> secret.yaml
+    cat secret.yaml > .gcp/secret.yaml
+    cp  .kube/config ~/.kube/config
+    kubectl get pods
+    kubectl create -f secret.yaml -n litmus
+    cd .gcp
+    ls
+    kubectl get secret -n litmus
     bash utils/e2e-cr jobname:create-apikey-check jobphase:Completed
 fi
