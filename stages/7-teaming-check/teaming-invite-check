@@ -17,6 +17,7 @@ kubectl apply -f utils/e2e-crd.yml
 
 bash utils/e2e-cr jobname:teaming-invite-check jobphase:Waiting
 bash utils/e2e-cr jobname:teaming-invite-check jobphase:Running 
+bash utils/e2e-cr jobname:teaming-account-resource-access-check jobphase:Waiting
 bash utils/e2e-cr jobname:teaming-change-role-check jobphase:Waiting
 bash utils/e2e-cr jobname:teaming-change-role-negative-check jobphase:Waiting
 
