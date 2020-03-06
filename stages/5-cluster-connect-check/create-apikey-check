@@ -43,4 +43,11 @@ else
     kubectl get secret director-user-pass -n litmus -oyaml >> secret.yaml
     cat secret.yaml > .gcp/secret.yaml
     bash utils/e2e-cr jobname:create-apikey-check jobphase:Completed
+    # saving secret yaml into a file
+    kubectl get secret director-user-pass -n litmus -oyaml >> secret.yaml
+    # changing config to director cluster
+    cp  .kube/config ~/.kube/config
+    # creating director-user-pass secret in director cluster
+    kubectl create -f secret.yaml -n litmus
+    kubectl get secret -n litmus
 fi
