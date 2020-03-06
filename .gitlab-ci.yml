@@ -416,6 +416,16 @@ tcid-iuoi03-openebs-control-plane-test:
     - chmod 755 ./stages/9-openebs-install-check/openebs-control-plane-test
     - ./stages/9-openebs-install-check/openebs-control-plane-test
 
+## openebs-resource-limit-installation
+tcid-iuoi06-openebs-resource-limit-installation:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-resource-limit-installation
+    - ./stages/9-openebs-install-check/openebs-resource-limit-installation
+
 ## Openebs data plane installation Check
 tcid-iuoi04-openebs-data-plane-test:
   image: harshshekhar15/gitlab-job:v1
