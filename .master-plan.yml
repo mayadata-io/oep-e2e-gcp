@@ -12,8 +12,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P0"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
+      git/location: ""
+      test/status: "Automated"
 
   - tcid: iuoi02
     name: "Install OpenEBS on a K8S Cluster connected to Director Onprem Cluster"
@@ -22,8 +22,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P0"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
+      git/location: ""
+      test/status: "Automated"
 
   - tcid: iuoi03
     name: "Install OpenEBS Controlplane components on specific set of nodes"
@@ -32,8 +32,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS ControlPlane"
       test/priority: "P0"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
+      git/location: ""
+      test/status: "Automated"
 
   - tcid: iuoi04
     name: "Install OpenEBS Dataplane{NDM DS} components on specific set of nodes"
@@ -42,8 +42,8 @@ spec:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Install OpenEBS Controllane"
       test/priority: "P0"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
+      git/location: ""
+      test/status: "Automated"
 
   - tcid: iuoi05
     name: "Install OpenEBS on a low resource machine"
@@ -177,7 +177,7 @@ spec:
 
   - tcid: iuoc04
     name: "Upgrade of control plane(1.7) which is higher version of Data plane(1.6)"
-    description: "Upgrade should not proceed"
+    description: "Upgrade should proceed"
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
       test/subFeature: "Upgrade OpenEBS ControlPlane Components"
@@ -270,8 +270,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P1"
       test/storageEgnine: "cStor"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
+      git/location: ""
+      test/status: "Automated"
 
   - tcid: iuod09
     name: "Upgrade a single pool with in a CSPC"
@@ -468,8 +468,8 @@ spec:
       test/subFeature: "Upgrade OpenEBS DataPlane Components"
       test/priority: "P0"
       test/storageEgnine: "Jiva"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
+      git/location: ""
+      test/status: "Automated"
 
   - tcid: iuod28
     name: "Upgrade the application with 3 replicas when one replica pods is not running"
@@ -527,8 +527,8 @@ spec:
       test/status: "Not Automated"
 
   - tcid: triv01
-    name: "Invite a user as Project Admin"
-    description: "Invited users should be able to manage the cluster and add other cluster"
+    name: "Invite a user as Project Admin, Project member and Project Read Only Admin"
+    description: "Invited users should be able to manage the cluster and add other cluster with the permission"
     labels:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Invite"
@@ -536,29 +536,10 @@ spec:
       git/location: "Add the actual link to TC readme"
       test/status: "Not Automated"
 
-  - tcid: triv02
-    name: "Invite a user as Project ReadOnly Admin"
-    description: "Invited users should be able to view the cluster and resources. And user should not be able to edit the cluster or add other cluster"
-    labels:
-      test/feature: "Teaming and RBAC"
-      test/subFeature: "Invite"
-      test/priority: "P1"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
-
-  - tcid: triv03
-    name: "Invite a user as Project Member"
-    description: "Invite user and user will accept the invitation"
-    labels:
-      test/feature: "Teaming and RBAC"
-      test/subFeature: "Invite"
-      test/priority: "P1"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
  
   - tcid: trrc01
-    name: "Change role by Project Owner"
-    description: "Project Owner can change member role."
+    name: "Check the user can connect cluster using the roles Project Admin, Project Member, Project Read Only Admin"
+    description: "Except read only can do the operation."
     labels:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
@@ -567,8 +548,8 @@ spec:
       test/status: "Not Automated"
 
   - tcid: trrc02
-    name: "Change role of Project Member"
-    description: "Change role of ProjectMember to Project ReadOnly Admin and ProjectAdmin"
+    name: "Positive Change role"
+    description: "PM to PA or PRO, PA to PRO or PM, PRO to PM or PA and verify the functionality"
     labels:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
@@ -577,18 +558,18 @@ spec:
       test/status: "Not Automated"
 
   - tcid: trrc03
-    name: "Change role of Project ReadOnly Admin"
-    description: "Change role of Project ReadOnly Admin to Project Admin and Project Member"
+    name: "Negative change role"
+    description: "Change role of PM, PRO, PA to PO this should fail"
     labels:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
       test/priority: "P1"
       git/location: "Add the actual link to TC readme"
       test/status: "Not Automated"
-  
+ 
   - tcid: trrc04
-    name: "Change role of Project Admin"
-    description: "Change role of Project Admin to Project ReadOnly Admin and Project Member"
+    name: "Check the user can connect cluster using the roles Project Admin, Project Member, Project Read Only Admin"
+    description: "Except read only can do the operation."
     labels:
       test/feature: "Teaming and RBAC"
       test/subFeature: "Role Change"
@@ -596,26 +577,7 @@ spec:
       git/location: "Add the actual link to TC readme"
       test/status: "Not Automated"
 
-  - tcid: trrc05
-    name: "Change role of Project Member to self"
-    description: "Role of Project Member cannot be changed to self"
-    labels:
-      test/feature: "Teaming and RBAC"
-      test/subFeature: "Role Change"
-      test/priority: "P1"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
-
-  - tcid: trrc06
-    name: "Change role of Project Member to Project Owner"
-    description: "Role of Project Member cannot be changed to Project Owner"
-    labels:
-      test/feature: "Teaming and RBAC"
-      test/subFeature: "Role Change"
-      test/priority: "P1"
-      git/location: "Add the actual link to TC readme"
-      test/status: "Not Automated"
-
+ 
 ###### Abbreviations
 #Details of abbreviation in readme file master-plan.md , One of the example as below
 # iu  -- Install and Upgrade of OpenEBS"
