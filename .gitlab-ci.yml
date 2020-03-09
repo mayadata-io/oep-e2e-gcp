@@ -296,14 +296,26 @@ ingress-nginx-check:
     paths:
       - .kube/
 
-gui-check:
+gui-auth-check:
   image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-GUI
   dependencies:
     - director-deploy
   script:
-    - chmod 755 ./stages/13-director-gui-check/gui-automation-check
-    - ./stages/13-director-gui-check/gui-automation-check
+    - chmod 755 ./stages/13-director-gui-check/gui-auth-check
+    - ./stages/13-director-gui-check/gui-auth-check
+  artifacts:
+    paths:
+      - .kube/
+
+gui-cluster-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-GUI
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/13-director-gui-check/gui-cluster-check
+    - ./stages/13-director-gui-check/gui-cluster-check
   artifacts:
     paths:
       - .kube/
