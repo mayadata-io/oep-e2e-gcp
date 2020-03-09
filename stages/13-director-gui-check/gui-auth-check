@@ -16,5 +16,5 @@ cd gui-automation
 ##   Running test  ##
 ######################
 pip3 install -r requirements.txt
-#Running tests with smoke marker
-pytest -m auth --url $URL -v --tests-per-worker 5
+#Running tests with auth marker
+pytest -m auth --url $URL -v --tests-per-worker 5 --reruns 2
