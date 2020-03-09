@@ -13,10 +13,6 @@ cp  $path/.gcp/config ~/.kube/config
 
 kubectl get po -n openebs
 
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
-cd oep
-
 ####################################
 ##  Sequencing and Running test   ##
 ####################################
@@ -25,6 +21,11 @@ bash utils/e2e-cr jobname:openebs-control-plane-test jobphase:Waiting
 bash utils/e2e-cr jobname:openebs-control-plane-test jobphase:Running
 bash utils/e2e-cr jobname:openebs-data-plane-test jobphase:Waiting
 bash utils/e2e-cr jobname:openebs-install-check jobphase:Waiting
+
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep.git
+cd oep
+
 
 ######################
 ##   Running test   ##

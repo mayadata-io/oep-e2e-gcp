@@ -13,16 +13,16 @@ cp  $path/.gcp/config ~/.kube/config
 
 kubectl get po -n openebs
 
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
-cd oep
-
 ####################################
 ##  Sequencing and Running test   ##
 ####################################
 
 bash utils/pooling jobname:openebs-data-plane-test
 bash utils/e2e-cr jobname:openebs-install-check jobphase:Running
+
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep.git
+cd oep
 
 kubectl create -f litmus/director/openebs-install/run_litmus_test.yml
 kubectl get pods -n litmus
