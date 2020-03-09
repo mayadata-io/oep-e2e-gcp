@@ -186,7 +186,7 @@ spec:
       test/status: "Not Automated"
 
   - tcid: iuod12
-    name: "Upgrade OpenEBS Pool and volume installed by Director"
+    name: "Upgrade one application consuming cStor volume cStor"
     description: "Test the components are upgraded properly using both backend and Director apis. Check from the status from status agent response for the OpenEBS components."
     labels:
       test/feature: "Install and Upgrade of OpenEBS"
