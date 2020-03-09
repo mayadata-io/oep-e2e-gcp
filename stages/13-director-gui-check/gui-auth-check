@@ -1,0 +1,20 @@
+#!/bin/bash
+set -ex
+
+######################
+##   Prerequisites  ##
+######################
+mkdir ~/.kube
+cp  .kube/config ~/.kube/config
+kubectl get po
+URL=https://$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
+echo $URL
+# Cloning oep repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/gui-automation.git
+cd gui-automation
+######################
+##   Running test  ##
+######################
+pip3 install -r requirements.txt
+#Running tests with smoke marker
+pytest -m auth --url $URL -v --tests-per-worker 5
