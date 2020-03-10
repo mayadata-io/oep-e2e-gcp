@@ -29,7 +29,7 @@ cd oep-e2e
 ##   Running test   ##
 ######################
 
-kubectl create -f litmus/director/openebs-control-plane-test/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuoi03-openebs-control-plane/run_litmus_test.yml
 kubectl get pods -n litmus
 test_name=openebs-control-plane-test
 echo $test_name

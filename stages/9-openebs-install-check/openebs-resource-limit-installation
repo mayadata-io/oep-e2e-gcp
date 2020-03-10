@@ -23,7 +23,7 @@ git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 cd oep-e2e
 
 
-kubectl create -f litmus/director/openebs-resource-limit-installation/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuoi14-openebs-resource-limit-installation/run_litmus_test.yml
 kubectl get pods -n litmus
 
 test_name=openebs-resource-limit-installation
