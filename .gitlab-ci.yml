@@ -496,6 +496,16 @@ tcid-iuod30-upgrade-all-replica-pod-pending:
     - chmod 755 ./stages/10-openebs-upgrade-check/upgrade-replica-all-pod-pending-check
     - ./stages/10-openebs-upgrade-check/upgrade-replica-all-pod-pending-check
 
+## Upgrade the application with 3 replicas when two replica pod is not running
+tcid-iuod29-upgrade-two-replica-pod-pending:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/10-openebs-upgrade-check/upgrade-replica-two-pod-pending-check
+    - ./stages/10-openebs-upgrade-check/upgrade-replica-two-pod-pending-check
+
 e2e-metrics:
   when: always
   image: harshshekhar15/gitlab-job:v1
