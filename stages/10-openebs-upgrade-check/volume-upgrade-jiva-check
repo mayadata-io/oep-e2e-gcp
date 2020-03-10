@@ -21,7 +21,7 @@ cd oep
 ##  Sequencing and Running test   ##
 ####################################
 
-kubectl create -f litmus/director/openebs-upgrade-jiva/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuod27-volume-upgrade-jiva/run_litmus_test.yml
 kubectl get pods -n litmus
 
 test_name=volume-upgrade-jiva-check

@@ -20,7 +20,7 @@ cd oep
 ##   Running test   ##
 ######################
 
-kubectl create -f litmus/director/openebs-self-install/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuoi01-openebs-self-install/run_litmus_test.yml
 kubectl get pods -n litmus
 test_name=openebs-self-install
 echo $test_name
