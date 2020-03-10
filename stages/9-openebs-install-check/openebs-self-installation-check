@@ -12,15 +12,15 @@ mkdir ~/.kube
 cp $path/.kube/config ~/.kube/config
 kubectl get po -n openebs
 
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
-cd oep
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
+cd oep-e2e
 
 ######################
 ##   Running test   ##
 ######################
 
-kubectl create -f litmus/director/openebs-self-install/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuoi01-openebs-self-install/run_litmus_test.yml
 kubectl get pods -n litmus
 test_name=openebs-self-install
 echo $test_name
