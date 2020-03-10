@@ -318,7 +318,7 @@ create-apikey-check:
     - chmod 755 ./stages/5-cluster-connect-check/create-apikey-check
     - ./stages/5-cluster-connect-check/create-apikey-check
 
-cluster-connect-check:
+trrc01-cluster-connect-check:
   image: harshshekhar15/gitlab-job:v1
   stage: USER-CLUSTER-CONNECT
   dependencies:
@@ -350,7 +350,7 @@ metrics-check:
     - chmod 755 ./stages/6-metrics-check/metrics-check
     - ./stages/6-metrics-check/metrics-check
 
-teaming-invite-check:
+triv01-teaming-invite-check:
   image: harshshekhar15/gitlab-job:v1
   stage: TEAMING-CHECK
   dependencies:
@@ -359,7 +359,7 @@ teaming-invite-check:
     - chmod 755 ./stages/7-teaming-check/teaming-invite-check
     - ./stages/7-teaming-check/teaming-invite-check
 
-teaming-change-role-check:
+trrc02-teaming-change-role-check:
   image: harshshekhar15/gitlab-job:v1
   stage: TEAMING-CHECK
   dependencies:
@@ -368,7 +368,7 @@ teaming-change-role-check:
     - chmod 755 ./stages/7-teaming-check/teaming-change-role-check
     - ./stages/7-teaming-check/teaming-change-role-check
 
-teaming-change-role-negative-check:
+trrc03-teaming-change-role-negative-check:
   image: harshshekhar15/gitlab-job:v1
   stage: TEAMING-CHECK
   dependencies:
