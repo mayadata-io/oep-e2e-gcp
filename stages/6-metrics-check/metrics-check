@@ -14,15 +14,15 @@ cp  $path/.gcp/config ~/.kube/config
 kubectl create clusterrolebinding upgrade-admin --clusterrole cluster-admin --serviceaccount=litmus:litmus
 kubectl get po -n openebs
 
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 
 ######################
 ##   Running test   ##
 ######################
 
 echo "Fetching director admin credentials for the following test----------------"
-kubectl create -f oep/litmus/director/admin-secret/run_litmus_test.yml
+kubectl create -f oep-e2e/litmus/director/admin-secret/run_litmus_test.yml
 test_name=fetch-unique-id-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
@@ -40,7 +40,7 @@ if [ "$testResult" != Pass ]; then
 exit 1; 
 fi
 echo "Fetching metrics by querying cortex-agent----------------"
-kubectl create -f oep/litmus/director/metrics/run_litmus_test.yml
+kubectl create -f oep-e2e/litmus/director/metrics/run_litmus_test.yml
 test_name=metrics-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)

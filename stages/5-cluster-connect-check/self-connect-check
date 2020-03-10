@@ -9,15 +9,15 @@ cp  .kube/config ~/.kube/config
 # director url
 URL=https://$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
 echo $URL
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 ######################
 ##   Running test  ##
 ######################
 test_name=cluster-connect-check
 echo $test_name
 kubectl get pods
-kubectl create -f oep/litmus/director/cluster-connect-check/run_litmus_test.yml
+kubectl create -f oep-e2e/litmus/director/cluster-connect-check/run_litmus_test.yml
 # check litmus test result
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
