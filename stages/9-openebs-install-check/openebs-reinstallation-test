@@ -21,7 +21,7 @@ cd oep
 ##   Running test   ##
 ######################
 
-kubectl create -f litmus/director/openebs-reinstallation/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuoi06-openebs-reinstallation/run_litmus_test.yml
 kubectl get pods -n litmus
 test_name=openebs-reinstallation
 echo $test_name

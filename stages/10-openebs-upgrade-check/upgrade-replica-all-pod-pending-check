@@ -17,7 +17,7 @@ kubectl get po -n openebs
 git clone https://$username:$password@github.com/mayadata-io/oep.git
 cd oep
 
-kubectl create -f litmus/director/upgrade-all-replica-pod-pending/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuod30-upgrade-all-replica-pod-pending/run_litmus_test.yml
 kubectl get pods -n litmus
 
 test_name=upgrade-all-replica-pod-pending-check

@@ -24,7 +24,7 @@ cd oep
 bash utils/pooling jobname:pool-upgrade-check
 bash utils/e2e-cr jobname:volume-upgrade-check jobphase:Running
 
-kubectl create -f litmus/director/volume-upgrade/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuod12-volume-upgrade/run_litmus_test.yml
 kubectl get pods -n litmus
 
 test_name=volume-upgrade-check
