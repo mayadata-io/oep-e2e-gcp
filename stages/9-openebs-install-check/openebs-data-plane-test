@@ -20,9 +20,9 @@ kubectl get po -n openebs
 bash utils/pooling jobname:openebs-control-plane-test
 bash utils/e2e-cr jobname:openebs-data-plane-test jobphase:Running
 
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
-cd oep
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
+cd oep-e2e
 
 
 ######################

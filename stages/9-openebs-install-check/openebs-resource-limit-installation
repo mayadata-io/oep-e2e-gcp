@@ -18,9 +18,9 @@ cp  $path/.gcp/config ~/.kube/config
 bash utils/pooling jobname:openebs-reinstallation-test
 bash utils/e2e-cr jobname:openebs-resource-limit-installation jobphase:Running
 
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
-cd oep
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
+cd oep-e2e
 
 
 kubectl create -f litmus/director/openebs-resource-limit-installation/run_litmus_test.yml
