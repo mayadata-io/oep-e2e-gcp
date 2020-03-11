@@ -1,7 +1,6 @@
 ## TODO: Modularize the gitlab yaml to reuse templates
 
 ## Define the stages & order of execution
-## rohan2794
 
 stages:
   - CLUSTER-SETUP
@@ -297,7 +296,7 @@ ingress-nginx-check:
     paths:
       - .kube/
 
-gui-auth-check:
+tcid-gaau01-gui-auth-check:
   image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-GUI
   dependencies:
@@ -309,7 +308,7 @@ gui-auth-check:
     paths:
       - .kube/
 
-gui-cluster-check:
+tcid-gacc01-gui-cluster-check:
   image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-GUI
   dependencies:
