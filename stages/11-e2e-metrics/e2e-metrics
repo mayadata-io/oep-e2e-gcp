@@ -11,7 +11,7 @@ kubectl create ns $COVERAGE_NAMESPACE
 # clone oep-e2e-gcp repo to access files
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e-gcp.git
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
-cp oep-e2e/.master-plan.yml .master-plan.yml
+cp oep-e2e/.master-plan.yml oep-e2e-gcp/.master-plan.yml
 cd oep-e2e-gcp
 # create configmap from master test plan file
 kubectl create configmap metrics-config-test -n $COVERAGE_NAMESPACE --from-file=.master-plan.yml --from-file=.gitlab-ci.yml
