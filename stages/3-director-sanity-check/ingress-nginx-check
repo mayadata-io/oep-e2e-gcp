@@ -9,15 +9,15 @@ cp  .kube/config ~/.kube/config
 kubectl get po
 URL=https://$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
 echo $URL
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 ######################
 ##   Running test  ##
 ######################
 test_name=ingress-nginx-check
 echo $test_name
 kubectl get po
-kubectl create -f oep/litmus/director/ingress-nginx/run_litmus_test.yml
+kubectl create -f oep-e2e/litmus/director/ingress-nginx/run_litmus_test.yml
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
 job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)

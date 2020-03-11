@@ -13,15 +13,15 @@ cp  $path/.gcp/config ~/.kube/config
 
 kubectl get po -n openebs
 
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
-cd oep
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
+cd oep-e2e
 
 ######################
 ##   Running test   ##
 ######################
 
-kubectl create -f litmus/director/openebs-reinstallation/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuoi06-openebs-reinstallation/run_litmus_test.yml
 kubectl get pods -n litmus
 test_name=openebs-reinstallation
 echo $test_name
