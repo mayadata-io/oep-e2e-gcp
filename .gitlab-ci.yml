@@ -299,8 +299,8 @@ stages:
 tcid-gaau01-gui-auth-check:
   image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-GUI
-  dependencies:
-    - director-deploy
+#  dependencies:
+#    - director-deploy
   script:
     - chmod 755 ./stages/13-director-gui-check/gui-auth-check
     - ./stages/13-director-gui-check/gui-auth-check
@@ -311,8 +311,8 @@ tcid-gaau01-gui-auth-check:
 tcid-gacc01-gui-cluster-check:
   image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-GUI
-  dependencies:
-    - director-deploy
+#  dependencies:
+#    - director-deploy
   script:
     - chmod 755 ./stages/13-director-gui-check/gui-cluster-check
     - ./stages/13-director-gui-check/gui-cluster-check
