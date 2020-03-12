@@ -13,15 +13,15 @@ cp  $path/.gcp/config ~/.kube/config
 
 kubectl get po -n openebs
 
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 
 ######################
 ##   Running test   ##
 ######################
 
 echo "Run topology test to fetch cluster namespaces----------------"
-kubectl create -f oep/litmus/director/topology/run_litmus_test.yml
+kubectl create -f oep-e2e/litmus/director/topology/run_litmus_test.yml
 test_name=topology-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)

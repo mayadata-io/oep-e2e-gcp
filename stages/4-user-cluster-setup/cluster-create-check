@@ -33,13 +33,13 @@ echo $VPC
 echo "Checking Cluster availability"
 ansible-playbook litmus/k8s/gcp/k8s-installer/check-cluster-availability.yml --extra-vars "nodes=3"
 kubectl get nodes
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 # Setup litmus on the cluster
-kubectl apply -f oep/litmus/prerequisite/rbac.yaml
-kubectl apply -f oep/litmus/prerequisite/crds.yaml 
+kubectl apply -f oep-e2e/litmus/prerequisite/rbac.yaml
+kubectl apply -f oep-e2e/litmus/prerequisite/crds.yaml 
 # creating docker secret 
-kubectl apply -f oep/litmus/prerequisite/docker-secret.yml -n litmus
+kubectl apply -f oep-e2e/litmus/prerequisite/docker-secret.yml -n litmus
 # creating crb
 kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --serviceaccount=default:default
 # creating configmap

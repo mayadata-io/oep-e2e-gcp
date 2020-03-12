@@ -422,7 +422,7 @@ tcid-iuoi01-openebs-self-install:
     - ./stages/9-openebs-install-check/openebs-self-installation-check
     
 ## Openebs install check
-tcid-iuoi02-openebs-install-check:
+tcid-iuoi02-openebs-install:
   image: harshshekhar15/gitlab-job:v1
   stage: OPENEBS-INSTALL-CHECK
   dependencies:
@@ -432,7 +432,7 @@ tcid-iuoi02-openebs-install-check:
     - ./stages/9-openebs-install-check/openebs-install-check
 
 ## Openebs control plane installation Check
-tcid-iuoi03-openebs-control-plane-test:
+tcid-iuoi03-openebs-control-plane:
   image: harshshekhar15/gitlab-job:v1
   stage: OPENEBS-INSTALL-CHECK
   dependencies:
@@ -442,7 +442,7 @@ tcid-iuoi03-openebs-control-plane-test:
     - ./stages/9-openebs-install-check/openebs-control-plane-test
 
 ## Openebs data plane installation Check
-tcid-iuoi04-openebs-data-plane-test:
+tcid-iuoi04-openebs-data-plane:
   image: harshshekhar15/gitlab-job:v1
   stage: OPENEBS-INSTALL-CHECK
   dependencies:
@@ -450,6 +450,26 @@ tcid-iuoi04-openebs-data-plane-test:
   script: 
     - chmod 755 ./stages/9-openebs-install-check/openebs-data-plane-test
     - ./stages/9-openebs-install-check/openebs-data-plane-test
+
+## Openebs reinstallation Check
+tcid-iuoi06-openebs-reinstallation:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-reinstallation-test
+    - ./stages/9-openebs-install-check/openebs-reinstallation-test
+
+## openebs-resource-limit-installation
+tcid-iuoi14-openebs-resource-limit-installation:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-INSTALL-CHECK
+  dependencies:
+    - cluster-setup-check
+  script: 
+    - chmod 755 ./stages/9-openebs-install-check/openebs-resource-limit-installation
+    - ./stages/9-openebs-install-check/openebs-resource-limit-installation
 
 ## Pool Upgrade Check
 tcid-iuod08-pool-upgrade:
@@ -462,7 +482,7 @@ tcid-iuod08-pool-upgrade:
     - ./stages/10-openebs-upgrade-check/pool-upgrade-check
 
 ## Volume Upgrade Check
-tcid-iuod12-volume-upgrade-check:
+tcid-iuod12-volume-upgrade:
   image: harshshekhar15/gitlab-job:v1
   stage: OPENEBS-UPGRADE-CHECK
   dependencies:
@@ -480,6 +500,36 @@ tcid-iuod27-volume-upgrade-jiva:
   script:
     - chmod 755 ./stages/10-openebs-upgrade-check/volume-upgrade-jiva-check
     - ./stages/10-openebs-upgrade-check/volume-upgrade-jiva-check
+
+## Upgrade the application with 3 replicas when one replica pod is not running
+tcid-iuod28-upgrade-replica-pod-pending:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/10-openebs-upgrade-check/upgrade-replica-pod-pending
+    - ./stages/10-openebs-upgrade-check/upgrade-replica-pod-pending
+
+## Upgrade the application with 3 replicas when all replica pod is not running
+tcid-iuod30-upgrade-all-replica-pod-pending:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/10-openebs-upgrade-check/upgrade-replica-all-pod-pending-check
+    - ./stages/10-openebs-upgrade-check/upgrade-replica-all-pod-pending-check
+
+## Upgrade the application with 3 replicas when two replica pod is not running
+tcid-iuod29-upgrade-two-replica-pod-pending:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/10-openebs-upgrade-check/upgrade-replica-two-pod-pending-check
+    - ./stages/10-openebs-upgrade-check/upgrade-replica-two-pod-pending-check
 
 e2e-metrics:
   when: always
