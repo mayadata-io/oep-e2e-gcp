@@ -11,7 +11,7 @@ gcloud auth activate-service-account --key-file=key.json
 gcloud config set project openebs-ci
 export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
 
-bash utils/pooling jobname:cluster-connect-check
+bash utils/pooling jobname:trrc01-cluster-connect-check
 bash utils/e2e-cr jobname:client-components-check jobphase:Running
 
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
