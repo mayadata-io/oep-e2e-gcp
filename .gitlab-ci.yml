@@ -476,6 +476,16 @@ tcid-iuod24-pool-upgrade-one-pod-not-running:
     - chmod 755 ./stages/10-openebs-upgrade-check/pool-upgrade-one-pod-not-running-check
     - ./stages/10-openebs-upgrade-check/pool-upgrade-one-pod-not-running-check
 
+## Pool upgrade check when all pods are running
+tcid-iuod23-pool-upgrade-all-pod-running:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/10-openebs-upgrade-check/pool-upgrade-all-pod-running-check
+    - ./stages/10-openebs-upgrade-check/pool-upgrade-all-pod-running-check
+
 ## Volume upgrade Jiva Check
 tcid-iuod27-volume-upgrade-jiva:
   image: harshshekhar15/gitlab-job:v1
