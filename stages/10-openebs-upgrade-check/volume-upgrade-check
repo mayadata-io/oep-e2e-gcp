@@ -13,9 +13,9 @@ cp  $path/.gcp/config ~/.kube/config
 
 kubectl get po -n openebs
 
-# Cloning oep repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep.git
-cd oep
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
+cd oep-e2e
 
 ####################################
 ##  Sequencing and Running test   ##
@@ -24,7 +24,7 @@ cd oep
 bash utils/pooling jobname:pool-upgrade-check
 bash utils/e2e-cr jobname:volume-upgrade-check jobphase:Running
 
-kubectl create -f litmus/director/volume-upgrade/run_litmus_test.yml
+kubectl create -f litmus/director/tcid-iuod12-volume-upgrade/run_litmus_test.yml
 kubectl get pods -n litmus
 
 test_name=volume-upgrade-check

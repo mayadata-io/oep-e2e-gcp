@@ -14,9 +14,9 @@ export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
 bash utils/pooling jobname:cluster-connect-check
 bash utils/e2e-cr jobname:client-components-check jobphase:Running
 
-git clone https://$username:$password@github.com/mayadata-io/oep.git
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 echo "Check cluster client components-------------------------------------------------"
-kubectl create -f oep/litmus/director/cluster-connect-check/run_litmus_test.yml
+kubectl create -f oep-e2e/litmus/director/cluster-connect-check/run_litmus_test.yml
 test_name=cluster-connect-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)

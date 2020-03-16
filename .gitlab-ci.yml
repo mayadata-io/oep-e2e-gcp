@@ -320,6 +320,18 @@ gui-cluster-check:
     paths:
       - .kube/
 
+gui-dashboard-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-GUI
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/13-director-gui-check/gui-dashboard-check
+    - ./stages/13-director-gui-check/gui-dashboard-check
+  artifacts:
+    paths:
+      - .kube/
+
 cluster-setup-check:
   image: harshshekhar15/gitlab-job:v1
   stage: USER-CLUSTER-SETUP
