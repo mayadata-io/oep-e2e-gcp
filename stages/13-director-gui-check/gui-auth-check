@@ -15,6 +15,8 @@ cd gui-automation
 ######################
 ##   Running test  ##
 ######################
+python --version
+python3 --version
 pip install --upgrade pip
 pip install -r requirements.txt
 #Running tests with auth marker
