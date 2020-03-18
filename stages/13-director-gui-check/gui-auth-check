@@ -15,9 +15,6 @@ cd gui-automation
 ######################
 ##   Running test  ##
 ######################
-python --version
-python3 --version
-pip install --upgrade pip
 pip install -r requirements.txt
 #Running tests with auth marker
 pytest -m auth --url $URL -v --tests-per-worker 5 --reruns 2 --html=./results/report.html
