@@ -341,6 +341,15 @@ client-components-check:
     - chmod 755 ./stages/5-cluster-connect-check/client-components-check
     - ./stages/5-cluster-connect-check/client-components-check
 
+admin-cluster-connect-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: USER-CLUSTER-CONNECT
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/5-cluster-connect-check/self-connect-cluster-check
+    - ./stages/5-cluster-connect-check/self-connect-cluster-check
+
 metrics-check:
   image: harshshekhar15/gitlab-job:v1
   stage: METRICS-CHECK
