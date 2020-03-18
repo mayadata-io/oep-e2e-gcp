@@ -296,7 +296,7 @@ ingress-nginx-check:
     paths:
       - .kube/
 
-gui-auth-check:
+tcid-gaau01-gui-auth-check:
   image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-GUI
   dependencies:
@@ -308,7 +308,7 @@ gui-auth-check:
     paths:
       - .kube/
 
-gui-cluster-check:
+tcid-gacc01-gui-cluster-check:
   image: harshshekhar15/gitlab-job:v1
   stage: DIRECTOR-GUI
   dependencies:
@@ -328,6 +328,66 @@ gui-dashboard-check:
   script:
     - chmod 755 ./stages/13-director-gui-check/gui-dashboard-check
     - ./stages/13-director-gui-check/gui-dashboard-check
+  artifacts:
+    paths:
+      - .kube/
+
+tcid-gaal01-gui-dashboard-alerts-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-GUI
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/13-director-gui-check/gui-dashboard-check
+    - ./stages/13-director-gui-check/gui-dashboard-alerts-check
+  artifacts:
+    paths:
+      - .kube/
+
+tcid-gada01-gui-dashboard-home-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-GUI
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/13-director-gui-check/gui-dashboard-check
+    - ./stages/13-director-gui-check/gui-dashboard-home-check
+  artifacts:
+    paths:
+      - .kube/
+
+tcid-galo01-gui-dashboard-logs-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-GUI
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/13-director-gui-check/gui-dashboard-check
+    - ./stages/13-director-gui-check/gui-dashboard-logs-check
+  artifacts:
+    paths:
+      - .kube/
+
+tcid-gada02-gui-dashboard-overview-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-GUI
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/13-director-gui-check/gui-dashboard-check
+    - ./stages/13-director-gui-check/gui-dashboard-overview-check
+  artifacts:
+    paths:
+      - .kube/
+
+tcid-gato01-gui-dashboard-topology-check:
+  image: harshshekhar15/gitlab-job:v1
+  stage: DIRECTOR-GUI
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/13-director-gui-check/gui-dashboard-check
+    - ./stages/13-director-gui-check/gui-dashboard-topology-check
   artifacts:
     paths:
       - .kube/
