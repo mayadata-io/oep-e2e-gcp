@@ -63,7 +63,7 @@ echo $testResult
 # Including Python script here.
 # This python script will update the readme.md file in the oep-e2e repo
 # This script will only execute when pipeline triggered from master. 
-if [[ $branch_name == "master" ]]; then
+if [[ $branch_name == "test-readme" ]]; then
    python3 utils/result_update.py --job_id $job_id --stage $stage --test_desc "$test_desc" --test_result $testResult --time_stamp "$current_time" --token $gittoken --test_name $test_name --job_name $job_name
 fi
 
