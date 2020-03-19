@@ -17,4 +17,4 @@ cd gui-automation
 ######################
 pip install -r requirements.txt
 #Running tests with auth marker
-pytest -m gaau01 --url $URL -v --tests-per-worker 5 --reruns 2 --html=./results/report.html
+pytest -m auth --url $URL --environment remote -v --tests-per-worker 5 --reruns 2 --html=./results/report.html
