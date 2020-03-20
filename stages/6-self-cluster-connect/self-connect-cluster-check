@@ -39,7 +39,7 @@ echo "ClusterId and GroupId for self connect cluster----------------"
 test_name=self-connect-cluster-check
 echo $test_name
 kubectl get pods
-kubectl create -f oep-e2e/litmus/director/admin-cluster-connect/run_litmus_test.yml
+kubectl create -f oep-e2e/litmus/director/self-cluster-connect/run_litmus_test.yml
 # check litmus test result
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
