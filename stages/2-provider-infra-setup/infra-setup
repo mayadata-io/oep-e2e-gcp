@@ -10,13 +10,13 @@ cp  .kube/config ~/.kube/config
 
 kubectl get po
 
-URL=$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1)
-
-# creating configmap 
-kubectl create configmap config --from-literal=url=$URL -n litmus
+URL=$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1):30380
 
 echo "This is DOP $URL" 
 director_url=$(kubectl get node -o wide | awk {'print $7'} | head -n 4 | tail -n 1)
+
+# creating configmap 
+kubectl create configmap config --from-literal=url=$director_url -n litmus
 touch .kube/url
 echo $director_url > .kube/url
 
