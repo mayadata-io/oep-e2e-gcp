@@ -1,29 +1,29 @@
+ 
 #!/bin/bash
 
-set -ex
-
-######################
-##   Prerequisites  ##
-######################
+set -e
 
 path=$(pwd)
-# Copy kubeconfig
 mkdir ~/.kube
-cp  $path/.gcp/config ~/.kube/config
+cp .gcp/config ~/.kube/config
 
-kubectl get po -n openebs
+echo $SDK_TOKEN > key.json
+gcloud auth activate-service-account --key-file=key.json
+gcloud config set project openebs-ci
+export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
 
-# Cloning oep-e2e repository which contains all the test scripts
+bash utils/pooling jobname:triv01-teaming-invite-check
+bash utils/e2e-cr jobname:trrc02-teaming-change-role-check jobphase:Running 
+
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
-cd oep-e2e
 
 ######################
 ##   Running test   ##
 ######################
 
-kubectl create -f litmus/director/tcid-iuoi04-openebs-data-plane/run_litmus_test.yml
-kubectl get pods -n litmus
-test_name=openebs-data-plane-test
+echo "Validate teaming role-change process --------------------------------------------"
+kubectl create -f oep-e2e/litmus/director/change-role/run_litmus_test.yml
+test_name=change-role-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
@@ -36,6 +36,9 @@ done
 kubectl logs -f $litmus_pod -n litmus
 testResult=$(kubectl get litmusresult ${test_name} --no-headers -o custom-columns=:spec.testStatus.result)
 echo $testResult
-if [ "$testResult" != Pass ]; then 
-exit 1; 
-fi 
+if [ "$testResult" != Pass ]
+then 
+    exit 1; 
+else
+    bash utils/e2e-cr jobname:trrc02-teaming-change-role-check jobphase:Completed
+fi

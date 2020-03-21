@@ -17,5 +17,5 @@ cd gui-automation
 ######################
 pip install --upgrade pip
 pip install -r requirements.txt
-#Running tests with cluster marker
-pytest -m cluster --url $URL --environment remote -v --tests-per-worker 5 --reruns 2 --html=./results/report.html
+#Running tests with gacc01 marker
+pytest -m gacc01 --url $URL --environment remote -v --tests-per-worker 5 --reruns 2 --html=./results/report.html

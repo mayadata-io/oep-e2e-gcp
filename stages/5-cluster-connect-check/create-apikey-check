@@ -17,7 +17,7 @@ kubectl apply -f utils/e2e-crd.yml
 
 bash utils/e2e-cr jobname:create-apikey-check jobphase:Waiting
 bash utils/e2e-cr jobname:create-apikey-check jobphase:Running 
-bash utils/e2e-cr jobname:cluster-connect-check jobphase:Waiting
+bash utils/e2e-cr jobname:trrc01-cluster-connect-check jobphase:Waiting
 bash utils/e2e-cr jobname:client-components-check jobphase:Waiting
 
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git

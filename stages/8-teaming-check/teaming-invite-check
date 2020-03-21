@@ -1,4 +1,3 @@
- 
 #!/bin/bash
 
 set -e
@@ -12,18 +11,19 @@ gcloud auth activate-service-account --key-file=key.json
 gcloud config set project openebs-ci
 export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
 
-bash utils/pooling jobname:teaming-invite-check
-bash utils/e2e-cr jobname:teaming-change-role-check jobphase:Running 
+######################################## Applying e2e-CRD
+echo "***Applying e2e-crd***********"
+kubectl apply -f utils/e2e-crd.yml
+
+bash utils/e2e-cr jobname:triv01-teaming-invite-check jobphase:Waiting
+bash utils/e2e-cr jobname:triv01-teaming-invite-check jobphase:Running 
+bash utils/e2e-cr jobname:trrc02-teaming-change-role-check jobphase:Waiting
+bash utils/e2e-cr jobname:trrc03-teaming-change-role-negative-check jobphase:Waiting
 
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
-
-######################
-##   Running test   ##
-######################
-
-echo "Validate teaming role-change process --------------------------------------------"
-kubectl create -f oep-e2e/litmus/director/change-role/run_litmus_test.yml
-test_name=change-role-check
+echo "Validate teaming invitation process --------------------------------------------"
+kubectl create -f oep-e2e/litmus/director/invite/run_litmus_test.yml
+test_name=invite-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
@@ -40,5 +40,5 @@ if [ "$testResult" != Pass ]
 then 
     exit 1; 
 else
-    bash utils/e2e-cr jobname:teaming-change-role-check jobphase:Completed
+    bash utils/e2e-cr jobname:triv01-teaming-invite-check jobphase:Completed
 fi
