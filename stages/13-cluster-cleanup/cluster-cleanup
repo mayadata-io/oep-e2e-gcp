@@ -23,13 +23,13 @@ ansible-playbook delete-k8s-cluster.yml
 
 # Delete firewall-rule
 # Export VPC network name
-VPC=`cat $path/.kube/vpc`
-echo $VPC
-FIREWALL_VPC="$VPC-firewall"
-gcloud compute firewall-rules delete $FIREWALL_VPC
+# VPC=`cat $path/.kube/vpc`
+# echo $VPC
+# FIREWALL_VPC="$VPC-firewall"
+# gcloud compute firewall-rules delete $FIREWALL_VPC
 
 # Delete VPC
-ansible-playbook delete-vpc.yml --extra-vars "project=openebs-ci"
+#ansible-playbook delete-vpc.yml --extra-vars "project=openebs-ci"
 
 echo $cluster_name
 

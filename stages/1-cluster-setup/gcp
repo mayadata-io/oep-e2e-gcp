@@ -8,20 +8,19 @@ gcloud auth activate-service-account --key-file=key.json
 gcloud config set project openebs-ci
 export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
 
-git clone https://github.com/mayadata-io/litmus.git
-cd litmus/k8s/gcp/k8s-installer/
+ansible-playbook stages/1-cluster-setup/create-vpc.yml 
+# Cloning oep-e2e repository which contains all the test scripts
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
+cd oep-e2e/k8s/gcp/k8s-installer/
 
 # set variables
-job_id=$(echo CI_JOB_ID)
-pipeline_id=$(echo CI_PIPELINE_ID)
-commit_sha=$(echo CI_COMMIT_SHA)
-# Create VPC
-echo "CREATING VPC"
-ansible-playbook create-vpc.yml --extra-vars "project=openebs-ci"
+job_id=$CI_JOB_ID
+pipeline_id=$CI_PIPELINE_ID
+commit_sha=$CI_COMMIT_SHA
 
 # Create k8s cluster
 echo "CREATING CLUSTER"
-ansible-playbook create-k8s-cluster.yml -vv --extra-vars "project=openebs-ci nodes=3 k8s_version=1.11.1"
+ansible-playbook create-k8s-cluster.yml -vv --extra-vars "project=openebs-ci nodes=3 k8s_version=1.14.1 pipeline_id=$pipeline_id"
 pwd
 ls
 mkdir $path/.kube
@@ -42,5 +41,5 @@ kubectl create clusterrolebinding default-admin --clusterrole cluster-admin --se
 kubectl create configmap kubeconfig --from-file=$path/.kube/admin.conf -n litmus
 
 # Create firewall-rule
-FIREWALL_VPC="$VPC-firewall"
-gcloud compute firewall-rules create $FIREWALL_VPC --network $VPC --action allow --direction ingress --rules tcp:30380 --source-ranges 0.0.0.0/0  
+#FIREWALL_VPC="$VPC-firewall"
+#gcloud compute firewall-rules create $FIREWALL_VPC --network $VPC --action allow --direction ingress --rules tcp:30380 --source-ranges 0.0.0.0/0  

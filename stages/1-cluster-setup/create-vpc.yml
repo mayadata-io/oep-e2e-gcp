@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  tasks:
+       - block:
+ 
+             - name: VPC name
+               set_fact:
+                 vpc: "oep-e2e-vpc"
+
+             - name: echo VPC name
+               shell: echo {{ vpc }}
+
+             - lineinfile:
+                 create: yes
+                 state: present
+                 path: "~/logs/vpc"
+                 line: "{{ vpc }}"
+
+             - name: Test Passed
+               set_fact:
+                 flag: "Test Passed"
+         rescue:
+             - name: Test Failed
+               set_fact:
+                 flag: "Test Failed"
