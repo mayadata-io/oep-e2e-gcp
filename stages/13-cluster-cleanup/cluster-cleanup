@@ -10,8 +10,8 @@ export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
 mkdir ~/logs
 cp $path/.kube/clusters ~/logs
 cp $path/.kube/vpc ~/logs
-git clone https://github.com/mayadata-io/litmus.git
-cd litmus/k8s/gcp/k8s-installer/
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
+cd oep-e2e/k8s/gcp/k8s-installer/
 echo "CLEANUP ------------------------------------------------------------------------"
 
 # Fetching cluster name

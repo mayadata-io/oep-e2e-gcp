@@ -7,20 +7,23 @@ echo $SDK_TOKEN > key.json
 gcloud auth activate-service-account --key-file=key.json
 gcloud config set project openebs-ci
 export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
+# set variables
+job_id=$CI_JOB_ID
+pipeline_id=$CI_PIPELINE_ID
+commit_sha=$CI_COMMIT_SHA
 
 # Fetch director url
 url=$(cat .kube/url)
 
-git clone https://github.com/mayadata-io/litmus.git
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 
 # Create VPC
 echo "CREATING VPC"
-ansible-playbook litmus/k8s/gcp/k8s-installer/create-vpc.yml --extra-vars "project=openebs-ci"
+ansible-playbook oep-e2e/k8s/gcp/k8s-installer/create-vpc.yml --extra-vars "project=openebs-ci pipeline_id=$pipeline_id"
 # Create k8s cluster
 echo "CREATING CLUSTER"
-ansible-playbook litmus/k8s/gcp/k8s-installer/create-k8s-cluster.yml -vv --extra-vars "project=openebs-ci nodes=3 k8s_version=1.11.1"
-pwd
-ls
+ansible-playbook oep-e2e/k8s/gcp/k8s-installer/create-k8s-cluster.yml -vv --extra-vars "project=openebs-ci nodes=3 k8s_version=1.11.1 pipeline_id=$pipeline_id"
+
 mkdir $path/.gcp
 cat ~/.kube/config > $path/.gcp/config
 cat ~/.kube/config > $path/.gcp/admin.conf
@@ -31,10 +34,8 @@ cat ~/logs/vpc > $path/.gcp/vpc
 VPC=`cat $path/.gcp/vpc`
 echo $VPC
 echo "Checking Cluster availability"
-ansible-playbook litmus/k8s/gcp/k8s-installer/check-cluster-availability.yml --extra-vars "nodes=3"
+ansible-playbook oep-e2e/k8s/gcp/k8s-installer/check-cluster-availability.yml --extra-vars "nodes=3"
 kubectl get nodes
-# Cloning oep-e2e repository which contains all the test scripts
-git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 # Setup litmus on the cluster
 kubectl apply -f oep-e2e/litmus/prerequisite/rbac.yaml
 kubectl apply -f oep-e2e/litmus/prerequisite/crds.yaml 
