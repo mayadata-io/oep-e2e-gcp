@@ -29,6 +29,6 @@ echo $VPC
 # gcloud compute firewall-rules delete $FIREWALL_VPC
 
 # Delete VPC
-ansible-playbook delete-vpc.yml --extra-vars "project=openebs-ci"
+#ansible-playbook delete-vpc.yml --extra-vars "project=openebs-ci"
 
 echo $cluster_name

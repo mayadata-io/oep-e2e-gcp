@@ -8,17 +8,22 @@ gcloud auth activate-service-account --key-file=key.json
 gcloud config set project openebs-ci
 export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
 
+ansible-playbook stages/1-cluster-setup/create-vpc.yml 
 # Fetch director url
 url=$(cat .kube/url)
+# set variables
+job_id=$CI_JOB_ID
+pipeline_id=$CI_PIPELINE_ID
+commit_sha=$CI_COMMIT_SHA
 
-git clone https://github.com/mayadata-io/litmus.git
+git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 
 # Create VPC
-echo "CREATING VPC"
-ansible-playbook litmus/k8s/gcp/k8s-installer/create-vpc.yml --extra-vars "project=openebs-ci"
+#echo "CREATING VPC"
+#ansible-playbook oep-e2e/k8s/gcp/k8s-installer/create-vpc.yml --extra-vars "project=openebs-ci"
 # Create k8s cluster
 echo "CREATING CLUSTER"
-ansible-playbook litmus/k8s/gcp/k8s-installer/create-k8s-cluster.yml -vv --extra-vars "project=openebs-ci nodes=3 k8s_version=1.11.1"
+ansible-playbook oep-e2e/k8s/gcp/k8s-installer/create-k8s-cluster.yml -vv --extra-vars "project=openebs-ci nodes=3 k8s_version=1.11.1 pipeline_id=$pipeline_id"
 pwd
 ls
 mkdir $path/.gcp
