@@ -297,103 +297,6 @@ ingress-nginx-check:
     paths:
       - .kube/
 
-## GUI automated tests on Openebs installation on DOP cluster
-tcid-gaau01-gui-auth-check:
-  image: harshshekhar15/gitlab-job:v3
-  stage: DIRECTOR-GUI-CHECK
-  dependencies:
-    - director-deploy
-  script:
-    - chmod 755 ./stages/14-director-gui-check/gui-auth-check
-    - ./stages/14-director-gui-check/gui-auth-check
-  artifacts:
-    paths:
-      - /builds/oep/oep-e2e-gcp/gui-automation/results
-
-tcid-gacc01-gui-cluster-check:
-  image: harshshekhar15/gitlab-job:v3
-  stage: DIRECTOR-GUI-CHECK
-  dependencies:
-    - director-deploy
-  script:
-    - chmod 755 ./stages/14-director-gui-check/gui-cluster-check
-    - ./stages/14-director-gui-check/gui-cluster-check
-  artifacts:
-    paths:
-      - /builds/oep/oep-e2e-gcp/gui-automation/results
-
-tcid-gada01-gui-dashboard-home-check:
-  image: harshshekhar15/gitlab-job:v3
-  stage: DIRECTOR-GUI-CHECK
-  dependencies:
-    - director-deploy
-  script:
-    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-home-check
-    - ./stages/14-director-gui-check/gui-dashboard-home-check
-  artifacts:
-    paths:
-      - /builds/oep/oep-e2e-gcp/gui-automation/results
-
-tcid-gato01-gui-dashboard-topology-check:
-  image: harshshekhar15/gitlab-job:v3
-  stage: DIRECTOR-GUI-CHECK
-  dependencies:
-    - director-deploy
-  script:
-    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-topology-check
-    - ./stages/14-director-gui-check/gui-dashboard-topology-check
-  artifacts:
-    paths:
-      - /builds/oep/oep-e2e-gcp/gui-automation/results
-
-gui-dashboard-check:
-  image: harshshekhar15/gitlab-job:v3
-  stage: DIRECTOR-GUI-CHECK
-  dependencies:
-    - director-deploy
-  script:
-    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-check
-    - ./stages/14-director-gui-check/gui-dashboard-check
-  artifacts:
-    paths:
-      - /builds/oep/oep-e2e-gcp/gui-automation/results
-
-tcid-gaal01-gui-dashboard-alerts-check:
-  image: harshshekhar15/gitlab-job:v3
-  stage: DIRECTOR-GUI-CHECK
-  dependencies:
-    - director-deploy
-  script:
-    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-alerts-check
-    - ./stages/14-director-gui-check/gui-dashboard-alerts-check
-  artifacts:
-    paths:
-      - /builds/oep/oep-e2e-gcp/gui-automation/results
-      
-tcid-galo01-gui-dashboard-logs-check:
-  image: harshshekhar15/gitlab-job:v3
-  stage: DIRECTOR-GUI-CHECK
-  dependencies:
-    - director-deploy
-  script:
-    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-logs-check
-    - ./stages/14-director-gui-check/gui-dashboard-logs-check
-  artifacts:
-    paths:
-      - /builds/oep/oep-e2e-gcp/gui-automation/results
-
-tcid-gada02-gui-dashboard-overview-check:
-  image: harshshekhar15/gitlab-job:v3
-  stage: DIRECTOR-GUI-CHECK
-  dependencies:
-    - director-deploy
-  script:
-    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-overview-check
-    - ./stages/14-director-gui-check/gui-dashboard-overview-check
-  artifacts:
-    paths:
-      - /builds/oep/oep-e2e-gcp/gui-automation/results
-
 cluster-setup-check:
   image: harshshekhar15/gitlab-job:v3
   stage: USER-CLUSTER-SETUP
@@ -594,6 +497,16 @@ tcid-iuod23-pool-upgrade-all-pod-running:
     - chmod 755 ./stages/11-openebs-upgrade-check/pool-upgrade-all-pod-running-check
     - ./stages/11-openebs-upgrade-check/pool-upgrade-all-pod-running-check
 
+## Pool upgrade check when all pods are not running
+tcid-iuod26-pool-upgrade-all-pod-not-running:
+  image: harshshekhar15/gitlab-job:v1
+  stage: OPENEBS-UPGRADE-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/11-openebs-upgrade-check/pool-upgrade-all-pod-not-running
+    - ./stages/11-openebs-upgrade-check/pool-upgrade-all-pod-not-running
+
 ## Volume upgrade Jiva Check
 tcid-iuod27-volume-upgrade-jiva:
   image: harshshekhar15/gitlab-job:v3
@@ -634,6 +547,103 @@ tcid-iuod29-upgrade-two-replica-pod-pending:
     - chmod 755 ./stages/11-openebs-upgrade-check/upgrade-replica-two-pod-pending-check
     - ./stages/11-openebs-upgrade-check/upgrade-replica-two-pod-pending-check
 
+## GUI automated tests on Openebs installation on DOP cluster
+tcid-gaau01-gui-auth-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: DIRECTOR-GUI-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/14-director-gui-check/gui-auth-check
+    - ./stages/14-director-gui-check/gui-auth-check
+  artifacts:
+    paths:
+      - /builds/oep/oep-e2e-gcp/gui-automation/results
+
+tcid-gacc01-gui-cluster-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: DIRECTOR-GUI-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/14-director-gui-check/gui-cluster-check
+    - ./stages/14-director-gui-check/gui-cluster-check
+  artifacts:
+    paths:
+      - /builds/oep/oep-e2e-gcp/gui-automation/results
+
+tcid-gada01-gui-dashboard-home-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: DIRECTOR-GUI-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-home-check
+    - ./stages/14-director-gui-check/gui-dashboard-home-check
+  artifacts:
+    paths:
+      - /builds/oep/oep-e2e-gcp/gui-automation/results
+
+tcid-gato01-gui-dashboard-topology-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: DIRECTOR-GUI-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-topology-check
+    - ./stages/14-director-gui-check/gui-dashboard-topology-check
+  artifacts:
+    paths:
+      - /builds/oep/oep-e2e-gcp/gui-automation/results
+
+gui-dashboard-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: DIRECTOR-GUI-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-check
+    - ./stages/14-director-gui-check/gui-dashboard-check
+  artifacts:
+    paths:
+      - /builds/oep/oep-e2e-gcp/gui-automation/results
+
+tcid-gaal01-gui-dashboard-alerts-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: DIRECTOR-GUI-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-alerts-check
+    - ./stages/14-director-gui-check/gui-dashboard-alerts-check
+  artifacts:
+    paths:
+      - /builds/oep/oep-e2e-gcp/gui-automation/results
+      
+tcid-galo01-gui-dashboard-logs-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: DIRECTOR-GUI-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-logs-check
+    - ./stages/14-director-gui-check/gui-dashboard-logs-check
+  artifacts:
+    paths:
+      - /builds/oep/oep-e2e-gcp/gui-automation/results
+
+tcid-gada02-gui-dashboard-overview-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: DIRECTOR-GUI-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/14-director-gui-check/gui-dashboard-overview-check
+    - ./stages/14-director-gui-check/gui-dashboard-overview-check
+  artifacts:
+    paths:
+      - /builds/oep/oep-e2e-gcp/gui-automation/results
+    
 e2e-metrics:
   when: always
   image: harshshekhar15/gitlab-job:v3
