@@ -1,28 +1,27 @@
+ 
 #!/bin/bash
 
 set -e
 
+# copy the user cluster config to ~/.kube/config inorder to access user cluster
 path=$(pwd)
 mkdir ~/.kube
 cp .gcp/config ~/.kube/config
 
-echo $SDK_TOKEN > key.json
-gcloud auth activate-service-account --key-file=key.json
-gcloud config set project openebs-ci
-export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
-
-######################################## Applying e2e-CRD
-echo "***Applying e2e-crd***********"
-kubectl apply -f utils/e2e-crd.yml
-
 # running following scripts to run the gitlab job sequentially
-bash utils/pooling jobname:teaming-cluster-account-resources-check
-bash utils/e2e-cr jobname:triv01-teaming-invite-check jobphase:Running 
+bash utils/pooling jobname:teaming-project-account-resources-check
+bash utils/e2e-cr jobname:teaming-cluster-account-resources-check jobphase:Running 
 
+# cloning oep-e2e testcases repository
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
-echo "Validate teaming invitation process --------------------------------------------"
-kubectl create -f oep-e2e/litmus/director/invite/run_litmus_test.yml
-test_name=invite-check
+
+######################
+##   Running test   ##
+######################
+
+echo "Validate teaming cluster account access resources --------------------------------------------"
+kubectl create -f oep-e2e/litmus/director/account-access/cluster-account/run_litmus_test.yml
+test_name=cluster-account-resources-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
@@ -39,5 +38,5 @@ if [ "$testResult" != Pass ]
 then 
     exit 1; 
 else
-    bash utils/e2e-cr jobname:triv01-teaming-invite-check jobphase:Completed
+    bash utils/e2e-cr jobname:teaming-cluster-account-resources-check jobphase:Completed
 fi
