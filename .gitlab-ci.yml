@@ -15,6 +15,7 @@ stages:
   - TOPOLOGY-CHECK
   - OPENEBS-INSTALL-CHECK
   - OPENEBS-UPGRADE-CHECK
+  - RECOMMENDATION-CHECK
   - E2E-METRICS ## This stage is fixed and should not be changed
   - CLUSTER-CLEANUP
 
@@ -650,6 +651,26 @@ tcid-iuod29-upgrade-two-replica-pod-pending:
   script:
     - chmod 755 ./stages/11-openebs-upgrade-check/upgrade-replica-two-pod-pending-check
     - ./stages/11-openebs-upgrade-check/upgrade-replica-two-pod-pending-check
+
+## List capacity recommendations
+tcid-cpre01-list-recommendations:
+  image: harshshekhar15/gitlab-job:v3
+  stage: RECOMMENDATION-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/15-recommendation-check/capacity-recommendation
+    - ./stages/15-recommendation-check/capacity-recommendation
+
+## List device recommendations
+tcid-cpre02-device-recommendation:
+  image: harshshekhar15/gitlab-job:v3
+  stage: RECOMMENDATION-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/15-recommendation-check/device-recommendation
+    - ./stages/15-recommendation-check/device-recommendation
 
 e2e-metrics:
   when: always
