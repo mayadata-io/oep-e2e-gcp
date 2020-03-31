@@ -23,12 +23,12 @@ kubectl get po -n openebs
 ##  Sequencing and Running test   ##
 ####################################
 
-bash utils/e2e-cr jobname:openebs-install-check jobphase:Waiting
-bash utils/e2e-cr jobname:openebs-install-check jobphase:Running
-bash utils/e2e-cr jobname:openebs-control-plane-test jobphase:Waiting
-bash utils/e2e-cr jobname:openebs-data-plane-test jobphase:Waiting
-bash utils/e2e-cr jobname:openebs-reinstallation-test jobphase:Waiting
-bash utils/e2e-cr jobname:openebs-resource-limit-installation jobphase:Waiting
+bash utils/e2e-cr jobname:tcid-iuoi02-openebs-install jobphase:Waiting
+bash utils/e2e-cr jobname:tcid-iuoi02-openebs-install jobphase:Running
+bash utils/e2e-cr jobname:tcid-iuoi03-openebs-control-plane jobphase:Waiting
+bash utils/e2e-cr jobname:tcid-iuoi04-openebs-data-plane jobphase:Waiting
+bash utils/e2e-cr jobname:tcid-iuoi06-openebs-reinstallation jobphase:Waiting
+bash utils/e2e-cr jobname:tcid-iuoi14-openebs-resource-limit-installation jobphase:Waiting
 
 # Cloning oep-e2e repository which contains all the test scripts
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
@@ -64,5 +64,5 @@ if [ "$testResult" != Pass ]
 then 
     exit 1;
 else
-    bash utils/e2e-cr jobname:openebs-install-check jobphase:Completed
+    bash utils/e2e-cr jobname:tcid-iuoi02-openebs-install jobphase:Completed
 fi 

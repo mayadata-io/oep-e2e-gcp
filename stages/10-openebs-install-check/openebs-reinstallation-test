@@ -17,8 +17,8 @@ kubectl get po -n openebs
 ##  Sequencing and Running test   ##
 ####################################
 
-bash utils/pooling jobname:openebs-data-plane-test
-bash utils/e2e-cr jobname:openebs-reinstallation-test jobphase:Running
+bash utils/pooling jobname:tcid-iuoi04-openebs-data-plane
+bash utils/e2e-cr jobname:tcid-iuoi06-openebs-reinstallation jobphase:Running
 
 
 # Cloning oep-e2e repository which contains all the test scripts
@@ -47,5 +47,5 @@ echo $testResult
 if [ "$testResult" != Pass ]; then 
 exit 1; 
 else
-    bash utils/e2e-cr jobname:openebs-reinstallation-test jobphase:Completed
+    bash utils/e2e-cr jobname:tcid-iuoi06-openebs-reinstallation jobphase:Completed
 fi 
