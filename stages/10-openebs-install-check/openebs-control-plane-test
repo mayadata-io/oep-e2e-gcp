@@ -17,8 +17,8 @@ kubectl get po -n openebs
 ##  Sequencing and Running test   ##
 ####################################
 
-bash utils/pooling jobname:openebs-install-check
-bash utils/e2e-cr jobname:openebs-control-plane-test jobphase:Running
+bash utils/pooling jobname:tcid-iuoi02-openebs-install
+bash utils/e2e-cr jobname:tcid-iuoi03-openebs-control-plane jobphase:Running
 
 # Cloning oep-e2e repository which contains all the test scripts
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
@@ -46,6 +46,6 @@ echo $testResult
 if [ "$testResult" != Pass ]; then 
 exit 1; 
 else
-    bash utils/e2e-cr jobname:openebs-control-plane-test jobphase:Completed
+    bash utils/e2e-cr jobname:tcid-iuoi03-openebs-control-plane jobphase:Completed
 fi
 
