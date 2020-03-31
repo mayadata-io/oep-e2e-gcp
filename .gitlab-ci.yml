@@ -15,7 +15,7 @@ stages:
   - TOPOLOGY-CHECK
   - OPENEBS-INSTALL-CHECK
   - OPENEBS-UPGRADE-CHECK
-  - RECOMMENDATION-CHECK
+  - CSTORPOOL-RECOMMENDATION-CHECK
   - E2E-METRICS ## This stage is fixed and should not be changed
   - CLUSTER-CLEANUP
 
@@ -655,7 +655,7 @@ tcid-iuod29-upgrade-two-replica-pod-pending:
 ## List capacity recommendations
 tcid-cpre01-list-recommendations:
   image: harshshekhar15/gitlab-job:v3
-  stage: RECOMMENDATION-CHECK
+  stage: CSTORPOOL-RECOMMENDATION-CHECK
   dependencies:
     - cluster-setup-check
   script:
@@ -665,7 +665,7 @@ tcid-cpre01-list-recommendations:
 ## List device recommendations
 tcid-cpre02-device-recommendation:
   image: harshshekhar15/gitlab-job:v3
-  stage: RECOMMENDATION-CHECK
+  stage: CSTORPOOL-RECOMMENDATION-CHECK
   dependencies:
     - cluster-setup-check
   script:
