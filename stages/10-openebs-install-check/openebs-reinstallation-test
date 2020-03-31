@@ -23,13 +23,12 @@ bash utils/e2e-cr jobname:tcid-iuoi06-openebs-reinstallation jobphase:Running
 
 # Cloning oep-e2e repository which contains all the test scripts
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
-cd oep-e2e
 
 ######################
 ##   Running test   ##
 ######################
 
-kubectl create -f litmus/director/tcid-iuoi06-openebs-reinstallation/run_litmus_test.yml
+kubectl create -f oep-e2e/litmus/director/tcid-iuoi06-openebs-reinstallation/run_litmus_test.yml
 kubectl get pods -n litmus
 test_name=openebs-reinstallation
 echo $test_name
