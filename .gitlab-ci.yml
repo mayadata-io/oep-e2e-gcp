@@ -401,6 +401,19 @@ tcid-gada02-gui-dashboard-overview-check:
     when: always
     paths:
       - /builds/oep/oep-e2e-gcp/gui-automation/results
+      
+gui-profile-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: DIRECTOR-GUI-CHECK
+  dependencies:
+    - director-deploy
+  script:
+    - chmod 755 ./stages/14-director-gui-check/gui-profile-check
+    - ./stages/14-director-gui-check/gui-profile-check
+  artifacts:
+    when: always
+    paths:
+      - /builds/oep/oep-e2e-gcp/gui-automation/results
 
 cluster-setup-check:
   image: harshshekhar15/gitlab-job:v3
