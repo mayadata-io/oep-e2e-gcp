@@ -23,9 +23,6 @@ kubectl get po -n openebs
 ##  Sequencing and Running test   ##
 ####################################
 
-######################################## Applying e2e-CRD
-echo "***Applying e2e-crd***********"
-kubectl apply -f utils/e2e-crd.yml
 
 bash utils/e2e-cr jobname:tcid-iuoi02-openebs-install jobphase:Waiting
 bash utils/e2e-cr jobname:tcid-iuoi02-openebs-install jobphase:Running
