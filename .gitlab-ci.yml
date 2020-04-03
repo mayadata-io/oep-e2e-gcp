@@ -410,7 +410,7 @@ metrics-check:
     - chmod 755 ./stages/7-metrics-check/metrics-check
     - ./stages/7-metrics-check/metrics-check
 
-teaming-project-account-resources-check:
+trpa01-teaming-project-account-resources-check:
   image: harshshekhar15/gitlab-job:v3
   stage: TEAMING-CHECK
   dependencies:
@@ -419,7 +419,7 @@ teaming-project-account-resources-check:
     - chmod 755 ./stages/8-teaming-check/teaming-project-account-resources-check
     - ./stages/8-teaming-check/teaming-project-account-resources-check
 
-teaming-cluster-account-resources-check:
+trca01-teaming-cluster-account-resources-check:
   image: harshshekhar15/gitlab-job:v3
   stage: TEAMING-CHECK
   dependencies:

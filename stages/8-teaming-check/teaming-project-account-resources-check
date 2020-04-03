@@ -9,9 +9,9 @@ mkdir ~/.kube
 cp .gcp/config ~/.kube/config
 
 # running following scripts to run the gitlab job sequentially
-bash utils/e2e-cr jobname:teaming-project-account-resources-check jobphase:Waiting
-bash utils/e2e-cr jobname:teaming-project-account-resources-check jobphase:Running 
-bash utils/e2e-cr jobname:teaming-cluster-account-resources-check jobphase:Waiting
+bash utils/e2e-cr jobname:trpa01-teaming-project-account-resources-check jobphase:Waiting
+bash utils/e2e-cr jobname:trpa01-teaming-project-account-resources-check jobphase:Running 
+bash utils/e2e-cr jobname:trca01-teaming-cluster-account-resources-check jobphase:Waiting
 bash utils/e2e-cr jobname:triv01-teaming-invite-check jobphase:Waiting
 bash utils/e2e-cr jobname:trrc02-teaming-change-role-check jobphase:Waiting
 bash utils/e2e-cr jobname:trrc03-teaming-change-role-negative-check jobphase:Waiting
@@ -42,5 +42,5 @@ if [ "$testResult" != Pass ]
 then 
     exit 1; 
 else
-    bash utils/e2e-cr jobname:teaming-project-account-resources-check jobphase:Completed
+    bash utils/e2e-cr jobname:trpa01-teaming-project-account-resources-check jobphase:Completed
 fi

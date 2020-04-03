@@ -9,8 +9,8 @@ mkdir ~/.kube
 cp .gcp/config ~/.kube/config
 
 # running following scripts to run the gitlab job sequentially
-bash utils/pooling jobname:teaming-project-account-resources-check
-bash utils/e2e-cr jobname:teaming-cluster-account-resources-check jobphase:Running 
+bash utils/pooling jobname:trpa01-teaming-project-account-resources-check
+bash utils/e2e-cr jobname:trca01-teaming-cluster-account-resources-check jobphase:Running 
 
 # cloning oep-e2e testcases repository
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
@@ -38,5 +38,5 @@ if [ "$testResult" != Pass ]
 then 
     exit 1; 
 else
-    bash utils/e2e-cr jobname:teaming-cluster-account-resources-check jobphase:Completed
+    bash utils/e2e-cr jobname:trca01-teaming-cluster-account-resources-check jobphase:Completed
 fi
