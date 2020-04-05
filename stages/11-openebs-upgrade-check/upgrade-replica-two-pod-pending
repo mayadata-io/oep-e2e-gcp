@@ -15,9 +15,11 @@ kubectl get po -n openebs
 
 # Cloning oep-e2e repository which contains all the test scripts
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
-cd oep-e2e
 
-kubectl create -f litmus/director/tcid-iuod29-upgrade-two-replica-pod-pending/run_litmus_test.yml
+bash utils/pooling jobname:tcid-iuod28-upgrade-replica-pod-pending
+bash utils/e2e-cr jobname:tcid-iuod29-upgrade-two-replica-pod-pending jobphase:Running
+
+kubectl create -f oep-e2e/litmus/director/tcid-iuod29-upgrade-two-replica-pod-pending/run_litmus_test.yml
 kubectl get pods -n litmus
 
 test_name=upgrade-replica-two-pod-pending-check
@@ -41,5 +43,5 @@ if [ "$testResult" != Pass ]
 then 
     exit 1;
 else
-    bash utils/e2e-cr jobname:pool-upgrade-check jobphase:Completed
+    bash utils/e2e-cr jobname:tcid-iuod29-upgrade-two-replica-pod-pending jobphase:Completed
 fi
