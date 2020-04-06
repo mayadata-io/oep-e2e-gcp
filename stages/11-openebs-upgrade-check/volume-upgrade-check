@@ -15,16 +15,15 @@ kubectl get po -n openebs
 
 # Cloning oep-e2e repository which contains all the test scripts
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
-cd oep-e2e
 
 ####################################
 ##  Sequencing and Running test   ##
 ####################################
 
-bash utils/pooling jobname:pool-upgrade-check
-bash utils/e2e-cr jobname:volume-upgrade-check jobphase:Running
+bash utils/pooling jobname:tcid-iuod08-pool-upgrade
+bash utils/e2e-cr jobname:tcid-iuod12-volume-upgrade jobphase:Running
 
-kubectl create -f litmus/director/tcid-iuod12-volume-upgrade/run_litmus_test.yml
+kubectl create -f oep-e2e/litmus/director/tcid-iuod12-volume-upgrade/run_litmus_test.yml
 kubectl get pods -n litmus
 
 test_name=volume-upgrade-check
@@ -48,5 +47,5 @@ if [ "$testResult" != Pass ]
 then 
     exit 1;
 else
-    bash utils/e2e-cr jobname:volume-upgrade-check jobphase:Completed
+    bash utils/e2e-cr jobname:tcid-iuod12-volume-upgrade jobphase:Completed
 fi

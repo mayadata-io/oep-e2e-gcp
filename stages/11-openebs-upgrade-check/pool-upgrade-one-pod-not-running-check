@@ -15,9 +15,11 @@ kubectl get po -n openebs
 
 # Cloning oep-e2e repository which contains all the test scripts
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
-cd oep-e2e
 
-kubectl create -f litmus/director/tcid-iuod24-pool-upgrade-one-pod-not-running/run_litmus_test.yml
+bash utils/pooling jobname:tcid-iuod23-pool-upgrade-all-pod-running
+bash utils/e2e-cr jobname:tcid-iuod24-pool-upgrade-one-pod-not-running jobphase:Running
+
+kubectl create -f oep-e2e/litmus/director/tcid-iuod24-pool-upgrade-one-pod-not-running/run_litmus_test.yml
 kubectl get pods -n litmus
 
 test_name=pool-upgrade-one-pod-not-running-check
@@ -40,4 +42,6 @@ echo $testResult
 if [ "$testResult" != Pass ]
 then 
     exit 1;
+else
+    bash utils/e2e-cr jobname:tcid-iuod24-pool-upgrade-one-pod-not-running jobphase:Completed
 fi
