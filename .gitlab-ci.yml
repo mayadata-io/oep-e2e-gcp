@@ -649,8 +649,8 @@ tcid-iuod29-upgrade-two-replica-pod-pending:
   dependencies:
     - cluster-setup-check
   script:
-    - chmod 755 ./stages/11-openebs-upgrade-check/upgrade-replica-two-pod-pending-check
-    - ./stages/11-openebs-upgrade-check/upgrade-replica-two-pod-pending-check
+    - chmod 755 ./stages/11-openebs-upgrade-check/upgrade-replica-two-pod-pending
+    - ./stages/11-openebs-upgrade-check/upgrade-replica-two-pod-pending
 
 ## List capacity recommendations
 tcid-cpre01-list-recommendations:
