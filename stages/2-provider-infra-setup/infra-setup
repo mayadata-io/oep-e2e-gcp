@@ -34,6 +34,13 @@ sleep 45
 
 helm version
 
+job_id=$(echo $CI_JOB_ID)
+gittoken=$(echo "$GITHUB_TOKEN")
+current_time=$(date)
+branch_name=$CI_COMMIT_REF_NAME
+test_name="tcid-iudi01"
+stage="PROVIDER-INFRA-SETUP"
+test_desc="Install DOP using helm with GPD underneath"
 
 ######################
 ##    Deploy DOP    ##
@@ -91,3 +98,12 @@ kubectl apply -f  metrics-server/deploy/kubernetes/
 sleep 300
 kubectl top nodes
 
+testResult="Pass"
+
+## Clone oep-e2e repository for updating readme with the result
+
+git clone https://github.com/mayadata-io/oep-e2e.git
+
+if [[ $branch_name == "update-tcid-iudi01-readme" ]]; then
+   python3 oep-e2e/utils/result_update.py --job_id "$job_id" --stage "$stage" --test_desc "$test_desc" --test_result "$testResult" --time_stamp "$current_time" --token "$gittoken" --test_name "$test_name" --job_name "$test_name"
+fi
