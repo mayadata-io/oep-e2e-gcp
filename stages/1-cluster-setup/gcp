@@ -44,38 +44,3 @@ kubectl create configmap kubeconfig --from-file=$path/.kube/admin.conf -n litmus
 # Create firewall-rule
 FIREWALL_VPC="$VPC-firewall"
 gcloud compute firewall-rules create $FIREWALL_VPC --network $VPC --action allow --direction ingress --rules tcp:30380 --source-ranges 0.0.0.0/0  
-
-# fetch openebs operator yaml
-openebs_operator=openebs-operator-1.4.0.yaml 
-wget https://openebs.github.io/charts/$openebs_operator
-# set fields required for sparse pool setup
-default_pool_line=$(cat $openebs_operator | grep -n  OPENEBS_IO_INSTALL_DEFAULT_CSTOR_SPARSE_POOL | tail -n +2 | awk -F':' '{print $1}')
-value_line_pool=$(( default_pool_line + 1 ))
-sed -i "${value_line_pool}s/.*/          value: \"true\"/" $openebs_operator
-sparse_line=$(cat $openebs_operator | grep -n  SPARSE_FILE_COUNT | awk -F':' '{print $1}')
-value_line_count=$(( sparse_line + 1 ))
-sed -i "${value_line_count}s/.*/          value: \"1\"/" $openebs_operator
-# deploy openebs operator 
-kubectl apply -f $openebs_operator
-sleep 100
-kubectl get pods -n openebs
-# Deploy application
-app="mongo"
-wget https://raw.githubusercontent.com/mayadata-io/litmus/master/apps/mongodb/deployers/run_litmus_test.yml
-sed -i 's/value: openebs-mongodb/value: openebs-cstor-sparse/g' run_litmus_test.yml
-sed -i -e 's/generateName: litmus-mongodb-/generateName: litmus-mongodb-deploy/g' run_litmus_test.yml
-cat run_litmus_test.yml
-kubectl create -f run_litmus_test.yml
-test_name=litmus-mongodb-deploy
-litmus_pod=$(kubectl get po -n litmus | grep $test_name | awk {'print $1'} | tail -n 1)
-echo $litmus_pod
-job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
-while [[ "$job_status" != "Completed" ]]
-do 
-    job_status=$(kubectl get po  $litmus_pod -n litmus | awk {'print $3'} | tail -n 1)
-    sleep 6
-done
-kubectl logs -f $litmus_pod -n litmus
-app_ns=$(kubectl get ns | grep $app | awk '{print $1}')
-echo $app_ns
-kubectl get pods -n $app_ns
