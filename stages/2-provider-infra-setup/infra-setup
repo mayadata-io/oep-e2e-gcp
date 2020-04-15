@@ -143,8 +143,8 @@ kubectl get pods -n $app_ns
 
 ## Clone oep-e2e repository for updating readme with the result
 
-git clone https://github.com/mayadata-io/oep-e2e.git
+# git clone https://github.com/mayadata-io/oep-e2e.git
 
-if [[ $branch_name == "master" ]]; then
-   python3 oep-e2e/utils/result_update.py --job_id "$job_id" --stage "$stage" --test_desc "$test_desc" --test_result "$testResult" --time_stamp "$current_time" --token "$gittoken" --test_name "$test_name" --job_name "$test_name" --platform "GCP"
-fi
+# if [[ $branch_name == "master" ]]; then
+#    python3 oep-e2e/utils/result_update.py --job_id "$job_id" --stage "$stage" --test_desc "$test_desc" --test_result "$testResult" --time_stamp "$current_time" --token "$gittoken" --test_name "$test_name" --job_name "$test_name" --platform "GCP"
+# fi
