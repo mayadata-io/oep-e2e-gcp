@@ -98,7 +98,9 @@ kubectl label nodes $node_name kubernetes.io/arch="amd64"
 kubectl label nodes $node_name kubernetes.io/os=linux
 
 ## Installing heapster components on the cluster for node monitoring
-kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+wget https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+sed -i -e '/args:/ a\          - --kubelet-insecure-tls' components.yaml
+kubectl apply -f components.yaml
 
 sleep 300
 kubectl top nodes
