@@ -22,7 +22,7 @@ bash utils/e2e-cr jobname:tcid-iuod30-upgrade-all-replica-pod-pending jobphase:R
 kubectl create -f oep-e2e/litmus/director/tcid-iuod30-upgrade-all-replica-pod-pending/run_litmus_test.yml
 kubectl get pods -n litmus
 
-test_name=upgrade-all-replica-pod-pending-check
+test_name=upgrade-replica-all-pod-pending-check
 echo $test_name
 litmus_pod=$(kubectl get po -n litmus | grep $test_name  | awk {'print $1'} | tail -n 1)
 echo $litmus_pod
