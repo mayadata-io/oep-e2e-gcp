@@ -672,6 +672,16 @@ tcid-cpre02-device-recommendation:
     - chmod 755 ./stages/15-recommendation-check/device-recommendation
     - ./stages/15-recommendation-check/device-recommendation
 
+## Create cstor pool 
+tcid-ppcp01-create-cstor-pool:
+  image: harshshekhar15/gitlab-job:v3
+  stage: CSTORPOOL-RECOMMENDATION-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/15-recommendation-check/create-cstor-pool
+    - ./stages/15-recommendation-check/create-cstor-pool
+
 e2e-metrics:
   when: always
   image: harshshekhar15/gitlab-job:v3
