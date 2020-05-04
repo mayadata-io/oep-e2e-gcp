@@ -12,9 +12,11 @@ gcloud auth activate-service-account --key-file=key.json
 gcloud config set project openebs-ci
 export GOOGLE_APPLICATION_CREDENTIALS="$path/key.json"
 
+# running following scripts to run the gitlab job sequentially
 bash utils/pooling jobname:triv01-teaming-invite-check
 bash utils/e2e-cr jobname:trrc02-teaming-change-role-check jobphase:Running 
 
+# cloning oep-e2e testcases repository
 git clone https://$username:$password@github.com/mayadata-io/oep-e2e.git
 
 ######################

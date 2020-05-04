@@ -466,6 +466,24 @@ metrics-check:
     - chmod 755 ./stages/7-metrics-check/metrics-check
     - ./stages/7-metrics-check/metrics-check
 
+trpa01-teaming-project-account-resources-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: TEAMING-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/8-teaming-check/teaming-project-account-resources-check
+    - ./stages/8-teaming-check/teaming-project-account-resources-check
+
+trca01-teaming-cluster-account-resources-check:
+  image: harshshekhar15/gitlab-job:v3
+  stage: TEAMING-CHECK
+  dependencies:
+    - cluster-setup-check
+  script:
+    - chmod 755 ./stages/8-teaming-check/teaming-cluster-account-resources-check
+    - ./stages/8-teaming-check/teaming-cluster-account-resources-check
+
 triv01-teaming-invite-check:
   image: harshshekhar15/gitlab-job:v3
   stage: TEAMING-CHECK
